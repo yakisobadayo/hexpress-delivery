@@ -26,3 +26,13 @@ if place_meeting(x, y+y_velocity, obj_collide)
 
 // Update the player's vertical position
 y += y_velocity;
+
+// Collecting coins
+if place_meeting(x, y, obj_collectible)
+{
+    with instance_place(x, y, obj_collectible)
+    {
+        instance_destroy()
+		global.coins += 1;
+    }
+}
