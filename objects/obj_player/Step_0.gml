@@ -24,6 +24,12 @@ if place_meeting(x, y+y_velocity, obj_collide)
 	y_velocity = 0;
 }
 
+// CRASH!
+if place_meeting(x, y, obj_collide)
+{
+    room_restart();
+}
+
 // Update the player's vertical position
 y += y_velocity;
 
