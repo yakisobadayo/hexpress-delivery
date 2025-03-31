@@ -1,4 +1,4 @@
-x -= global.gamespeed;
+x -= (global.gamespeed + speedmodifier);
 
 if x < -120
 {

@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_flying",
+  "name": "obj_obstacle",
   "spriteId": {
-    "name": "spr_flying",
-    "path": "sprites/spr_flying/spr_flying.yy",
+    "name": "spr_obstacle",
+    "path": "sprites/spr_obstacle/spr_obstacle.yy",
   },
   "solid": false,
   "visible": true,
@@ -12,8 +12,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "obj_enemy",
-    "path": "objects/obj_enemy/obj_enemy.yy",
+    "name": "obj_collide",
+    "path": "objects/obj_collide/obj_collide.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -28,12 +28,12 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Obstacle",
+    "path": "folders/Objects/Obstacle.yy",
   },
 }
