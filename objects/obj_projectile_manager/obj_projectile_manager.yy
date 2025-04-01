@@ -2,7 +2,10 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "obj_projectile_manager",
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_projectile",
+    "path": "sprites/spr_projectile/spr_projectile.yy",
+  },
   "solid": false,
   "visible": true,
   "managed": true,

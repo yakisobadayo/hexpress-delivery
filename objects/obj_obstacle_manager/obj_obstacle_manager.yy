@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_obst_hori_manager",
+  "name": "obj_obstacle_manager",
   "spriteId": null,
   "solid": false,
   "visible": true,

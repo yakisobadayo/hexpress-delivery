@@ -12,11 +12,14 @@ section_timer = 1000 * spacing_modifier;    // Length of each section
 
 
 // A list of obstacles to spawn
-global.obstacle_types = [
-	obj_obst_hori_manager,
+global.conditions = [
+	obj_obstacle,
+	obj_obstaclediagonal,
+	obj_obstaclevert,
     obj_projectile_manager
 ];
 
 // Randomly pick an initial obstacle type
-var index = irandom(array_length(global.obstacle_types) - 1);
-global.current_obstacle_type = instance_create_layer(0, 0, "Instances", global.obstacle_types[index]);
+var index = irandom(array_length(global.conditions) - 1);
+global.current_condition = global.conditions[index];
+var condition_instance = instance_create_layer(0, 0, "Instances", global.current_condition);
