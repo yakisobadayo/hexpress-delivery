@@ -1,20 +1,17 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_bird",
+  "name": "obj_kill",
   "spriteId": {
-    "name": "spr_projectile",
-    "path": "sprites/spr_projectile/spr_projectile.yy",
+    "name": "spr_ground",
+    "path": "sprites/spr_ground/spr_ground.yy",
   },
   "solid": false,
   "visible": true,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "obj_kill",
-    "path": "objects/obj_kill/obj_kill.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -27,14 +24,11 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
-  ],
+  "eventList": [],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Obstacle",
-    "path": "folders/Objects/Obstacle.yy",
+    "name": "Level",
+    "path": "folders/Objects/Level.yy",
   },
 }

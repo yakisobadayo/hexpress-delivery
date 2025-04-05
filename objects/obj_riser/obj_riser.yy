@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_bird",
+  "name": "obj_riser",
   "spriteId": {
-    "name": "spr_projectile",
-    "path": "sprites/spr_projectile/spr_projectile.yy",
+    "name": "spr_riser",
+    "path": "sprites/spr_riser/spr_riser.yy",
   },
   "solid": false,
   "visible": true,
@@ -12,8 +12,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "obj_kill",
-    "path": "objects/obj_kill/obj_kill.yy",
+    "name": "obj_collide",
+    "path": "objects/obj_collide/obj_collide.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,

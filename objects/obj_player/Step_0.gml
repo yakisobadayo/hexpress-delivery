@@ -30,6 +30,12 @@ if place_meeting(x, y, obj_collide)
     room_restart();
 }
 
+// Kill.
+if place_meeting(x, y, obj_kill)
+{
+	room_restart();
+}
+
 // Update the player's vertical position
 y += y_velocity;
 

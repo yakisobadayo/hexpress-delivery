@@ -14,7 +14,8 @@ global.obstacle_types = [
 	obj_obstacle,
     obj_obstaclevert,
     obj_obstaclediagonal,
-	obj_bird_manager
+	obj_bird_manager,
+	obj_rising_manager
 ];
 
 
