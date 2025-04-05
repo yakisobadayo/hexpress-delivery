@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_riser",
+  "name": "obj_cloud_ceiling",
   "spriteId": {
-    "name": "spr_ghost",
-    "path": "sprites/spr_ghost/spr_ghost.yy",
+    "name": "spr_cloud_ceiling",
+    "path": "sprites/spr_cloud_ceiling/spr_cloud_ceiling.yy",
   },
   "solid": false,
   "visible": true,
@@ -29,12 +29,11 @@
   "physicsShapePoints": [],
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Obstacle",
-    "path": "folders/Objects/Obstacle.yy",
+    "name": "Level",
+    "path": "folders/Objects/Level.yy",
   },
 }

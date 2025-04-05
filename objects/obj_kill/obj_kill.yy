@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "obj_kill",
   "spriteId": {
-    "name": "spr_ground",
-    "path": "sprites/spr_ground/spr_ground.yy",
+    "name": "spr_collide",
+    "path": "sprites/spr_collide/spr_collide.yy",
   },
   "solid": false,
   "visible": true,
