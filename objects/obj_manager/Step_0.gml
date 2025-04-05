@@ -3,29 +3,37 @@ collectable_timer -= global.gamespeed;
 missile_timer -= global.gamespeed;
 section_timer -= global.gamespeed;
 
-/*/ Timer triggered for collectibles when obstacle_timer hits a specific value
-if (obstacle_timer <= 50 && obstacle_timer + global.gamespeed > 50) {
-	instance_create_layer(room_width, random(room_height), "Instances", obj_collectible);
-}
-/*/
-
-// Spawn obstacles when timer runs out
-if (obstacle_timer <= 0)
-{
-	// Spawn the obstacle using the current type.
-    instance_create_layer(room_width, irandom_range(32, room_height-32), "Instances", global.current_obstacle_type);
-	
-	// Reset the timer (this value represents a "distance" rather than fixed time)
-	obstacle_timer = 100 * spacing_modifier;
-}
-
-// Spawn projectiles when timer runs out or on key press
-if (missile_timer <= 0 || keyboard_check_pressed(vk_enter))
-{
-	instance_create_layer(room_width, irandom_range(32, room_height-32), "Instances", obj_projectile);
-	if (missile_timer <= 0) {
-		missile_timer = 500 * spacing_modifier;
+if (section_timer <= 0) {
+	if global.current_obstacle_type == obj_obstacle || global.current_obstacle_type == obj_obstaclediagonal || global.current_obstacle_type == obj_obstaclevert
+	{
+		// Destroy the obstacle manager
+	    if (instance_exists(obj_obstacle_manager)) {
+	         instance_destroy(obj_obstacle_manager);
+	    }
 	}
+	else
+	{
+	    // Destroy the current condition manager
+	    if (instance_exists(global.current_obstacle_type)) {
+	         instance_destroy(global.current_obstacle_type);
+	    }
+	}
+	
+	// Choose a new obstacle manager type at random
+	var index = irandom(array_length(global.obstacle_types) - 1);
+	global.current_obstacle_type = global.obstacle_types[index];
+	
+	// Check if condition is under the great obstacle tree
+	if global.current_obstacle_type == obj_obstacle || global.current_obstacle_type == obj_obstaclediagonal || global.current_obstacle_type == obj_obstaclevert
+	{
+		instance_create_layer(0, 0, "Instances", obj_obstacle_manager);
+	}
+	else
+	{
+		var condition_instance = instance_create_layer(0, 0, "Instances", global.current_obstacle_type);
+	}
+    // Reset the section timer for the next section
+    section_timer = 1000 * spacing_modifier;
 }
 
 // Change sections

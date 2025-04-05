@@ -13,18 +13,25 @@ missile_timer = 500 * spacing_modifier;
 global.obstacle_types = [
 	obj_obstacle,
     obj_obstaclevert,
-    obj_obstaclediagonal
-    // Add more obstacle objects here as you create them.
+    obj_obstaclediagonal,
+	obj_bird_manager
 ];
-obstacle_names = [
-	"Horizontal",
-    "Vertical",
-    "Diagonal"
-	// match order 1:1
-];
+
+
 
 // Randomly pick an initial obstacle type.
 global.current_obstacle_type = global.obstacle_types[irandom(array_length(global.obstacle_types) - 1)];
 
 // Define a timer for how long a section lasts.
 section_timer = 1000 * spacing_modifier;  // Adjust this value to control section length.
+
+
+// Check if condition is under the great obstacle tree
+if global.current_obstacle_type == obj_obstacle || global.current_obstacle_type == obj_obstaclediagonal || global.current_obstacle_type == obj_obstaclevert
+{
+	instance_create_layer(0, 0, "Instances", obj_obstacle_manager);
+}
+else
+{
+	var condition_instance = instance_create_layer(0, 0, "Instances", global.current_obstacle_type);
+}
