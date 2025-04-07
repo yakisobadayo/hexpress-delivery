@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "obj_obstaclediagonal",
   "spriteId": {
-    "name": "spr_obstaclediagonal",
-    "path": "sprites/spr_obstaclediagonal/spr_obstaclediagonal.yy",
+    "name": "spr_obstacle_crystal",
+    "path": "sprites/spr_obstacle_crystal/spr_obstacle_crystal.yy",
   },
   "solid": false,
   "visible": true,
