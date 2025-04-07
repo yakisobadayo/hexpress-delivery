@@ -29,6 +29,7 @@
     {"id":{"name":"spr_obstacle","path":"sprites/spr_obstacle/spr_obstacle.yy",},"order":0,},
     {"id":{"name":"spr_tileprototype","path":"sprites/spr_tileprototype/spr_tileprototype.yy",},"order":0,},
     {"id":{"name":"obj_obstacle","path":"objects/obj_obstacle/obj_obstacle.yy",},"order":1,},
+    {"id":{"name":"spr_obstacle_platform","path":"sprites/spr_obstacle_platform/spr_obstacle_platform.yy",},"order":8,},
     {"id":{"name":"obj_riser","path":"objects/obj_riser/obj_riser.yy",},"order":5,},
     {"id":{"name":"obj_kill","path":"objects/obj_kill/obj_kill.yy",},"order":2,},
     {"id":{"name":"obj_cloud_ceiling","path":"objects/obj_cloud_ceiling/obj_cloud_ceiling.yy",},"order":4,},

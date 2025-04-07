@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "obj_obstacle",
   "spriteId": {
-    "name": "spr_obstacle",
-    "path": "sprites/spr_obstacle/spr_obstacle.yy",
+    "name": "spr_obstacle_platform",
+    "path": "sprites/spr_obstacle_platform/spr_obstacle_platform.yy",
   },
   "solid": false,
   "visible": true,
