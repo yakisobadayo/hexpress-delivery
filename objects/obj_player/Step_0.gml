@@ -48,3 +48,18 @@ if place_meeting(x, y, obj_collectible)
 		global.coins += 1;
     }
 }
+
+
+// Spawn parcel
+if (instance_exists(obj_house)) {
+    var house = instance_nearest(x, y, obj_house);
+    if (x >= house.bbox_left && x <= house.bbox_right) {
+        if (!in_house_bounds) {
+            in_house_bounds = true;
+            // Trigger your event here
+            instance_create_layer(x, y, "Instances", obj_parcel);
+        }
+    } else {
+        in_house_bounds = false;
+    }
+}

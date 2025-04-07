@@ -24,7 +24,7 @@ global.obstacle_types = [
 global.current_obstacle_type = global.obstacle_types[irandom(array_length(global.obstacle_types) - 1)];
 
 // Define a timer for how long a section lasts.
-section_timer = 1000 * spacing_modifier;  // Adjust this value to control section length.
+section_timer = 5000;  // Adjust this value to control section length.
 
 
 // Check if condition is under the great obstacle tree

@@ -4,5 +4,3 @@ y_velocity = 0;
 booster = false;
 //init_y = room_height - 130;
 //y = init_y;  // set player's starting verti cal position
-
-in_house_bounds = false;
