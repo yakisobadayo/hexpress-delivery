@@ -53,7 +53,7 @@ if place_meeting(x, y, obj_collectible)
 // Spawn parcel
 if (instance_exists(obj_house)) {
     var house = instance_nearest(x, y, obj_house);
-    if (x >= house.bbox_left && x <= house.bbox_right) {
+    if (x >= house.bbox_left+32 && x <= house.bbox_right) {
         if (!in_house_bounds) {
             in_house_bounds = true;
             // Trigger your event here
