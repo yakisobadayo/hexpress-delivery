@@ -108,3 +108,8 @@ if (keyboard_check_pressed(vk_enter))
     show_debug_message("Switched to obstacle type index " + string(nextIndex));
 }
 #endregion
+
+// Exit to menu
+if (keyboard_check_pressed(vk_escape)) {
+    room_goto(room_menu);
+}
