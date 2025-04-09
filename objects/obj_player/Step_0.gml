@@ -39,7 +39,7 @@ if place_meeting(x, y, obj_kill)
 // Update the player's vertical position
 y += y_velocity;
 
-// Collecting coins
+/*/ Collecting coins
 if place_meeting(x, y, obj_collectible)
 {
     with instance_place(x, y, obj_collectible)
@@ -48,6 +48,7 @@ if place_meeting(x, y, obj_collectible)
 		global.coins += 1;
     }
 }
+/*/
 
 
 // Spawn parcel

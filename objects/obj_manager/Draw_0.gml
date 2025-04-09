@@ -1,3 +1,16 @@
 draw_set_color(c_black);
+draw_set_halign(fa_left);
 draw_text(16, 32, "Current: " + object_get_name(global.current_obstacle_type));
 draw_text(16, 48, "Time until next section: " + string(section_timer));
+
+// Show controls
+if (keyboard_check(vk_space))
+{
+	global.space_pressed = true;
+}
+
+if (!global.space_pressed)
+{
+	draw_set_halign(fa_center);
+	draw_text(room_width/2, room_height/2, "Press SPACE to fly!");
+}
