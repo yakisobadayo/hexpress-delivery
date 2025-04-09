@@ -11,6 +11,9 @@ var main_options = [play_text, exit_text];
 var current_options = main_options;
 var option_height = 32; // Height of each option
 
+// Set the color to white
+draw_set_color(c_white);
+
 // Draw options and selection circles
 for (var i = 0; i < array_length(current_options); i++) {
     var y_pos = (room_height / 2) + i * option_height;
@@ -33,6 +36,3 @@ for (var i = 0; i < array_length(current_options); i++) {
         draw_sprite(spr_selector, -1, x_pos - selector_x_offset, y_pos + 10);
     }
 }
-
-// Reset the color to default
-draw_set_color(c_white);
