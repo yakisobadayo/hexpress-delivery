@@ -1,10 +1,14 @@
 // obj_player: Step Event
 
 // Check if space is held down for boosting
-if (keyboard_check(vk_space)) {
-    booster = true;
+if !stunned {
+	if (keyboard_check(vk_space)) {
+	    booster = true;
+	} else {
+	    booster = false;
+	}
 } else {
-    booster = false;
+	booster = false;
 }
 
 // Adjust vertical velocity based on booster state
@@ -24,16 +28,39 @@ if place_meeting(x, y+y_velocity, obj_collide)
 	y_velocity = 0;
 }
 
-// CRASH!
-if place_meeting(x, y, obj_collide)
-{
-    room_restart();
-}
+// Check collision state
+var isColliding = place_meeting(x, y, obj_collide) || place_meeting(x, y, obj_kill);
 
-// Kill.
-if place_meeting(x, y, obj_kill)
+// CRASH!
+if (isColliding)
 {
-	room_restart();
+    // Only trigger stun when collision state just began.
+    if (!colliding && !stunned)
+    {
+        if (y_velocity < 0)
+        {
+            y_velocity = 0;
+        }
+        stunned = true;
+        alarm_set(0, 0.4 * room_speed); // Triggers stun duration
+		
+		// Decrease the parcel's health by 10%
+        global.current_parcel_health -= 10;
+        // Optionally clamp it so it doesn't drop below zero:
+        if (global.current_parcel_health < 0)
+            global.current_parcel_health = 0;
+			
+		// Play sound
+		audio_play_sound(snd_impact, 10, false, 1, 0, random_range(0.9, 1.1));
+    }
+    
+    // Mark that we are colliding this frame.
+    colliding = true;
+}
+else
+{
+    // Reset the collision flag when not colliding.
+    colliding = false;
 }
 
 // Update the player's vertical position
@@ -57,8 +84,17 @@ if (instance_exists(obj_house)) {
     if (x >= house.bbox_left+32 && x <= house.bbox_right) {
         if (!in_house_bounds) {
             in_house_bounds = true;
-            // Trigger your event here
+            // Spawn parcel object
             instance_create_layer(x, y, "Instances", obj_parcel);
+			
+			// Record the delivered parcel's health
+            array_push(global.parcel_scores, global.current_parcel_health);
+            
+            // Increment delivered package count.
+            global.deliveredpackages += 1;
+            
+            // Reset for the next delivery: Restore parcel health to 100%.
+            global.current_parcel_health = 100;
         }
     } else {
         in_house_bounds = false;

@@ -20,28 +20,32 @@ if (section_timer <= 0) {
 	    }
 	}
 	
-	// Choose a new obstacle manager type at random
-	var index = irandom(array_length(global.obstacle_types) - 1);
-	global.current_obstacle_type = global.obstacle_types[index];
-	
-	// Check if condition is under the great obstacle tree
-	if global.current_obstacle_type == obj_obstacle || global.current_obstacle_type == obj_obstaclediagonal || global.current_obstacle_type == obj_obstaclevert
+	if (currentdelivery < global.routelength)
 	{
-		instance_create_layer(0, 0, "Instances", obj_obstacle_manager);
-	}
-	else
-	{
-		var condition_instance = instance_create_layer(0, 0, "Instances", global.current_obstacle_type);
-	}
+		// Spawn house
+		instance_create_layer(room_width, 352, "BackgroundObjects", obj_house);
+		
+		// Increment current delivery
+		currentdelivery += 1;
+		
+		// Choose a new obstacle manager type at random
+		var index = irandom(array_length(global.obstacle_types) - 1);
+		global.current_obstacle_type = global.obstacle_types[index];
 	
-	// Spawn house
-	instance_create_layer(room_width, 352, "BackgroundObjects", obj_house);
+		// Check if condition is under the great obstacle tree
+		if global.current_obstacle_type == obj_obstacle || global.current_obstacle_type == obj_obstaclediagonal || global.current_obstacle_type == obj_obstaclevert
+		{
+			instance_create_layer(0, 0, "Instances", obj_obstacle_manager);
+		}
+		else
+		{
+			var condition_instance = instance_create_layer(0, 0, "Instances", global.current_obstacle_type);
+		}
 	
-    // Reset the section timer for the next section
-    section_timer = 5000;
+	    // Reset the section timer for the next section
+	    section_timer = 5000;
+	}
 }
-
-
 
 
 

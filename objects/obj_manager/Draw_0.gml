@@ -2,6 +2,8 @@ draw_set_color(c_black);
 draw_set_halign(fa_left);
 draw_text(16, 32, "Current: " + object_get_name(global.current_obstacle_type));
 draw_text(16, 48, "Time until next section: " + string(section_timer));
+draw_text(16, 64, "Packages delivered: " + string(global.deliveredpackages) + "/" + string(global.routelength));
+draw_text(16, 80, "Parcel health: " + string(global.current_parcel_health) + "%");
 
 // Show controls
 if (keyboard_check(vk_space))

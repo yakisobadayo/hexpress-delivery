@@ -6,3 +6,8 @@ booster = false;
 //y = init_y;  // set player's starting verti cal position
 
 in_house_bounds = false;
+stunned = false;
+colliding = false;
+
+global.current_parcel_health = 100;  // Parcel starts at full health (100%)
+global.parcel_scores = [];           // An array to hold each delivered parcel's health value
