@@ -4,6 +4,7 @@
   "name": "HexpressPrototype",
   "resources": [
     {"id":{"name":"spr_tileable_city","path":"sprites/spr_tileable_city/spr_tileable_city.yy",},"order":0,},
+    {"id":{"name":"fnt_monogram","path":"fonts/fnt_monogram/fnt_monogram.yy",},"order":1,},
     {"id":{"name":"obj_rising_manager","path":"objects/obj_rising_manager/obj_rising_manager.yy",},"order":3,},
     {"id":{"name":"obj_collide","path":"objects/obj_collide/obj_collide.yy",},"order":1,},
     {"id":{"name":"fnt_quaver","path":"fonts/fnt_quaver/fnt_quaver.yy",},"order":0,},
@@ -42,6 +43,7 @@
     {"id":{"name":"obj_riser","path":"objects/obj_riser/obj_riser.yy",},"order":5,},
     {"id":{"name":"obj_parcel","path":"objects/obj_parcel/obj_parcel.yy",},"order":1,},
     {"id":{"name":"obj_kill","path":"objects/obj_kill/obj_kill.yy",},"order":2,},
+    {"id":{"name":"fnt_at01","path":"fonts/fnt_at01/fnt_at01.yy",},"order":2,},
     {"id":{"name":"obj_cloud_ceiling","path":"objects/obj_cloud_ceiling/obj_cloud_ceiling.yy",},"order":4,},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":0,},
     {"id":{"name":"obj_manager","path":"objects/obj_manager/obj_manager.yy",},"order":0,},
