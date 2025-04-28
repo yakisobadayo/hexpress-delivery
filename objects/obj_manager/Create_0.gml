@@ -67,9 +67,27 @@ function spawn_current_manager() {
 	}
 }
 /*/
+
+/*/
+switch (global.deliveredpackages) {
+    case 1:
+        // code here
+        break;
+	case 2:
+        // code here
+        break;
+	case 3:
+        // code here
+        break;
+    default:
+        // code here
+        break;
+}
+/*/
 #endregion
 
 // How many sections in a route
-global.routelength = 5;
+route_active     = true;
+global.routelength = irandom_range(5,8);
 currentdelivery = 0;
 global.deliveredpackages = 0;

@@ -45,7 +45,7 @@ if (isColliding)
         alarm_set(0, 0.4 * room_speed); // Triggers stun duration
 		
 		// Decrease the parcel's health by 10%
-        global.current_parcel_health -= 10;
+        global.current_parcel_health -= 0.1;
         // Optionally clamp it so it doesn't drop below zero:
         if (global.current_parcel_health < 0)
             global.current_parcel_health = 0;
@@ -78,7 +78,7 @@ if place_meeting(x, y, obj_collectible)
 /*/
 
 
-// Spawn parcel
+// Drop parcel
 if (instance_exists(obj_house)) {
     var house = instance_nearest(x, y, obj_house);
     if (x >= house.bbox_left+32 && x <= house.bbox_right) {
@@ -94,7 +94,7 @@ if (instance_exists(obj_house)) {
             global.deliveredpackages += 1;
             
             // Reset for the next delivery: Restore parcel health to 100%.
-            global.current_parcel_health = 100;
+            global.current_parcel_health = 1;
         }
     } else {
         in_house_bounds = false;

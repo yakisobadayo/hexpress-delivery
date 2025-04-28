@@ -36,6 +36,7 @@
     {"id":{"name":"spr_ground","path":"sprites/spr_ground/spr_ground.yy",},"order":3,},
     {"id":{"name":"obj_obstaclediagonal","path":"objects/obj_obstaclediagonal/obj_obstaclediagonal.yy",},"order":2,},
     {"id":{"name":"spr_obstacle","path":"sprites/spr_obstacle/spr_obstacle.yy",},"order":0,},
+    {"id":{"name":"obj_gotofade","path":"objects/obj_gotofade/obj_gotofade.yy",},"order":0,},
     {"id":{"name":"spr_tileprototype","path":"sprites/spr_tileprototype/spr_tileprototype.yy",},"order":0,},
     {"id":{"name":"obj_obstacle","path":"objects/obj_obstacle/obj_obstacle.yy",},"order":1,},
     {"id":{"name":"obj_menu_manager","path":"objects/obj_menu_manager/obj_menu_manager.yy",},"order":0,},
@@ -105,6 +106,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tilesets","folderPath":"folders/Sprites/Tilesets.yy","order":0,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy","order":2,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy","order":8,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"spawners","folderPath":"folders/Objects/spawners.yy","order":17,},
   ],
   "AudioGroups": [
     {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},
