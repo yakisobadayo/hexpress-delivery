@@ -36,3 +36,6 @@ for (var i = 0; i < array_length(current_options); i++) {
         draw_sprite(spr_selector, -1, x_pos - selector_x_offset, y_pos + 10);
     }
 }
+
+// Money
+draw_text(16, 16, "Tip Money: " + string(global.tip_money) + "g");
