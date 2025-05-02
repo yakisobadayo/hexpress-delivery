@@ -16,9 +16,9 @@ if (missile_timer > 0)
 if (missile_timer <= 0)
 {
 	var random_height = irandom_range(32+32, room_height-32)
-	instance_create_layer(room_width, aim, "Obstacles", obj_bird);
-	instance_create_layer(room_width+16, aim-16, "Obstacles", obj_bird);
-	instance_create_layer(room_width+16+16, aim-16-16, "Obstacles", obj_bird);
+	instance_create_layer(room_width, aim, "Instances", obj_bird);
+	instance_create_layer(room_width+16, aim-16, "Instances", obj_bird);
+	instance_create_layer(room_width+16+16, aim-16-16, "Instances", obj_bird);
 	missile_timer = 150 * spacing_modifier;
 	aim = obj_player.y;
 }

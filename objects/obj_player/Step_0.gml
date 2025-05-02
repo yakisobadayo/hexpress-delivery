@@ -89,7 +89,6 @@ if (instance_exists(obj_house)) {
 			
 			// Record the delivered parcel's health
             array_push(global.parcel_scores, global.current_parcel_health);
-			// collected_tips += 100*global.current_parcel_health;
             
             // Increment delivered package count.
             global.deliveredpackages += 1;
