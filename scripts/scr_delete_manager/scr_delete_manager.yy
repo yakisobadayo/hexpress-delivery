@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_condition_functions",
+  "name": "scr_delete_manager",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
