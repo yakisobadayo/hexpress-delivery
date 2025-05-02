@@ -1,5 +1,5 @@
 // Initialize everything
-global.obstacle_types = [
+global.conditions = [
     {
         type   : "horizontal",
         prefab : obj_obstacle_manager,

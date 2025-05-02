@@ -5,7 +5,7 @@ section_timer -= global.gamespeed;
 
 // Change sections
 if (section_timer <= 0 && route_active) {
-    // 1) Tear down the old manager
+    // 1) Reset managers
     layer_destroy_instances("Managers");
 
     // 2) Spawn the house and bump the counter
@@ -19,8 +19,8 @@ if (section_timer <= 0 && route_active) {
     }
     else {
         // → KEEP GOING: pick next obstacle, spawn manager, reset timer
-        randomize_obstacles();
-        spawn_manager();
+        roll_section_conditions();
+		spawn_all_managers();
 
         section_timer = 5000;
     }
@@ -28,6 +28,7 @@ if (section_timer <= 0 && route_active) {
 
 // DEBUG CODE: Cycle obstacle types when Enter is pressed.
 #region
+/*/
 if (keyboard_check_pressed(vk_enter))
 {
     // Find the current index in the obstacle_types array.
@@ -60,6 +61,7 @@ if (keyboard_check_pressed(vk_enter))
     // Output a debug message.
     show_debug_message("Switched to obstacle type index " + string(nextIndex));
 }
+/*/
 #endregion
 
 if (global.deliveredpackages >= global.routelength && !over) {

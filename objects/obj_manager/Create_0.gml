@@ -14,8 +14,8 @@ section_timer = 5000;
 
 #region Obstacle code stuff
 // Randomly pick an initial obstacle type.
-randomize_obstacles();
-spawn_manager();
+roll_section_conditions();
+spawn_all_managers();
 #endregion
 
 // How many sections in a route
