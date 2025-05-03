@@ -11,7 +11,8 @@ collectable_timer = 100 * spacing_modifier;
 missile_timer = 500 * spacing_modifier;
 
 // Define a timer for how long a section lasts.
-section_timer = 5000;
+section_timer = 3000;
+section_timer_ticking = section_timer;
 
 // Initialize obstacle types
 global.obstacle_types = [
@@ -23,19 +24,11 @@ global.obstacle_types = [
 ];
 
 #region Obstacle code stuff
-// Randomly pick an initial obstacle type.
-global.current_obstacle_type = global.obstacle_types[irandom(array_length(global.obstacle_types) - 1)];
+// Generate the condition definition(s) for the NEXT section
+global.current_section_conditions = roll_section();
 
-
-// Check if condition is under the great obstacle tree
-if global.current_obstacle_type == obj_obstacle || global.current_obstacle_type == obj_obstaclediagonal || global.current_obstacle_type == obj_obstaclevert
-{
-	instance_create_layer(0, 0, "Instances", obj_obstacle_manager);
-}
-else
-{
-	var condition_instance = instance_create_layer(0, 0, "Instances", global.current_obstacle_type);
-}
+// Spawn the corresponding manager(s) for the new section on the "Managers" layer
+spawn_managers(global.current_section_conditions);
 
 /*/
 function destroy_current_manager() {

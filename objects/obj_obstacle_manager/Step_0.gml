@@ -2,17 +2,17 @@ obstacle_timer -= global.gamespeed;
 // Spawn obstacles when timer runs out
 if (obstacle_timer <= 0)
 {
-	if global.current_obstacle_type == obj_obstacle
+	if type == "Horizontal"
 	{
 		instance_create_layer(room_width, irandom_range(32, room_height-32), "Instances", obj_obstacle);
 	}
 	
-	if global.current_obstacle_type == obj_obstaclediagonal
+	if type == "Diagonal"
 	{
 		instance_create_layer(room_width, irandom_range(32, room_height-32), "Instances", obj_obstaclediagonal);
 	}
 	
-	if global.current_obstacle_type == obj_obstaclevert
+	if type == "Vertical"
 	{
 		instance_create_layer(room_width, irandom_range(32, room_height-32), "Instances", obj_obstaclevert);
 	}

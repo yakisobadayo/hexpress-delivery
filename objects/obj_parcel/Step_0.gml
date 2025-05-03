@@ -1,4 +1,4 @@
-x -= global.gamespeed;
+auto_scroll();
 
 // Adjust vertical velocity
 y_velocity += grav;  // apply gravity

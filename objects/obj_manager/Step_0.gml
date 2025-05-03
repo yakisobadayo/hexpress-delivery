@@ -1,22 +1,14 @@
+/*
 obstacle_timer -= global.gamespeed;
 collectable_timer -= global.gamespeed;
 missile_timer -= global.gamespeed;
-section_timer -= global.gamespeed;
+*/
+section_timer_ticking -= global.gamespeed;
 
 // Change sections
-if (section_timer <= 0 && route_active) {
-    // 1) Tear down the old manager
-    if (global.current_obstacle_type == obj_obstacle 
-     || global.current_obstacle_type == obj_obstaclediagonal 
-     || global.current_obstacle_type == obj_obstaclevert)
-    {
-        if (instance_exists(obj_obstacle_manager))
-            instance_destroy(obj_obstacle_manager);
-    }
-    else {
-        if (instance_exists(global.current_obstacle_type))
-            instance_destroy(global.current_obstacle_type);
-    }
+if (section_timer_ticking <= 0 && route_active) {
+    // 1) Clean up all old managers
+    layer_destroy_instances("Managers");
 
     // 2) Spawn the house and bump the counter
     instance_create_layer(room_width, 352, "BackgroundObjects", obj_house);
@@ -30,20 +22,14 @@ if (section_timer <= 0 && route_active) {
     }
     else {
         // → KEEP GOING: pick next obstacle, spawn manager, reset timer
-        var idx = irandom(array_length(global.obstacle_types)-1);
-        global.current_obstacle_type = global.obstacle_types[idx];
+        // Generate the condition definition(s) for the NEXT section
+        global.current_section_conditions = roll_section();
 
-        if (global.current_obstacle_type == obj_obstacle 
-         || global.current_obstacle_type == obj_obstaclediagonal 
-         || global.current_obstacle_type == obj_obstaclevert)
-        {
-            instance_create_layer(0, 0, "Instances", obj_obstacle_manager);
-        }
-        else {
-            instance_create_layer(0, 0, "Instances", global.current_obstacle_type);
-        }
+        // Spawn the corresponding manager(s) for the new section on the "Managers" layer
+        spawn_managers(global.current_section_conditions);
 
-        section_timer = 5000;
+        // Reset the section timer
+        section_timer_ticking = section_timer;
     }
 }
 
@@ -51,6 +37,7 @@ if (section_timer <= 0 && route_active) {
 
 // DEBUG CODE: Cycle obstacle types when Enter is pressed.
 #region
+/*
 if (keyboard_check_pressed(vk_enter))
 {
     // Find the current index in the obstacle_types array.
@@ -111,6 +98,7 @@ if (keyboard_check_pressed(vk_enter))
     // Output a debug message.
     show_debug_message("Switched to obstacle type index " + string(nextIndex));
 }
+*/
 #endregion
 
 // Exit to menu

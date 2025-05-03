@@ -1,6 +1,3 @@
-x -= (global.gamespeed + speedmodifier);
+auto_scroll(speedmodifier);
 
-if x < -120
-{
-	instance_destroy(self);
-}
+destroy_offscreen();

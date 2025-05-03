@@ -16,6 +16,7 @@
     {"id":{"name":"room_menu","path":"rooms/room_menu/room_menu.yy",},"order":1,},
     {"id":{"name":"spr_house","path":"sprites/spr_house/spr_house.yy",},"order":11,},
     {"id":{"name":"spr_riser","path":"sprites/spr_riser/spr_riser.yy",},"order":4,},
+    {"id":{"name":"scr_scrolling_functions","path":"scripts/scr_scrolling_functions/scr_scrolling_functions.yy",},"order":2,},
     {"id":{"name":"scr_condition_init","path":"scripts/scr_condition_init/scr_condition_init.yy",},"order":1,},
     {"id":{"name":"mus_route","path":"sounds/mus_route/mus_route.yy",},"order":0,},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},"order":0,},
