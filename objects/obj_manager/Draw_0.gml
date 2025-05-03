@@ -1,10 +1,10 @@
 //draw_set_font(fnt_monogram);
-draw_set_color(c_black);
+//draw_set_color(c_black);
 draw_set_halign(fa_left);
 //draw_text(16, 32, "Current: " + object_get_name(global.current_obstacle_type));
-draw_text(16, 48, "Time until next section: " + string(section_timer_ticking));
-draw_text(16, 64, "Packages delivered: " + string(global.deliveredpackages) + "/" + string(global.routelength));
-draw_text(16, 80, "Parcel health: " + string(global.current_parcel_health*100) + "%");
+draw_text_with_shadow(16, 32, "Time until next section: " + string(section_timer_ticking), c_white, c_black, 0.33);
+draw_text_with_shadow(16, 48, "Packages delivered: " + string(global.deliveredpackages) + "/" + string(global.routelength), c_white, c_black, 0.33);
+draw_text_with_shadow(16, 64, "Parcel health: " + string(global.current_parcel_health*100) + "%", c_white, c_black, 0.33);
 
 // Show controls
 if (keyboard_check(vk_space))
@@ -15,5 +15,5 @@ if (keyboard_check(vk_space))
 if (!global.space_pressed)
 {
 	draw_set_halign(fa_center);
-	draw_text(room_width/2, room_height/2, "Press SPACE to fly!");
+	draw_text_with_shadow(room_width/2, room_height/2, "Press SPACE to fly!", c_white, c_black, 0.33);
 }

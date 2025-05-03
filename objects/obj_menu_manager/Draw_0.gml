@@ -1,5 +1,8 @@
 /// @description Draw the options and selection indicator
 
+// Set font
+draw_set_font(fnt_at01);
+
 // Calculate the scale using a sine wave for smooth oscillation
 var scale_factor = 1 + 0.06 * sin(animation_time); // Adjust the 0.1 to change the amplitude
 
@@ -25,14 +28,14 @@ for (var i = 0; i < array_length(current_options); i++) {
 
     // Draw options
     if (selected == i + 1) { // Hover
-        draw_text(x_pos, y_pos, current_options[i]);
+        draw_text_with_shadow(x_pos, y_pos, current_options[i], c_white, c_black, 0.33);
     } else { // Normal
-        draw_text(x_pos, y_pos, current_options[i]);
+        draw_text_with_shadow(x_pos, y_pos, current_options[i], c_white, c_black, 0.33);
     }
 
     // Draw selector
     if (selected == i + 1) {
         var selector_x_offset = 32 + 2.5 * sin(animation_time); // Adjust '5' for the amplitude of the wobble
-        draw_sprite(spr_selector, -1, x_pos - selector_x_offset, y_pos + 10);
+        draw_sprite(spr_selector, -1, x_pos - selector_x_offset, y_pos + 7);
     }
 }
