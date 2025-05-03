@@ -1,8 +1,3 @@
-/*
-obstacle_timer -= global.gamespeed;
-collectable_timer -= global.gamespeed;
-missile_timer -= global.gamespeed;
-*/
 section_timer_ticking -= global.gamespeed;
 
 // Change sections

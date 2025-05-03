@@ -5,13 +5,8 @@ global.gamespeed = 4;
 global.coins = 0;
 spacing_modifier = 3; // Modifies spacing between spawns
 
-// How often things spawn
-obstacle_timer = 100 * spacing_modifier;
-collectable_timer = 100 * spacing_modifier;
-missile_timer = 500 * spacing_modifier;
-
 // Define a timer for how long a section lasts.
-section_timer = 3000;
+section_timer = 4000;
 section_timer_ticking = section_timer;
 
 // Initialize obstacle types

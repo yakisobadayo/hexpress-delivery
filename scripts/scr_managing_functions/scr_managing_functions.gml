@@ -1,8 +1,46 @@
 /// @function roll_section()
+/// @returns {Array<Struct>} 1-or-2 unique obstacle-definition structs
+function roll_section()
+{
+    var _current = [];
+
+    // --- 1. TERRAIN -------------------------------------------------------
+    var _terrain = [
+        global.conditionDef_Horizontal,
+        global.conditionDef_Vertical,
+        global.conditionDef_Diagonal
+    ];
+
+    array_push(_current, _terrain[ irandom(array_length(_terrain) - 1) ]);
+
+    // --- 2. OPTIONAL HAZARD (50 % chance) ---------------------------------
+    if (irandom(1))          // returns 0 or 1 → 1 means “add a hazard”
+    {
+        var _hazards = [
+            global.conditionDef_Birds,
+            global.conditionDef_Rising
+        ];
+        array_push(_current, _hazards[ irandom(array_length(_hazards) - 1) ]);
+    }
+
+    // --- Debug print ------------------------------------------------------
+    var _msg = "Generated route conditions: ";
+    for (var i = 0; i < array_length(_current); i++)
+    {
+        _msg += _current[i].type;
+        if (i < array_length(_current) - 1) _msg += ", ";
+    }
+    show_debug_message(_msg);
+
+    return _current;
+}
+
+
+/// @function roll_random_section()
 /// @description Generates an array containing 1 or 2 unique obstacle definition structs
 ///              randomly selected from global.obstacle_definitions.
 /// @returns {Array<Struct>} An array of obstacle definition structs.
-function roll_section()
+function roll_random_section()
 {
     var _current_conditions = [];
     var _max_index          = array_length(global.route_conditions) - 1;
