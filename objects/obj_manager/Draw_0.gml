@@ -1,10 +1,12 @@
 //draw_set_font(fnt_monogram);
 //draw_set_color(c_black);
+
+// Draw debug UI
 draw_set_halign(fa_left);
-//draw_text(16, 32, "Current: " + object_get_name(global.current_obstacle_type));
 draw_text_with_shadow(16, 32, "Time until next section: " + string(section_timer_ticking), c_white, c_black, 0.33);
-draw_text_with_shadow(16, 48, "Packages delivered: " + string(global.deliveredpackages) + "/" + string(global.routelength), c_white, c_black, 0.33);
-draw_text_with_shadow(16, 64, "Parcel health: " + string(global.current_parcel_health*100) + "%", c_white, c_black, 0.33);
+draw_text_with_shadow(16, 48, "Current conditions: " + conditions_to_string(global.current_section_conditions), c_white, c_black, 0.33);
+draw_text_with_shadow(16, 64, "Packages delivered: " + string(global.deliveredpackages) + "/" + string(global.routelength), c_white, c_black, 0.33);
+draw_text_with_shadow(16, 80, "Parcel health: " + string(global.current_parcel_health*100) + "%", c_white, c_black, 0.33);
 
 // Show controls
 if (keyboard_check(vk_space))

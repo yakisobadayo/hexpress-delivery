@@ -13,7 +13,7 @@ if (section_timer_ticking <= 0 && route_active) {
     if (currentdelivery >= global.routelength) {
         // → ROUTE FINISHED!  
         route_active = false;          // stop further section logic
-        show_results();                // call your end‐of‐route logic
+        //show_results();                // call your end‐of‐route logic
     }
     else {
         // → KEEP GOING: pick next obstacle, spawn manager, reset timer

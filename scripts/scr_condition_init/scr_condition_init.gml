@@ -37,7 +37,3 @@ global.route_conditions = [
 
 // You no longer need the old global.obstacle_types array
 // global.obstacle_types = [...]; // DELETE THIS OLD LINE
-
-/*/ You'll also need a way to track the currently active definition *and* instance
-global.current_condition_definition = undefined; // Will hold the struct
-global.current_manager_instance = noone;        // Will hold the instance ID

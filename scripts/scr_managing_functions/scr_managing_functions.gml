@@ -103,3 +103,17 @@ function spawn_managers(_conditions_array) {
         show_debug_message("Spawned manager: " + object_get_name(_manager_to_spawn) + " for type: " + _def.type);
     }
 }
+
+
+/// @func conditions_to_string(arr)
+/// @desc  Turns an array of condition structs into "TypeA, TypeB, …"
+function conditions_to_string(_arr)
+{
+    var _s = "";
+    for (var i = 0; i < array_length(_arr); i++)
+    {
+        _s += _arr[i].type;
+        if (i < array_length(_arr) - 1) _s += ", ";
+    }
+    return _s;
+}
