@@ -1,52 +1,70 @@
 // obj_player: Step Event
 
-// 1. Input & gravity/boost
-if (!stunned) {
-    if (keyboard_check(vk_space)) {
-        booster = true;
-        y_velocity -= grav;
-    } else {
-        booster = false;
-        y_velocity += grav;
-    }
+// Check if space is held down for boosting
+if !stunned {
+	if (keyboard_check(vk_space)) {
+	    booster = true;
+	} else {
+	    booster = false;
+	}
 } else {
-    booster = false;
-    y_velocity += grav;
+	booster = false;
 }
 
-// 2. Collision checks (only when not stunned)
-if (!stunned) {
-    var _vel_y = y_velocity;
+// Adjust vertical velocity based on booster state
+if (booster) {
+    y_velocity -= grav;  // move upward
+} else {
+    y_velocity += grav;  // apply gravity
+}
 
-    // 1) obj_kill always hurts
-    if (place_meeting(x, y + _vel_y, obj_kill)) {
-        show_debug_message("Hit KILL!");
-        trigger_hit();
-        _vel_y = 0;
-    }
-    // 2) Safe landing: moving DOWN and the pixel just below us is solid
-    else if (_vel_y > 0 && place_meeting(x, y + 1, obj_collide)) {
-        show_debug_message("Safe landing on top of collide!");
-        // Slide down until just above the surface
-        while (!place_meeting(x, y + 1, obj_collide)) {
-            y += 1;
+// Vertical collision handling
+if place_meeting(x, y+y_velocity, obj_collide)
+{
+	while !place_meeting(x, y+sign(y_velocity), obj_collide) // Sign will check upward and downward collision
+	{
+		y += sign(y_velocity); // Moves player as close to floor as possible
+	}
+	y_velocity = 0;
+}
+
+// Check collision state
+var isColliding = place_meeting(x, y, obj_collide) || place_meeting(x, y, obj_kill);
+
+// CRASH!
+if (isColliding)
+{
+    // Only trigger stun when collision state just began.
+    if (!colliding && !stunned)
+    {
+        if (y_velocity < 0)
+        {
+            y_velocity = 0;
         }
-        _vel_y = 0;
-        y_velocity = 0;
+        stunned = true;
+        alarm_set(0, 0.4 * room_speed); // Triggers stun duration
+		
+		// Decrease the parcel's health by 10%
+        global.current_parcel_health -= 0.1;
+        // Optionally clamp it so it doesn't drop below zero:
+        if (global.current_parcel_health < 0)
+            global.current_parcel_health = 0;
+			
+		// Play sound
+		audio_play_sound(snd_impact, 10, false, 1, 0, random_range(0.9, 1.1));
     }
-    // 3) Any other collide contact is a hit
-    else if (place_meeting(x, y + _vel_y, obj_collide)) {
-        show_debug_message("Side/bottom or upward collide — HIT!");
-        trigger_hit();
-        _vel_y = 0;
-    }
-
-    y_velocity = _vel_y;
+    
+    // Mark that we are colliding this frame.
+    colliding = true;
+}
+else
+{
+    // Reset the collision flag when not colliding.
+    colliding = false;
 }
 
-// 3. Apply movement
+// Update the player's vertical position
 y += y_velocity;
-
 
 /*/ Collecting coins
 if place_meeting(x, y, obj_collectible)

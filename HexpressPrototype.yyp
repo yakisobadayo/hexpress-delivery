@@ -3,7 +3,6 @@
   "resourceVersion": "1.6",
   "name": "HexpressPrototype",
   "resources": [
-    {"id":{"name":"scr_trigger_hit","path":"scripts/scr_trigger_hit/scr_trigger_hit.yy",},"order":4,},
     {"id":{"name":"spr_tileable_city","path":"sprites/spr_tileable_city/spr_tileable_city.yy",},"order":0,},
     {"id":{"name":"fnt_monogram","path":"fonts/fnt_monogram/fnt_monogram.yy",},"order":1,},
     {"id":{"name":"scr_draw_text","path":"scripts/scr_draw_text/scr_draw_text.yy",},"order":3,},
