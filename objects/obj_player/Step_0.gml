@@ -54,11 +54,11 @@ if (isColliding)
         stunned = true;
         alarm_set(0, 0.4 * room_speed); // Triggers stun duration
 		
-		// Decrease the parcel's health by 10%
-        global.current_parcel_health -= 0.1;
+		// Package damage, decrease tip multiplier by 10%
+        global.tip_multiplier -= 0.1;
         // Optionally clamp it so it doesn't drop below zero:
-        if (global.current_parcel_health < 0)
-            global.current_parcel_health = 0;
+        if (global.tip_multiplier < 0)
+            global.tip_multiplier = 0;
 			
 		// Play sound
 		audio_play_sound(snd_impact, 10, false, 1, 0, random_range(0.9, 1.1));
@@ -97,17 +97,8 @@ if (instance_exists(obj_house)) {
             // Spawn parcel object
             instance_create_layer(x, y, "Instances", obj_parcel);
 			
-			// Record the delivered parcel's health
-            //array_push(global.parcel_scores, global.current_parcel_health);
-			
-			// Collected tips (base tip of 50 multiplied by health multiplier)
-			global.collected_tips += global.base_tip*global.current_parcel_health;
-            
-            // Increment delivered package count.
-            global.deliveredpackages += 1;
-            
-            // Reset for the next delivery: Restore parcel health to 100%.
-            global.current_parcel_health = 1;
+			// Deliver
+			deliver_parcel();
         }
     } else {
         in_house_bounds = false;

@@ -6,6 +6,7 @@
     {"id":{"name":"spr_tileable_city","path":"sprites/spr_tileable_city/spr_tileable_city.yy",},"order":0,},
     {"id":{"name":"fnt_monogram","path":"fonts/fnt_monogram/fnt_monogram.yy",},"order":1,},
     {"id":{"name":"scr_draw_text","path":"scripts/scr_draw_text/scr_draw_text.yy",},"order":3,},
+    {"id":{"name":"scr_economy_functions","path":"scripts/scr_economy_functions/scr_economy_functions.yy",},"order":5,},
     {"id":{"name":"obj_rising_manager","path":"objects/obj_rising_manager/obj_rising_manager.yy",},"order":3,},
     {"id":{"name":"obj_collide","path":"objects/obj_collide/obj_collide.yy",},"order":1,},
     {"id":{"name":"fnt_quaver","path":"fonts/fnt_quaver/fnt_quaver.yy",},"order":0,},

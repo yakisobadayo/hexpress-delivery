@@ -2,6 +2,8 @@ randomise(); // So it's not the same each time.
 
 // Set up variables
 global.gamespeed = 4;
+global.tip_multiplier = 1;  // Parcel starts at full health (100%)
+global.collected_tips = 0;
 spacing_modifier = 3; // Modifies spacing between spawns
 
 // Define a timer for how long a section lasts.
@@ -76,5 +78,5 @@ switch (global.deliveredpackages) {
 // How many sections in a route
 route_active     = true;
 global.routelength = irandom_range(5,8);
-currentdelivery = 0;
+currentsection = 0;
 global.deliveredpackages = 0;
