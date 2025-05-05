@@ -18,8 +18,11 @@ if (booster) {
     y_velocity += grav;  // apply gravity
 }
 
+// Check collision state
+var isColliding = place_meeting(x, y, obj_collide) || place_meeting(x, y, obj_kill);
+
 // Vertical collision handling
-if place_meeting(x, y+y_velocity, obj_collide)
+if place_meeting(x, y+y_velocity, obj_collide) && !isColliding
 {
 	while !place_meeting(x, y+sign(y_velocity), obj_collide) // Sign will check upward and downward collision
 	{
@@ -28,8 +31,15 @@ if place_meeting(x, y+y_velocity, obj_collide)
 	y_velocity = 0;
 }
 
-// Check collision state
-var isColliding = place_meeting(x, y, obj_collide) || place_meeting(x, y, obj_kill);
+// Boundary collision handling
+if place_meeting(x, y+y_velocity, obj_boundary)
+{
+	while !place_meeting(x, y+sign(y_velocity), obj_boundary) // Sign will check upward and downward collision
+	{
+		y += sign(y_velocity); // Moves player as close to floor as possible
+	}
+	y_velocity = 0;
+}
 
 // CRASH!
 if (isColliding)
