@@ -6,7 +6,7 @@ global.coins = 0;
 spacing_modifier = 3; // Modifies spacing between spawns
 
 // Define a timer for how long a section lasts.
-section_timer = 4000;
+section_timer = 4200;
 section_timer_ticking = section_timer;
 
 // Initialize obstacle types
