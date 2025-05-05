@@ -56,6 +56,7 @@
     {"id":{"name":"spr_obstaclevert","path":"sprites/spr_obstaclevert/spr_obstaclevert.yy",},"order":2,},
     {"id":{"name":"spr_tileable_trees","path":"sprites/spr_tileable_trees/spr_tileable_trees.yy",},"order":4,},
     {"id":{"name":"obj_obstacle_manager","path":"objects/obj_obstacle_manager/obj_obstacle_manager.yy",},"order":1,},
+    {"id":{"name":"scr_init","path":"scripts/scr_init/scr_init.yy",},"order":4,},
     {"id":{"name":"spr_logo","path":"sprites/spr_logo/spr_logo.yy",},"order":0,},
     {"id":{"name":"spr_tileable_mountains","path":"sprites/spr_tileable_mountains/spr_tileable_mountains.yy",},"order":3,},
     {"id":{"name":"spr_ghost","path":"sprites/spr_ghost/spr_ghost.yy",},"order":5,},

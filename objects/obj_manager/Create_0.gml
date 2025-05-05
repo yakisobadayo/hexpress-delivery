@@ -2,7 +2,6 @@ randomise(); // So it's not the same each time.
 
 // Set up variables
 global.gamespeed = 4;
-global.coins = 0;
 spacing_modifier = 3; // Modifies spacing between spawns
 
 // Define a timer for how long a section lasts.

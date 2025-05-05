@@ -10,4 +10,5 @@ stunned = false;
 colliding = false;
 
 global.current_parcel_health = 1;  // Parcel starts at full health (100%)
-global.parcel_scores = [];           // An array to hold each delivered parcel's health value
+global.collected_tips = 0;
+//global.parcel_scores = [];           // An array to hold each delivered parcel's health value

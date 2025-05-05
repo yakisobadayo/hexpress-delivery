@@ -98,7 +98,10 @@ if (instance_exists(obj_house)) {
             instance_create_layer(x, y, "Instances", obj_parcel);
 			
 			// Record the delivered parcel's health
-            array_push(global.parcel_scores, global.current_parcel_health);
+            //array_push(global.parcel_scores, global.current_parcel_health);
+			
+			// Collected tips (base tip of 50 multiplied by health multiplier)
+			global.collected_tips += global.base_tip*global.current_parcel_health;
             
             // Increment delivered package count.
             global.deliveredpackages += 1;

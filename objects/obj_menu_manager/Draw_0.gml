@@ -39,3 +39,6 @@ for (var i = 0; i < array_length(current_options); i++) {
         draw_sprite(spr_selector, -1, x_pos - selector_x_offset, y_pos + 7);
     }
 }
+
+// Current money
+draw_text_with_shadow(16, 24, "Money: $" + string(global.money), c_white, c_black, 0.33);

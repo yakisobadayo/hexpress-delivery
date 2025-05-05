@@ -1,31 +1,36 @@
 section_timer_ticking -= global.gamespeed;
 
 // Change sections
-if (section_timer_ticking <= 0 && route_active) {
-    // 1) Clean up all old managers
-    layer_destroy_instances("Managers");
+if (route_active) {
+	if (section_timer_ticking <= 0) {
+	    // 1) Clean up all old managers
+	    layer_destroy_instances("Managers");
 
-    // 2) Spawn the house and bump the counter
-    instance_create_layer(room_width, 352, "BackgroundObjects", obj_house);
-    currentdelivery += 1;
+	    // 2) Spawn the house and bump the counter
+	    instance_create_layer(room_width, 352, "BackgroundObjects", obj_house);
+	    currentdelivery += 1;
 
-    // 3) Check “are we done?”
-    if (currentdelivery >= global.routelength) {
-        // → ROUTE FINISHED!  
-        route_active = false;          // stop further section logic
-        //show_results();                // call your end‐of‐route logic
-    }
-    else {
-        // → KEEP GOING: pick next obstacle, spawn manager, reset timer
-        // Generate the condition definition(s) for the NEXT section
-        global.current_section_conditions = roll_section();
+	    // 3) Check “are we done?”
+	    if (currentdelivery >= global.routelength) {
+	        // → ROUTE FINISHED!  
+	        route_active = false;          // stop further section logic
+	    }
+	    else {
+	        // → KEEP GOING: pick next obstacle, spawn manager, reset timer
+	        // Generate the condition definition(s) for the NEXT section
+	        global.current_section_conditions = roll_section();
 
-        // Spawn the corresponding manager(s) for the new section on the "Managers" layer
-        spawn_managers(global.current_section_conditions);
+	        // Spawn the corresponding manager(s) for the new section on the "Managers" layer
+	        spawn_managers(global.current_section_conditions);
 
-        // Reset the section timer
-        section_timer_ticking = section_timer;
-    }
+	        // Reset the section timer
+	        section_timer_ticking = section_timer;
+	    }
+	}
+}
+
+if global.deliveredpackages >= global.routelength {
+	
 }
 
 
