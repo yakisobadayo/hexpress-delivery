@@ -1,8 +1,6 @@
 // Ticking
 section_timer_ticking -= global.gamespeed;
 
-global.routelength = 1;
-
 // Change sections (with for loop)
 while (section_timer_ticking <= 0) {
 	// Clean up all old managers
