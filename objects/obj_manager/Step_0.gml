@@ -1,16 +1,20 @@
 // Ticking
 section_timer_ticking -= global.gamespeed;
 
+global.routelength = 1;
+
 // Change sections (with for loop)
-if (section_timer_ticking <= 0) {
+while (section_timer_ticking <= 0) {
 	// Clean up all old managers
 	layer_destroy_instances("Managers");
-
+	
 	// Spawn the house and bump the counter
 	instance_create_layer(room_width, 352, "BackgroundObjects", obj_house);
 	currentsection += 1;
 	
-	if (currentsection >= global.routelength) {
+	if (currentsection >= global.routelength) {		
+		break;
+	} else {
 		// Generate the condition definition(s) for the NEXT section
 		global.current_section_conditions = roll_section();
 
