@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSound",
   "resourceVersion": "1.0",
-  "name": "snd_impact",
+  "name": "snd_impact_fragile",
   "conversionMode": 0,
   "compression": 0,
   "volume": 1.0,
@@ -14,8 +14,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snd_impact.mp3",
-  "duration": 0.0,
+  "soundFile": "snd_impact_fragile.mp3",
+  "duration": 1.12325,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

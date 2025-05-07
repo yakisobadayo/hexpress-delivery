@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_economy_functions",
+  "name": "scr_route_functions",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
