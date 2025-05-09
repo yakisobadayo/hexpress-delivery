@@ -10,12 +10,12 @@ function get_hit() {
 	// Get hit
 	register_hit(1);
 	
-    // knockback & stun  
+    // Knockback & stun  
     if (y_velocity < 0) y_velocity = 0;
     stunned = true;
     alarm_set(0, 0.4 * room_speed);
 
-    // choose the sound based on the threshold  
+    // Choose the sound based on the threshold  
     if (obj_manager.hits >= 5) {
         audio_play_sound(snd_impact_fragile, 10, false, 1, 0, random_range(0.9, 1.1));
     } else {
@@ -23,7 +23,14 @@ function get_hit() {
     }
 }
 
-
+function drop_parcel(){
+	// Drop parcel
+	instance_create_layer(x, y, "Instances", obj_parcel);
+	
+	// Reset for the next delivery: Restore parcel health to 100%.
+    obj_manager.tip_multiplier = 1;
+	obj_manager.hits = 0;
+}
 
 function confirm_delivery(success){
 	// True = successful delivery, False = failed delivery
@@ -34,10 +41,6 @@ function confirm_delivery(success){
             
     // Increment delivered package count.
     obj_manager.deliveredpackages += 1;
-	
-	// Reset for the next delivery: Restore parcel health to 100%.
-    obj_manager.tip_multiplier = 1;
-	obj_manager.hits = 0;
 }
 
 function reset_tip_multiplier(){

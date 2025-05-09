@@ -52,5 +52,5 @@ in_house_bounds = instance_exists(obj_house) && x-8 >= obj_house.bbox_left && x+
 
 // Drop parcel
 if (trigger_drop) {
-	instance_create_layer(x, y, "Instances", obj_parcel);
+	drop_parcel();
 }
