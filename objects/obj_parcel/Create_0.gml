@@ -1,6 +1,4 @@
-// obj_player: Create Event
-grav = 0.15;
+grav = 0.26;
 y_velocity = 0;
-booster = false;
-//init_y = room_height - 130;
-//y = init_y;  // set player's starting verti cal position
+grounded    = false;  // has it ever touched the floor?
+landed      = false;  // guard for the one-shot trigger

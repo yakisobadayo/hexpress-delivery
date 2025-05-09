@@ -1,5 +1,5 @@
 randomise(); // So it's not the same each time.
-global.Manager = id;     // <-- a global pointer all objects can see
+//global.Manager = id;     // <-- a global pointer all objects can see
 
 // Set up variables
 global.gamespeed = 4;

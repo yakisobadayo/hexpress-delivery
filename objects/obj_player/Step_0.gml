@@ -1,7 +1,9 @@
 // obj_player: Step Event
+var trigger_boost = keyboard_check(vk_space) || mouse_check_button(mb_left);
+var trigger_drop = keyboard_check_pressed(vk_down) || mouse_check_button_pressed(mb_right);
 
 // Check if space is held down for boosting
-booster = keyboard_check(vk_space) && !stunned;
+booster = trigger_boost && !stunned;
 
 // Adjust vertical velocity based on booster state
 if (booster) {
@@ -45,23 +47,10 @@ else {
 // Update the player's vertical position
 y += y_velocity;
 
-if (keyboard_check_pressed(vk_down)) {
-	instance_create_layer(x, y, "Instances", obj_parcel);
-}
+// Check if in house bounds
+in_house_bounds = instance_exists(obj_house) && x-8 >= obj_house.bbox_left && x+8 <= obj_house.bbox_right;
 
-/*/ Drop parcel
-if (instance_exists(obj_house)) {
-    var house = instance_nearest(x, y, obj_house);
-    if (x >= house.bbox_left+64 && x <= house.bbox_right) {
-        if (!in_house_bounds) {
-            in_house_bounds = true;
-            // Spawn parcel object
-            instance_create_layer(x, y, "Instances", obj_parcel);
-			
-			// Deliver
-			deliver_parcel();
-        }
-    } else {
-        in_house_bounds = false;
-    }
+// Drop parcel
+if (trigger_drop) {
+	instance_create_layer(x, y, "Instances", obj_parcel);
 }
