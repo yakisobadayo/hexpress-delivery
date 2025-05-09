@@ -2,13 +2,21 @@
 global.money = 0;
 global.base_tip = 50;
 
-function register_hit(_damage){
-    obj_manager.hits += _damage;
+function register_hit(_hit, _tip_modifier){
+    obj_manager.hits += _hit;
+	if (obj_manager.hits > obj_manager.max_hits){
+		obj_manager.hits = obj_manager.max_hits;
+	}
+	
+	obj_manager.tip_multiplier += _tip_modifier;
+	if (obj_manager.tip_multiplier < 0){ // Clamp multuplier
+		obj_manager.tip_multiplier = 0;
+	}
 }
 
 function get_hit() {
 	// Get hit
-	register_hit(1);
+	register_hit(1, -0.25);
 	
     // Knockback & stun  
     if (y_velocity < 0) y_velocity = 0;
@@ -16,7 +24,7 @@ function get_hit() {
     alarm_set(0, 0.4 * room_speed);
 
     // Choose the sound based on the threshold  
-    if (obj_manager.hits >= 5) {
+    if (obj_manager.hits >= obj_manager.max_hits) {
         audio_play_sound(snd_impact_fragile, 10, false, 1, 0, random_range(0.9, 1.1));
     } else {
         audio_play_sound(snd_impact,         10, false, 1, 0, random_range(0.9, 1.1));
@@ -32,10 +40,10 @@ function drop_parcel(){
 	obj_manager.hits = 0;
 }
 
-function confirm_delivery(success){
+function confirm_delivery(_success){
 	// True = successful delivery, False = failed delivery
 	// Collected tips (base tip of 50 multiplied by health multiplier)
-	if success {
+	if _success {
 		obj_manager.collected_tips += global.base_tip*obj_manager.tip_multiplier;
 	}
             

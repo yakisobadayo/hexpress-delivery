@@ -6,6 +6,7 @@ global.gamespeed = 4;
 tip_multiplier = 1;  // Parcel starts at full health (100%)
 collected_tips = 0;
 hits = 0;
+max_hits = 4;
 spacing_modifier = 3; // Modifies spacing between spawns
 
 // Define a timer for how long a section lasts.

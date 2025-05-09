@@ -11,7 +11,7 @@ var lines = [
     "Packages delivered: "   + string(deliveredpackages) + "/" + string(routelength),
     "Tip multiplier: "       + string(tip_multiplier * 100) + "%",
     "Collected tips: $"      + string(collected_tips),
-	"Times hit: "            + string(hits) + "/5"
+	"Times hit: "            + string(hits) + "/" + string(max_hits)
 ];
 
 // One loop to rule them all
