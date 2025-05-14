@@ -17,7 +17,7 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
     // 2) one-shot landing logic
     if (!landed) {
         landed = true;
-		confirm_delivery(in_house_bounds);
+		confirm_delivery(tip_multiplier, in_house_bounds);
     }
 }
 

@@ -33,18 +33,19 @@ function get_hit() {
 
 function drop_parcel(){
 	// Drop parcel
-	instance_create_layer(x, y, "Instances", obj_parcel);
+	var _dropped_parcel = instance_create_layer(x, y, "Instances", obj_parcel);
+	_dropped_parcel.tip_multiplier = obj_manager.tip_multiplier;
 	
 	// Reset for the next delivery: Restore parcel health to 100%.
     obj_manager.tip_multiplier = 1;
 	obj_manager.hits = 0;
 }
 
-function confirm_delivery(_success){
+function confirm_delivery(_tip_multiplier, _success){
 	// True = successful delivery, False = failed delivery
 	// Collected tips (base tip of 50 multiplied by health multiplier)
 	if _success {
-		obj_manager.collected_tips += global.base_tip*obj_manager.tip_multiplier;
+		obj_manager.collected_tips += global.base_tip*_tip_multiplier;
 	}
             
     // Increment delivered package count.
