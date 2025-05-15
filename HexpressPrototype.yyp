@@ -47,7 +47,7 @@
     {"id":{"name":"obj_menu_manager","path":"objects/obj_menu_manager/obj_menu_manager.yy",},"order":0,},
     {"id":{"name":"spr_obstacle_platform","path":"sprites/spr_obstacle_platform/spr_obstacle_platform.yy",},"order":8,},
     {"id":{"name":"obj_riser","path":"objects/obj_riser/obj_riser.yy",},"order":5,},
-    {"id":{"name":"obj_parcel","path":"objects/obj_parcel/obj_parcel.yy",},"order":1,},
+    {"id":{"name":"obj_parcel","path":"objects/obj_parcel/obj_parcel.yy",},"order":4,},
     {"id":{"name":"obj_kill","path":"objects/obj_kill/obj_kill.yy",},"order":2,},
     {"id":{"name":"fnt_at01","path":"fonts/fnt_at01/fnt_at01.yy",},"order":2,},
     {"id":{"name":"obj_cloud_ceiling","path":"objects/obj_cloud_ceiling/obj_cloud_ceiling.yy",},"order":4,},

@@ -49,7 +49,7 @@ function confirm_delivery(_tip_multiplier, _success){
 	}
             
     // Increment delivered package count.
-    obj_manager.deliveredpackages += 1;
+    obj_manager.delivered_packages += 1;
 }
 
 function reset_tip_multiplier(){

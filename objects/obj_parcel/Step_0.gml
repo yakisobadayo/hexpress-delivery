@@ -1,7 +1,15 @@
 auto_scroll();
 
+// Register if house exists
+var house = instance_nearest(x, y, obj_house);
+
 // Check if in house bounds
-var in_house_bounds = instance_exists(obj_house) && bbox_left >= obj_house.bbox_left && bbox_right <= obj_house.bbox_right;
+var in_house_bounds = false;
+if (house != noone) {
+    in_house_bounds =
+        (bbox_left  >= house.bbox_left) &&
+        (bbox_right <= house.bbox_right);
+}
 
 // Calculate velocity
 y_velocity += grav;
@@ -17,7 +25,13 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
     // 2) one-shot landing logic
     if (!landed) {
         landed = true;
-		confirm_delivery(tip_multiplier, in_house_bounds);
+		
+		if (house != noone) {
+			if (in_house_bounds && house.state == HouseState.PENDING) {
+                house.state = HouseState.DELIVERED;
+                house.manager.dropoffs[house.slot] = HouseState.DELIVERED;
+            }
+		}
     }
 }
 
