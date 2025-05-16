@@ -26,7 +26,10 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
     // Trigger delivery event once
     if (!landed) {
         landed = true;
-		obj_manager.collected_tips += global.base_tip*dmg_mult;
+		if (house != noone && house.delivered == false) {
+			house.delivered = true
+			obj_manager.collected_tips += global.base_tip*dmg_mult;
+		}
     }
 }
 

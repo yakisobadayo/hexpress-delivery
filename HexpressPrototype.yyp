@@ -4,6 +4,7 @@
   "name": "HexpressPrototype",
   "resources": [
     {"id":{"name":"spr_tileable_city","path":"sprites/spr_tileable_city/spr_tileable_city.yy",},"order":0,},
+    {"id":{"name":"obj_mushroom","path":"objects/obj_mushroom/obj_mushroom.yy",},"order":6,},
     {"id":{"name":"fnt_monogram","path":"fonts/fnt_monogram/fnt_monogram.yy",},"order":1,},
     {"id":{"name":"snd_impact_fragile","path":"sounds/snd_impact_fragile/snd_impact_fragile.yy",},"order":3,},
     {"id":{"name":"scr_draw_text","path":"scripts/scr_draw_text/scr_draw_text.yy",},"order":3,},
@@ -42,6 +43,7 @@
     {"id":{"name":"obj_obstaclediagonal","path":"objects/obj_obstaclediagonal/obj_obstaclediagonal.yy",},"order":2,},
     {"id":{"name":"spr_obstacle","path":"sprites/spr_obstacle/spr_obstacle.yy",},"order":0,},
     {"id":{"name":"obj_gotofade","path":"objects/obj_gotofade/obj_gotofade.yy",},"order":0,},
+    {"id":{"name":"spr_mushroom","path":"sprites/spr_mushroom/spr_mushroom.yy",},"order":9,},
     {"id":{"name":"spr_tileprototype","path":"sprites/spr_tileprototype/spr_tileprototype.yy",},"order":0,},
     {"id":{"name":"obj_obstacle","path":"objects/obj_obstacle/obj_obstacle.yy",},"order":1,},
     {"id":{"name":"obj_menu_manager","path":"objects/obj_menu_manager/obj_menu_manager.yy",},"order":0,},

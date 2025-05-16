@@ -47,19 +47,13 @@ function house_spawn(){
     if (current_section >= route_length) return;   // safety: no extra houses
     var h = instance_create_layer(room_width, 352, "BackgroundObjects", obj_house);
 	h.delivered = false;
-	current_house = h;
     current_section += 1;         // advance to the next slot
-}
-
-// Confirms a house has been delivered to
-function house_confirm_delivery(){
-	current_house.delivered = true;
 }
 
 // Trigger for dropping parcel (passes data to parcel)
 function drop_parcel(_x, _y){
 	if (delivered_parcels >= route_length) return; // Cancel when reached max
-	var p = instance_create_layer(_x, _y, "Instances", obj_parcel, current_parcel);
+	instance_create_layer(_x, _y, "Instances", obj_parcel, current_parcel);
 	delivered_parcels = min(delivered_parcels + 1, route_length);
 	current_parcel = make_parcel();
 }
