@@ -5,7 +5,7 @@ section_timer_ticking -= global.gamespeed;
 while (section_timer_ticking <= 0) {
 	// Clean up all old managers
 	layer_destroy_instances("Managers");
-	spawn_house()
+	house_spawn();
 	
 	if (current_section >= route_length) {		
 		break;
@@ -21,7 +21,7 @@ while (section_timer_ticking <= 0) {
 	}
 }
 
-if (route_active && delivered_packages >= route_length) {
+if (route_active && delivered_parcels >= route_length) {
 	// → ROUTE FINISHED!
 	global.money += collected_tips;
 	//global.collected_tips = 0;

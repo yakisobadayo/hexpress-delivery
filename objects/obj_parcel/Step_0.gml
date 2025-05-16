@@ -22,10 +22,10 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
     y_velocity = 0;
     grounded    = true;    // checks if on ground
 
-    // 2) one-shot landing logic
+    // one-shot landing logic
     if (!landed) {
         landed = true;
-		obj_manager.confirm_delivery(tip_multiplier, in_house_bounds)
+		
     }
 }
 

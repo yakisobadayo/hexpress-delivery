@@ -8,10 +8,10 @@ var line_h = 16;      // vertical spacing between lines
 var lines = [
     "Time until next section: " + string(section_timer_ticking),
     "Current conditions: "   + conditions_to_string(current_conditions),
-    "Houses to deliver: "   + string(current_section) + "/" + string(route_length),
-    "Tip multiplier: "       + string(tip_multiplier * 100) + "%",
-    "Collected tips: $"      + string(collected_tips),
-	"Hit counter: "          + string(hits) + "/" + string(max_hits)
+    "Houses to deliver: "    + string(current_section) + "/" + string(route_length),
+    "Packages delivered: "   + string(delivered_parcels) + "/" + string(route_length),
+	"Hit counter: "          + string(current_parcel.hits) + "/" + string(current_parcel.max_hits),
+    "Collected tips: $"      + string(collected_tips)
 ];
 
 // One loop to rule them all

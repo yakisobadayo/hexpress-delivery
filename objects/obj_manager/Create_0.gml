@@ -11,66 +11,52 @@ section_timer_ticking = section_timer;
 
 route_length = irandom_range(5,8);// How many sections in a route
 current_section = 0;              // The current section of a route
-delivered_packages = 0;			  // How many packages were dropped
-
-function spawn_house() {
-    if (current_section >= route_length) return;   // safety: no extra houses
-    var house = instance_create_layer(room_width, 352, "BackgroundObjects", obj_house);
-	house.delivered = false;
-	current_house = house;
-    current_section += 1;         // advance to the next slot
-}
 
 // MONEY
-tip_multiplier = 1;  // Parcel starts at full health (100%)
 collected_tips = 0;  // Collects tips earned
+combo_multiplier  = 1;  // Increases each successful delivery
 
 // PARCELS
-max_hits = 4;        // How many times a parcel can be hit
-hits     = 0;        // Current amount of hits
+function make_parcel() {
+    return {
+        max_hits : 4,
+        hits     : 4,
+        combo    : 1
+    };
+}
+current_parcel = make_parcel();   // working copy
+delivered_parcels = 0;
 
 
 // FUNCTION INIT
-// Modifies hit count
-function register_hit(_hit, _mult_modifier){
-    hits += _hit;
-	if (hits > max_hits){ // Clamp hit
-		hits = max_hits;
-	}
-	
-	tip_multiplier += _mult_modifier;
-	if (tip_multiplier < 0){ // Clamp multiplier
-		tip_multiplier = 0;
-	}
+// Registers a hit to the parcel
+function register_hit(_hits) {
+    current_parcel.hits = max(0, current_parcel.hits - _hits);
 }
 
-// Resets the stats for the next package
-function reset_package_stats(){
-    tip_multiplier = 1;
-	hits = 0;
+// Spawns a house
+function house_spawn(){
+    if (current_section >= route_length) return;   // safety: no extra houses
+    var h = instance_create_layer(room_width, 352, "BackgroundObjects", obj_house);
+	h.delivered = false;
+	current_house = h;
+    current_section += 1;         // advance to the next slot
 }
 
-// Trigger for dropping parcel (passes multiplier to package)
+// Confirms a house has been delivered to
+function house_confirm_delivery(){
+	current_house.delivered = true;
+}
+
+// Trigger for dropping parcel (passes data to parcel)
 function drop_parcel(_x, _y){
-	// Drop parcel
-	var parcel = instance_create_layer(_x, _y, "Instances", obj_parcel);
-	parcel.tip_multiplier = tip_multiplier;
-	
-	// Reset for the next delivery: Restore parcel health to 100%.
-    reset_package_stats();
+	if (delivered_parcels >= route_length) return; // Cancel when reached max
+	var p = instance_create_layer(_x, _y, "Instances", obj_parcel, current_parcel);
+	delivered_parcels = min(delivered_parcels + 1, route_length);
+	current_parcel = make_parcel();
 }
 
-// Calculate money from package
-function confirm_delivery(_tip_multiplier, _success){
-	// True = successful delivery, False = failed delivery
-	// Collected tips (base tip of 50 multiplied by health multiplier)
-	if _success {
-		collected_tips += global.base_tip*_tip_multiplier;
-	}
-            
-    // Increment delivered package count.
-    delivered_packages += 1;
-}
+// Get tip payout
 
 
 // ROUTE GENERATION
