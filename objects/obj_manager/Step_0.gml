@@ -7,7 +7,7 @@ while (section_timer_ticking <= 0) {
 	layer_destroy_instances("Managers");
 	spawn_house()
 	
-	if (current_dropoff >= route_length) {		
+	if (current_section >= route_length) {		
 		break;
 	} else {
 		// Generate the condition definition(s) for the NEXT section

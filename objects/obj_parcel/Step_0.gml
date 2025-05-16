@@ -25,13 +25,7 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
     // 2) one-shot landing logic
     if (!landed) {
         landed = true;
-		
-		if (house != noone) {
-			if (in_house_bounds && house.state == HouseState.PENDING) {
-                house.state = HouseState.DELIVERED;
-                house.manager.dropoffs[house.slot] = HouseState.DELIVERED;
-            }
-		}
+		obj_manager.confirm_delivery(tip_multiplier, in_house_bounds)
     }
 }
 
