@@ -2,7 +2,15 @@ randomise();         // So it's not the same each time.
 
 
 // VARIABLE INIT
+// GAMESTATES
+enum GameState {
+    PENDING,
+    ACTIVE,
+    FINISHED
+}
+
 // ROUTE
+game_state = GameState.PENDING;
 global.gamespeed = 4;// How fast the world moves
 spacing_modifier = 3;// Modifies spacing between spawns
 
@@ -61,5 +69,4 @@ function drop_parcel(_x, _y){
 
 // ROUTE GENERATION
 current_conditions = roll_section(); // Roll the conditions for starting section
-spawn_managers(current_conditions);  // Spawn the starting condition managers
-route_active     = true;					 // Route is active
+//spawn_managers(current_conditions);  // Spawn the starting condition managers

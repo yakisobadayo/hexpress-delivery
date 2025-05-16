@@ -14,6 +14,7 @@ if (house != noone) {
 // Calculate velocity
 y_velocity += grav;
 
+// Calculate collision
 if place_meeting(x, y + y_velocity, obj_boundary) {
     // push up until flush with the floor
     while !place_meeting(x, y + sign(y_velocity), obj_boundary) {
@@ -22,13 +23,12 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
     y_velocity = 0;
     grounded    = true;    // checks if on ground
 
-    // one-shot landing logic
+    // Trigger delivery event once
     if (!landed) {
         landed = true;
-		
+		obj_manager.collected_tips += global.base_tip*dmg_mult;
     }
 }
-
 
 y += y_velocity;      // Apply movement
 destroy_offscreen();  // Cleanup
