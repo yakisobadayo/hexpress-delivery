@@ -6,6 +6,7 @@ switch (game_state)
         // Waiting to start
         if (keyboard_check_pressed(vk_space))
         {
+			show_debug_message("Route started!")
             spawn_managers(current_conditions);
             game_state = GameState.ACTIVE;
         }
@@ -34,6 +35,7 @@ switch (game_state)
         if (delivered_parcels >= route_length || houses_passed >= route_length)
         {
             global.money += collected_tips;
+			show_debug_message(string("Route ended! Earned: ${0}, total money: ${1}", collected_tips, global.money));
             game_state = GameState.FINISHED;
         }
 

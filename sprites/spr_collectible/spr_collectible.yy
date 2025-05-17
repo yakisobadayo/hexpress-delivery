@@ -68,7 +68,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Level",
-    "path": "folders/Sprites/Level.yy",
+    "name": "Object",
+    "path": "folders/Sprites/Level/Object.yy",
   },
 }

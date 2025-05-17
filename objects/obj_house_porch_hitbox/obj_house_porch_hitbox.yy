@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_boundary",
+  "name": "obj_house_porch_hitbox",
   "spriteId": {
-    "name": "spr_collide",
-    "path": "sprites/spr_collide/spr_collide.yy",
+    "name": "spr_house_porch_hitbox",
+    "path": "sprites/spr_house_porch_hitbox/spr_house_porch_hitbox.yy",
   },
   "solid": false,
   "visible": false,
@@ -24,9 +24,7 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
-  ],
+  "eventList": [],
   "properties": [],
   "overriddenProperties": [],
   "parent": {

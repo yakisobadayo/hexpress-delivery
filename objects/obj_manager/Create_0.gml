@@ -52,8 +52,8 @@ function register_hit(_hits) {
 // Spawns a house
 function house_spawn() {
     if (current_section >= route_length) return;   // safety: no extra houses
-    var h = instance_create_layer(room_width, 352, "BackgroundObjects", obj_house);
-	h.delivered = false;
+    current_house = instance_create_layer(room_width, 352, "BackgroundObjects", obj_house);
+	current_house.delivered = false;
     current_section += 1;         // advance to the next slot
 }
 
@@ -67,7 +67,7 @@ function drop_parcel(_x, _y) {
 // Registers a parcel as delivered + adds money to collected
 function register_delivery(_payout) {
 	delivered_parcels = min(delivered_parcels + 1, route_length);
-	collected_tips += _payout;
+	collected_tips += round(_payout);
 }
 
 // Get tip payout
