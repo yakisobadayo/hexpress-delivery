@@ -27,7 +27,7 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
     if (!landed) {
         landed = true;
 		if (house != noone) {
-			obj_manager.collected_tips += global.base_tip*dmg_mult;
+			 obj_manager.register_delivery(global.base_tip*dmg_mult);
 		}
     }
 }

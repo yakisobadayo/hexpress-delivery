@@ -43,7 +43,7 @@ function register_hit(_hits) {
 }
 
 // Spawns a house
-function house_spawn(){
+function house_spawn() {
     if (current_section >= route_length) return;   // safety: no extra houses
     var h = instance_create_layer(room_width, 352, "BackgroundObjects", obj_house);
 	h.delivered = false;
@@ -51,11 +51,16 @@ function house_spawn(){
 }
 
 // Trigger for dropping parcel (passes data to parcel)
-function drop_parcel(_x, _y){
+function drop_parcel(_x, _y) {
 	if (delivered_parcels >= route_length) return; // Cancel when reached max
 	instance_create_layer(_x, _y, "Instances", obj_parcel, current_parcel);
-	delivered_parcels = min(delivered_parcels + 1, route_length);
 	current_parcel = make_parcel();
+}
+
+// Registers a parcel as delivered + adds money to collected
+function register_delivery(_payout) {
+	delivered_parcels = min(delivered_parcels + 1, route_length);
+	collected_tips += _payout;
 }
 
 // Get tip payout
