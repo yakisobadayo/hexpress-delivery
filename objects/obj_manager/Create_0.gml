@@ -32,9 +32,16 @@ function make_parcel() {
         combo    : 1
     };
 }
-current_parcel = make_parcel();   // working copy
+current_parcel = make_parcel();   // The parcel you're delivering
 delivered_parcels = 0;
 
+// HOUSES
+function make_house() {
+    return {
+        delivered : false
+    };
+}
+houses_passed = 0;                // Identical to current_section but only increments when a house is destroyed
 
 // FUNCTION INIT
 // Registers a hit to the parcel

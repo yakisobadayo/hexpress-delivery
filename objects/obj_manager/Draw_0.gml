@@ -9,7 +9,7 @@ if (game_state != GameState.PENDING) {
 	var lines = [
 	    "Time until next section: " + string(section_timer_ticking),
 	    "Current conditions: "   + conditions_to_string(current_conditions),
-	    "Houses to deliver: "    + string(current_section) + "/" + string(route_length),
+	    "Houses passed: "        + string(houses_passed) + "/" + string(route_length),
 	    "Packages delivered: "   + string(delivered_parcels) + "/" + string(route_length),
 		"Hit counter: "          + string(current_parcel.hits) + "/" + string(current_parcel.max_hits),
 	    "Collected tips: $"      + string(collected_tips)

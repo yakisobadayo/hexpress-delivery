@@ -1,0 +1,1 @@
+obj_manager.houses_passed += 1;

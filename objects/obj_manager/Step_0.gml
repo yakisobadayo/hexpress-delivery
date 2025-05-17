@@ -31,7 +31,7 @@ switch (game_state)
         }
 
         // 2) Check for route completion
-        if (delivered_parcels >= route_length)
+        if (delivered_parcels >= route_length || houses_passed >= route_length)
         {
             global.money += collected_tips;
             game_state = GameState.FINISHED;

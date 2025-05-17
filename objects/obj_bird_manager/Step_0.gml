@@ -1,9 +1,15 @@
-missile_timer -= global.gamespeed;
+// This is so birds don't try and come at you when you're trying to drop a package
+if (obj_manager.current_section == obj_manager.houses_passed)
+{
+	missile_timer -= global.gamespeed;
+} else {
+	missile_timer = global.gamespeed
+}
 
 // Spawn projectiles when timer runs out or on key press
 if (missile_timer > 0)
 {
-	if aim > obj_player.y
+	if (aim > obj_player.y)
 	{
 		aim -= 1;
 	}
