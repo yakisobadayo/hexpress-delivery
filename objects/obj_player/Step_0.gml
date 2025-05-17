@@ -2,16 +2,22 @@
 var trigger_boost = keyboard_check(vk_space) || mouse_check_button(mb_left);
 var trigger_drop = keyboard_check_pressed(vk_down) || mouse_check_button_pressed(mb_right);
 
+// Register if house exists
+house = instance_nearest(x, y, obj_house);
+
 if obj_manager.game_state != GameState.PENDING {
 	// Check if space is held down for boosting
 	booster = trigger_boost && !stunned;
-	
-	// Drop parcel
-	if (trigger_drop) {
-		obj_manager.drop_parcel(x, y);
-	}
 } else {
 	booster = false;
+}
+
+// Drop only when a house is on screen, and if it's been delivered to
+if (house != noone && house.delivered == false) {
+	if (trigger_drop) {
+		obj_manager.drop_parcel(x, y);
+		house.delivered = true
+	}
 }
 
 // Adjust vertical velocity based on booster state
