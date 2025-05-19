@@ -50,7 +50,7 @@ if (place_meeting(x, y+y_velocity, obj_boundary)) {
 
 // CRASH!
 if (isColliding) {
-    if (!colliding && !stunned) {
+    if (!colliding && !i_frame) {
 		get_hit();
     }
     colliding = true;

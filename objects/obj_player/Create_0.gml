@@ -25,7 +25,7 @@ function get_hit() {
 	obj_manager.register_hit(1);
 	
     // Stun
-    stun(0.3, 1.2);
+    stun(0.3, 1);
 
     // Choose the sound based on the threshold  
     if (obj_manager.current_parcel.hits <= 0) {
