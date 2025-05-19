@@ -1,2 +1,2 @@
-obj_manager.houses_passed += 1;
+obj_manager.next_delivery();
 instance_destroy(porch);

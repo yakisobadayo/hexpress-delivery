@@ -61,13 +61,18 @@ function house_spawn() {
 function drop_parcel(_x, _y) {
 	if (delivered_parcels >= route_length) return; // Cancel when reached max
 	instance_create_layer(_x, _y, "Instances", obj_parcel, current_parcel);
-	current_parcel = make_parcel();
 }
 
 // Registers a parcel as delivered + adds money to collected
 function register_delivery(_payout) {
 	delivered_parcels = min(delivered_parcels + 1, route_length);
 	collected_tips += round(_payout);
+}
+
+// Advances to next house and package
+function next_delivery() {
+	houses_passed += 1;
+	current_parcel = make_parcel();
 }
 
 // Get tip payout
