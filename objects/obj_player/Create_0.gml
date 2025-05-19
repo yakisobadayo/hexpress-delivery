@@ -3,21 +3,29 @@ grav = 0.15;
 y_velocity = 0;
 booster = false;
 stunned = false;
+i_frame = false;
 colliding = false;
 in_house_bounds = false;
 
 
 
 // FUNCTIONS
+// Stun & knockback (lose control)
+function stun(_stun_time = 0.3, _i_time = 1) { // Time is in seconds
+	if (y_velocity < 0) y_velocity = 0;
+	stunned = true;
+    alarm_set(0, _stun_time * room_speed); // stun, 0.2 seconds
+	i_frame = true;
+	alarm_set(1, _i_time * room_speed);    // i-frame, 1 second
+}
+
 // Trigger when hitting obstacle
 function get_hit() {
 	// Get hit
 	obj_manager.register_hit(1);
 	
-    // Knockback & stun  
-    if (y_velocity < 0) y_velocity = 0;
-    stunned = true;
-    alarm_set(0, 0.4 * room_speed);
+    // Stun
+    stun();
 
     // Choose the sound based on the threshold  
     if (obj_manager.current_parcel.hits <= 0) {
