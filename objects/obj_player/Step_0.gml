@@ -48,6 +48,9 @@ if (place_meeting(x, y+y_velocity, obj_boundary)) {
 	y_velocity = 0;
 }
 
+// Check if on ground
+grounded = place_meeting(x, y + 1, obj_boundary);
+
 // CRASH!
 if (isColliding) {
     if (!colliding && !i_frame) {
@@ -57,6 +60,11 @@ if (isColliding) {
 }
 else {
     colliding = false;
+}
+
+// Bounce (mushroom)
+if (instance_exists(obj_bounce_manager) && obj_manager.current_section == obj_manager.houses_passed && grounded) {
+	y_velocity = -6;
 }
 
 // Update the player's vertical position

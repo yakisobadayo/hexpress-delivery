@@ -5,21 +5,14 @@ function roll_section()
     var _current = [];
 
     // --- 1. TERRAIN -------------------------------------------------------
-    var _terrain = [
-        global.conditionDef_Horizontal,
-        global.conditionDef_Vertical,
-        global.conditionDef_Diagonal
-    ];
+    var _terrain = global.routeConditionsPrimary;
 
     array_push(_current, _terrain[ irandom(array_length(_terrain) - 1) ]);
 
     // --- 2. OPTIONAL HAZARD (50 % chance) ---------------------------------
     if (irandom(1))          // returns 0 or 1 → 1 means “add a hazard”
     {
-        var _hazards = [
-            global.conditionDef_Birds,
-            global.conditionDef_Rising
-        ];
+        var _hazards = global.routeConditionsSecondary;
         array_push(_current, _hazards[ irandom(array_length(_hazards) - 1) ]);
     }
 

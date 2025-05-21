@@ -1,11 +1,8 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_mushroom",
-  "spriteId": {
-    "name": "spr_mushroom",
-    "path": "sprites/spr_mushroom/spr_mushroom.yy",
-  },
+  "name": "obj_bounce_manager",
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "managed": true,
@@ -30,7 +27,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Obstacle",
-    "path": "folders/Objects/Obstacle.yy",
+    "name": "Manager",
+    "path": "folders/Objects/Manager.yy",
   },
 }

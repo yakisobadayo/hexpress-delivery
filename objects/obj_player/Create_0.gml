@@ -4,6 +4,7 @@ y_velocity = 0;
 booster = false;
 stunned = false;
 i_frame = false;
+grounded = false;
 colliding = false;
 in_house_bounds = false;
 

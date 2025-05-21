@@ -12,4 +12,4 @@ if (in_house_bounds) {
 	draw_text_with_shadow(x, y, "In bounds!", c_white, c_black, 0.33);
 }
 
-//draw_text(x+15,y,y_velocity)
+//draw_text(x+15,y,grounded)
