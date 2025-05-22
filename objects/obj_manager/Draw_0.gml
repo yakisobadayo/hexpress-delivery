@@ -9,8 +9,8 @@ if (game_state != GameState.PENDING) {
 	var lines = [
 	    "Time until next section: " + string(section_timer_ticking),
 	    "Current conditions: "   + conditions_to_string(current_conditions),
-	    "Houses passed: "        + string(houses_passed) + "/" + string(route_length),
-	    "Packages delivered: "   + string(delivered_parcels) + "/" + string(route_length),
+	    "Houses passed: "        + string(houses_passed),
+	    "Packages delivered: "   + string(delivered_parcels),
 		"Hit counter: "          + string(current_parcel.hits) + "/" + string(current_parcel.max_hits),
 	    "Collected tips: $"      + string(collected_tips)
 	];
@@ -20,6 +20,10 @@ if (game_state != GameState.PENDING) {
 for (var i = 0; i < array_length(lines); ++i) {
 	draw_text_with_shadow(16, base_y + i * line_h, lines[i], c_white, c_black, 0.33);
 }
+
+// Stamina bar
+draw_healthbar(room_width-128, 32, room_width-16, 44, stamina, c_black, c_navy, c_aqua, 1, true, false);
+draw_text_with_shadow(room_width-126, 31, "Stamina", c_white, c_black, 0.33);
 
 // Show controls
 if (keyboard_check(vk_space)) {

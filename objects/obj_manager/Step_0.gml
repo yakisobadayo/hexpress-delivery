@@ -14,26 +14,28 @@ switch (game_state)
 
     // ────────────
     case GameState.ACTIVE:
-        // 1) Section scrolling & respawn logic
+        // Section ticking
         section_timer_ticking -= global.gamespeed;
 		
+		// Gradual depletion of stamina
+		stamina -= 0.005;
+		
+		// Deletes and rerolls conditions
         while (section_timer_ticking <= 0)
         {
             layer_destroy_instances("Managers");
             house_spawn();
 
-            if (current_section < route_length)
-            {
-                current_conditions = roll_section();
-                spawn_managers(current_conditions);
-            }
+            current_conditions = roll_section();
+            spawn_managers(current_conditions);
 
             section_timer_ticking += section_timer;
         }
 
         // 2) Check for route completion
-        if (delivered_parcels >= route_length || houses_passed >= route_length)
+        if (stamina <= 0)
         {
+			layer_destroy_instances("Managers");
             global.money += collected_tips;
 			show_debug_message(string("Route ended! Earned: ${0}, total money: ${1}", collected_tips, global.money));
             game_state = GameState.FINISHED;

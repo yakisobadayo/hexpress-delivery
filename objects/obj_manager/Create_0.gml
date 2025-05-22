@@ -17,7 +17,7 @@ spacing_modifier = 3;// Modifies spacing between spawns
 section_timer = 4200;// How long a section of the route lasts
 section_timer_ticking = section_timer;
 
-route_length = irandom_range(5,8);// How many sections in a route
+//route_length = irandom_range(5,8);// How many sections in a route
 current_section = 0;              // The current section of a route
 
 // MONEY
@@ -43,15 +43,21 @@ function make_house() {
 }
 houses_passed = 0;                // Identical to current_section but only increments when a house is destroyed
 
+// STAMINA
+max_stamina = 100;
+stamina = max_stamina;
+
+
 // FUNCTION INIT
 // Registers a hit to the parcel
 function register_hit(_hits) {
     current_parcel.hits = max(0, current_parcel.hits - _hits);
+	stamina = max(0, stamina - 5); // Hit = -5 stamina
 }
 
 // Spawns a house
 function house_spawn() {
-    if (current_section >= route_length) return;   // safety: no extra houses
+    //if (current_section >= route_length) return;   // safety: no extra houses
     current_house = instance_create_layer(room_width, 352, "BackgroundObjects", obj_house);
 	current_house.delivered = false;
     current_section += 1;         // advance to the next slot
@@ -59,13 +65,15 @@ function house_spawn() {
 
 // Trigger for dropping parcel (passes data to parcel)
 function drop_parcel(_x, _y) {
-	if (delivered_parcels >= route_length) return; // Cancel when reached max
+	//if (delivered_parcels >= route_length) return; // Cancel when reached max
 	instance_create_layer(_x, _y, "Instances", obj_parcel, current_parcel);
+	stamina = max(0, stamina - 1); // Delivery = -1 stamina
 }
 
 // Registers a parcel as delivered + adds money to collected
 function register_delivery(_payout) {
-	delivered_parcels = min(delivered_parcels + 1, route_length);
+	//delivered_parcels = min(delivered_parcels + 1, route_length);
+	delivered_parcels += 1;
 	collected_tips += round(_payout);
 }
 
