@@ -11,7 +11,7 @@ if (game_state != GameState.PENDING) {
 	    "Current conditions: "   + conditions_to_string(current_conditions),
 	    "Houses passed: "        + string(houses_passed),
 	    "Packages delivered: "   + string(delivered_parcels),
-		"Hit counter: "          + string(current_parcel.hits) + "/" + string(current_parcel.max_hits),
+		"Package health: "          + string(current_parcel.hits) + "/" + string(current_parcel.max_hits),
 	    "Collected tips: $"      + string(collected_tips)
 	];
 } else var lines = [];

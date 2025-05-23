@@ -55,16 +55,15 @@ grounded = place_meeting(x, y + 1, obj_boundary);
 if (isColliding) {
     if (!colliding && !i_frame) {
 		get_hit();
+		// Bounce (car)
+		if place_meeting(x, y+y_velocity, obj_car) {
+			y_velocity = -6;
+		}
     }
     colliding = true;
 }
 else {
     colliding = false;
-}
-
-// Bounce (car)
-if (place_meeting(x, y+y_velocity, obj_car) && colliding) {
-	y_velocity = -6;
 }
 
 // Update the player's vertical position
