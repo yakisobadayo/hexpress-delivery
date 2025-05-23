@@ -62,8 +62,8 @@ else {
     colliding = false;
 }
 
-// Bounce (mushroom)
-if (instance_exists(obj_bounce_manager) && obj_manager.current_section == obj_manager.houses_passed && grounded) {
+// Bounce (car)
+if (place_meeting(x, y+y_velocity, obj_car) && colliding) {
 	y_velocity = -6;
 }
 

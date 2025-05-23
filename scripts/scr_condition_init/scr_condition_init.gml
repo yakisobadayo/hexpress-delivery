@@ -26,9 +26,9 @@ global.conditionDef_Rising = {
     manager: obj_rising_manager,
 };
 
-global.conditionDef_Bounce = {
-	type: "Mushrooms",
-    manager: obj_bounce_manager,
+global.conditionDef_Cars = {
+	type: "Cars",
+    manager: obj_car_manager,
 };
 
 // Now, create the list your manager will actually use, containing these structs:
@@ -41,7 +41,7 @@ global.routeConditionsPrimary = [
 global.routeConditionsSecondary = [
     global.conditionDef_Birds,
     global.conditionDef_Rising,
-	global.conditionDef_Bounce
+	global.conditionDef_Cars
 ];
 
 // You no longer need the old global.obstacle_types array

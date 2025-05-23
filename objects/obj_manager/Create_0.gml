@@ -14,7 +14,7 @@ game_state = GameState.PENDING;
 global.gamespeed = 4;// How fast the world moves
 spacing_modifier = 3;// Modifies spacing between spawns
 
-section_timer = 4200;// How long a section of the route lasts
+section_timer = 3200;// How long a section of the route lasts
 section_timer_ticking = section_timer;
 
 //route_length = irandom_range(5,8);// How many sections in a route
@@ -67,7 +67,7 @@ function house_spawn() {
 function drop_parcel(_x, _y) {
 	//if (delivered_parcels >= route_length) return; // Cancel when reached max
 	instance_create_layer(_x, _y, "Instances", obj_parcel, current_parcel);
-	stamina = max(0, stamina - 1); // Delivery = -1 stamina
+	stamina = max(0, stamina - 2); // Delivery = -2 stamina
 }
 
 // Registers a parcel as delivered + adds money to collected

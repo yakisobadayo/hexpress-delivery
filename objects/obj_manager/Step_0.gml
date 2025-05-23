@@ -18,7 +18,7 @@ switch (game_state)
         section_timer_ticking -= global.gamespeed;
 		
 		// Gradual depletion of stamina
-		stamina -= 0.005;
+		stamina -= 0.0075;
 		
 		// Deletes and rerolls conditions
         while (section_timer_ticking <= 0)
@@ -40,6 +40,15 @@ switch (game_state)
 			show_debug_message(string("Route ended! Earned: ${0}, total money: ${1}", collected_tips, global.money));
             game_state = GameState.FINISHED;
         }
+		
+		// Spawn a coffee randomly
+		var coffee_chance_per_frame = 0.0005;  // ~1 spawn every 2000 frames on average
+
+		if (random(1) < coffee_chance_per_frame) {
+		    var y_spawn = irandom_range(64, room_height - 64);
+		    instance_create_layer(room_width, y_spawn, "Instances", obj_coffee);
+			show_debug_message("Spawned a Potion of Caffeine");
+		}
 
         // 3) Quick exit
         if (keyboard_check_pressed(vk_escape))
