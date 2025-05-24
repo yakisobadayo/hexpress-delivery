@@ -77,10 +77,15 @@ function drop_parcel(_x, _y) {
 
 // Registers a parcel as delivered + adds money to collected
 function register_delivery(_multiplier) {
+	var current_money = collected_base_pay + collected_tips;
+	var tip_money     = round(base_tip * _multiplier);
+	
 	//delivered_parcels = min(delivered_parcels + 1, route_length);
-	delivered_parcels += 1;
+	delivered_parcels  += 1;
 	collected_base_pay += base_pay;
-	collected_tips += round(base_tip * _multiplier);
+	collected_tips     += tip_money;
+	
+	show_debug_message(string("Earned ${0} with a base of ${1} and ${2} in tips (from ${3})", base_pay+tip_money, base_pay, tip_money, current_money));
 }
 
 // Advances to next house and package
