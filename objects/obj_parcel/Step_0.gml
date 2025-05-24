@@ -6,6 +6,9 @@ house = instance_nearest(x, y, obj_house);
 // Calculate velocity
 y_velocity += grav;
 
+// Particle system to current position
+part_system_position(ps_id, (bbox_left+bbox_right)*0.5, bbox_top);
+
 // Calculate collision
 if place_meeting(x, y + y_velocity, obj_boundary) {
     // push up until flush with the floor
@@ -39,13 +42,21 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
 			var total_multiplier = get_hit_multiplier() * get_dist_multiplier();
 			
 			// Massive debug message
-			show_debug_message(string("Delivery made, earned ${2} in tips with hit_mult: {0} ({3}/4 hits) and dist_mult: {1} ({4})", get_hit_multiplier(), get_dist_multiplier(), total_multiplier * obj_manager.base_tip, hits, get_dist_multiplier("type")));
+			show_debug_message(string("Delivery made, earned ${2} in tips with total_mult: {5}, hit_mult: {0} ({3}/4 hits) and dist_mult: {1} ({4})", get_hit_multiplier(), get_dist_multiplier(), total_multiplier * obj_manager.base_tip, hits, get_dist_multiplier("type"), total_multiplier));
 			
 			obj_manager.register_delivery(total_multiplier);
 			if (get_dist_multiplier() != 0.00)
 			{
 				house.success = true
 				show_debug_message("Successful delivery!");
+			}
+			
+			audio_play_sound(snd_cash, 10, false);
+			spawn_circle();
+			
+			if (total_multiplier >= 1.00) {
+				audio_play_sound(snd_ding, 10, false);
+				spawn_sparkle();
 			}
 		}
     }
