@@ -5,7 +5,7 @@ var trigger_drop = keyboard_check_pressed(vk_down) || mouse_check_button_pressed
 // Register if house exists
 house = instance_nearest(x, y, obj_house);
 
-if obj_manager.game_state != GameState.PENDING {
+if obj_manager.game_state == GameState.ACTIVE {
 	// Check if space is held down for boosting
 	booster = trigger_boost && !stunned;
 } else {
@@ -13,7 +13,7 @@ if obj_manager.game_state != GameState.PENDING {
 }
 
 // Drop only when a house is on screen, and if it's been delivered to
-if (house != noone && house.delivered == false) {
+if (house != noone && house.delivered == false && obj_manager.game_state == GameState.ACTIVE) {
 	if (trigger_drop) {
 		obj_manager.drop_parcel(x, y);
 		house.delivered = true

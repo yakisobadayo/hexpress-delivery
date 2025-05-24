@@ -14,8 +14,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snd_impact.mp3",
-  "duration": 0.0,
+  "soundFile": "snd_impact.wav",
+  "duration": 0.610567,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

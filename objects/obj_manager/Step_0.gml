@@ -38,7 +38,7 @@ switch (game_state)
 			var total_payout = collected_base_pay + collected_tips;
 			layer_destroy_instances("Managers");
             global.money += total_payout;
-			show_debug_message(string("Route ended! Earned: ${0}, total money: ${1}", collected_tips, global.money));
+			show_debug_message(string("Route ended! Earned: ${0}, total money: ${1}", total_payout, global.money));
             game_state = GameState.FINISHED;
         }
 		

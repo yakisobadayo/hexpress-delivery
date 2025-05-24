@@ -36,6 +36,6 @@ if (!global.space_pressed) {
 
 if (game_state = GameState.FINISHED) {
 	draw_set_halign(fa_center);
-	draw_text_with_shadow(room_width/2, room_height/2, "Money earned: $" + string(collected_tips), c_white, c_black, 0.33);
+	draw_text_with_shadow(room_width/2, room_height/2, "Money earned: $" + string(collected_base_pay + collected_tips), c_white, c_black, 0.33);
 	draw_text_with_shadow(room_width/2, room_height/2 + 16, "Press ESC to go to menu!", c_white, c_black, 0.33);
 }
