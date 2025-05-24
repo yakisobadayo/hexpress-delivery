@@ -40,8 +40,8 @@ function get_hit() {
 function stamina_mod()
 {
 	if !instance_exists(obj_manager) return 1;
-	var stamina_soft_floor   = 0.50;  // 50 %  – where the slowdown begins
-	var strength_floor_ratio = 0.50;  // 50 %  – min booster strength & max gravity buff
+	var stamina_soft_floor   = 0.30;  // %  – where the slowdown begins
+	var strength_floor_ratio = 0.50;  // %  – min booster strength & max gravity buff
     var r = obj_manager.stamina / obj_manager.max_stamina;             // 0–1
     if (r >= stamina_soft_floor) return 1;     // above threshold, full power
 
