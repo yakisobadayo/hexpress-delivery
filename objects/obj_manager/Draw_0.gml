@@ -12,7 +12,7 @@ if (game_state != GameState.PENDING) {
 	    "Houses passed: "        + string(houses_passed),
 	    "Packages delivered: "   + string(delivered_parcels),
 		"Package health: "          + string(current_parcel.hits) + "/" + string(current_parcel.max_hits),
-	    "Collected tips: $"      + string(collected_tips)
+	    "Collected cash: $"      + string(collected_base_pay + collected_tips)
 	];
 } else var lines = [];
 

@@ -21,8 +21,12 @@ section_timer_ticking = section_timer;
 current_section = 0;              // The current section of a route
 
 // MONEY
-collected_tips = 0;  // Collects tips earned
-combo_multiplier  = 1;  // Increases each successful delivery
+base_pay = 20;          // How much for each delivery
+base_tip = 30;			// Base for calculating tip money
+collected_base_pay = 0; // Collects base pay from successful delivery
+collected_tips     = 0; // Collects tips earned
+// collected_money = collected_base_pay + collected_tips; Tips and base pay combined
+combo_multiplier   = 1; // Increases each successful delivery
 
 // PARCELS
 function make_parcel() {
@@ -72,10 +76,11 @@ function drop_parcel(_x, _y) {
 }
 
 // Registers a parcel as delivered + adds money to collected
-function register_delivery(_payout) {
+function register_delivery(_multiplier) {
 	//delivered_parcels = min(delivered_parcels + 1, route_length);
 	delivered_parcels += 1;
-	collected_tips += round(_payout);
+	collected_base_pay += base_pay;
+	collected_tips += round(base_tip * _multiplier);
 }
 
 // Advances to next house and package

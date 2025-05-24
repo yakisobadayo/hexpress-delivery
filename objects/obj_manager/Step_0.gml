@@ -35,8 +35,9 @@ switch (game_state)
         // 2) Check for route completion
         if (stamina <= 0)
         {
+			var total_payout = collected_base_pay + collected_tips;
 			layer_destroy_instances("Managers");
-            global.money += collected_tips;
+            global.money += total_payout;
 			show_debug_message(string("Route ended! Earned: ${0}, total money: ${1}", collected_tips, global.money));
             game_state = GameState.FINISHED;
         }
@@ -97,6 +98,6 @@ if (route_active && delivered_parcels >= route_length) {
 
 // Exit to menu
 if (keyboard_check_pressed(vk_escape)) {
-	collected_tips = 0; // Temporary maybe?
+	//collected_tips = 0; // Temporary maybe?
     room_goto(room_menu);
 }
