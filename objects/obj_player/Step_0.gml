@@ -22,9 +22,11 @@ if (house != noone && house.delivered == false) {
 
 // Adjust vertical velocity based on booster state
 if (booster) {
-	y_velocity -= grav;  // move upward
+    // upward thrust gets weaker as stamina drains
+    y_velocity -= grav * stamina_mod();
 } else {
-	y_velocity += grav;  // apply gravity
+    // gravity feels stronger as stamina drains
+    y_velocity += grav * (2 - stamina_mod());   // 1.0→1.5
 }
 
 // Check collision state

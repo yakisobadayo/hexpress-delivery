@@ -41,7 +41,7 @@ function get_dist_multiplier(_mode)
     
     // 1) Within porch bounds
     if (bbox_left >= house.porch.bbox_left && bbox_right <= house.porch.bbox_right) {
-        mult = 1.25; tier = "Full Porch";
+        mult = 1.50; tier = "Full Porch";
     }
     // 2) Partially within porch bounds
     else if (bbox_left < house.porch.bbox_right && bbox_right > house.porch.bbox_left) {

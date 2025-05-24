@@ -38,6 +38,11 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
 		if (house != noone) {
 			var total_payout = global.base_tip * get_hit_multiplier() * get_dist_multiplier();
 			obj_manager.register_delivery(total_payout);
+			if (get_dist_multiplier() != 0.00)
+			{
+				house.success = true
+				show_debug_message("Successful delivery!");
+			}
 
 			// Debug message
 			show_debug_message(string("Delivery made, earned ${2} with hit_mult: {0} ({3}/4 hits) and dist_mult: {1} ({4})", get_hit_multiplier(), get_dist_multiplier(), total_payout, hits, get_dist_multiplier("type")));

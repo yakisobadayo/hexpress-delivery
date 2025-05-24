@@ -38,7 +38,7 @@ delivered_parcels = 0;
 // HOUSES
 function make_house() {
     return {
-        delivered : false
+        delivered : false,
     };
 }
 houses_passed = 0;                // Identical to current_section but only increments when a house is destroyed
@@ -60,6 +60,7 @@ function house_spawn() {
     //if (current_section >= route_length) return;   // safety: no extra houses
     current_house = instance_create_layer(room_width, 352, "BackgroundObjects", obj_house);
 	current_house.delivered = false;
+	current_house.success   = false;
     current_section += 1;         // advance to the next slot
 }
 

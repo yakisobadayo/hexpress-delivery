@@ -35,3 +35,17 @@ function get_hit() {
         audio_play_sound(snd_impact,         10, false, 1, 0, random_range(0.9, 1.1));
     }
 }
+
+// Stamina gravity modification
+function stamina_mod()
+{
+	if !instance_exists(obj_manager) return 1;
+	var stamina_soft_floor   = 0.50;  // 50 %  – where the slowdown begins
+	var strength_floor_ratio = 0.50;  // 50 %  – min booster strength & max gravity buff
+    var r = obj_manager.stamina / obj_manager.max_stamina;             // 0–1
+    if (r >= stamina_soft_floor) return 1;     // above threshold, full power
+
+    // linear fade from 1→strength_floor_ratio as stamina drops from 50 %→0
+    var t = r / stamina_soft_floor;            // 1→0   (at 50 % … 0 %)
+    return lerp(strength_floor_ratio, 1, t);   // 0.5→1
+}
