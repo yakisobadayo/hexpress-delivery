@@ -7,7 +7,7 @@ var line_h = 16;      // vertical spacing between lines
 if (game_state != GameState.PENDING) {
 	// Stuff to print, in order
 	var lines = [
-	    "Time until next section: " + string(section_timer_ticking),
+	    //"Time until next section: " + string(section_timer_ticking),
 	    "Current conditions: "   + conditions_to_string(current_conditions),
 	    "Packages delivered: "   + string(delivered_parcels),
 		"Package health: "          + string(current_parcel.hits) + "/" + string(current_parcel.max_hits),
