@@ -49,11 +49,11 @@ function get_dist_multiplier(_mode)
     }
     // 3) Within house bounds
     else if (bbox_left >= house.bbox_left && bbox_right <= house.bbox_right) {
-        mult = 0.75; tier = "Outside Porch";
+        mult = 0.50; tier = "Outside Porch";
     }
     // 4) Partially within house bounds
     else if (bbox_left < house.bbox_right && bbox_right > house.bbox_left) {
-        mult = 0.50; tier = "Partial House";
+        mult = 0.25; tier = "Partial House";
     }
     // 5) Outside
     else {
