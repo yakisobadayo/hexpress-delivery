@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "obj_house",
   "spriteId": {
-    "name": "new_house",
-    "path": "sprites/new_house/new_house.yy",
+    "name": "spr_new_house",
+    "path": "sprites/spr_new_house/spr_new_house.yy",
   },
   "solid": false,
   "visible": true,
