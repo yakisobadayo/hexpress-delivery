@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "obj_obstacle",
   "spriteId": {
-    "name": "spr_obstacle_platform",
-    "path": "sprites/spr_obstacle_platform/spr_obstacle_platform.yy",
+    "name": "spr_mushroom_platform",
+    "path": "sprites/spr_mushroom_platform/spr_mushroom_platform.yy",
   },
   "solid": false,
   "visible": true,

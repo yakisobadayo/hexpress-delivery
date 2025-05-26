@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "obj_obstaclevert",
   "spriteId": {
-    "name": "spr_obstaclevert",
-    "path": "sprites/spr_obstaclevert/spr_obstaclevert.yy",
+    "name": "spr_obstacle_brambles",
+    "path": "sprites/spr_obstacle_brambles/spr_obstacle_brambles.yy",
   },
   "solid": false,
   "visible": true,
