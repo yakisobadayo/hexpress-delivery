@@ -45,7 +45,7 @@ switch (game_state)
 		// Spawn a coffee randomly
 		var coffee_chance_per_frame = 0.0005;  // ~1 spawn every 2000 frames on average
 
-		if (random(1) < coffee_chance_per_frame /*&& !instance_exists(obj_coffee)*/) {
+		if (random(1) < coffee_chance_per_frame && !instance_exists(obj_coffee)) {
 		    var y_spawn = irandom_range(64, room_height - 64);
 		    instance_create_layer(room_width, y_spawn, "Instances", obj_coffee);
 			show_debug_message("Spawned a Potion of Caffeine");
