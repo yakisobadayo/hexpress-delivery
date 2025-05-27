@@ -1,0 +1,2 @@
+draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_stretched(spr_mushroom_stem, image_index, (bbox_left+bbox_right)/2-16, y, 32, room_height-32-y);

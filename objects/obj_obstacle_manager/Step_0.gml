@@ -4,7 +4,7 @@ if (obstacle_timer <= 0)
 {
 	if type == "Horizontal"
 	{
-		instance_create_layer(room_width, irandom_range(32, room_height-32), "Instances", obj_obstacle);
+		instance_create_layer(room_width, irandom_range(32, room_height-32), "Instances", obj_obstaclehori);
 	}
 	
 	if type == "Diagonal"
