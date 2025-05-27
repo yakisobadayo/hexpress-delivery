@@ -1,0 +1,1 @@
+part_system_destroy(broom_ps);

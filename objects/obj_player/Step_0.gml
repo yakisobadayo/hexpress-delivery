@@ -73,3 +73,31 @@ y += y_velocity;
 
 /*/ Check if in house bounds
 in_house_bounds = instance_exists(obj_house) && x-8 >= obj_house.bbox_left && x+8 <= obj_house.bbox_right;
+/*/
+
+// Set the emitter's region to Willow's position
+var _x = bbox_left-6;
+var _y = y+9;
+
+part_emitter_region(broom_ps, pemit_broom, _x, _x, _y, _y, ps_shape_rectangle, ps_distr_linear);
+
+// Turn on/off stream based on booster
+if (booster)
+{
+    sparkle_timer -= 1;
+
+    if (sparkle_timer <= 0)
+    {
+        // burst exactly ONE particle
+        part_emitter_burst(broom_ps, pemit_broom, ptype_broom, 1);
+
+        // reset for next burst
+        sparkle_timer = sparkle_interval;
+        //   – or –  sparkle_timer = irandom_range(3,7)  // slight randomness
+    }
+}
+else
+{
+    // reset so first frame of next boost spawns instantly
+    sparkle_timer = 0;
+}
