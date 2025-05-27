@@ -3,13 +3,16 @@
   "resourceVersion": "1.0",
   "name": "obj_obstaclediagonal",
   "spriteId": {
-    "name": "spr_obstacle_crystal",
-    "path": "sprites/spr_obstacle_crystal/spr_obstacle_crystal.yy",
+    "name": "spr_obstacle_sword",
+    "path": "sprites/spr_obstacle_sword/spr_obstacle_sword.yy",
   },
   "solid": false,
   "visible": true,
   "managed": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_obstaclediagonal",
+    "path": "sprites/spr_obstaclediagonal/spr_obstaclediagonal.yy",
+  },
   "persistent": false,
   "parentObjectId": {
     "name": "obj_obstacle",
