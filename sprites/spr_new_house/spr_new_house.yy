@@ -25,7 +25,7 @@
     "path": "texturegroups/Default",
   },
   "swatchColours": null,
-  "gridX": 32,
+  "gridX": 16,
   "gridY": 32,
   "frames": [
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"442ba7d7-fd53-404a-91e9-bd1b57134f56",},
@@ -64,7 +64,13 @@
     "eventStubScript": null,
   },
   "layers": [
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"c383393e-8d38-4df7-b3d6-acd149e74499","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 6",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"cad4ccba-5574-4de9-b7b7-dd1e169f3d5b","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 5",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"a505a914-2d26-471b-81e9-3058d8891511","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 3",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"88e9b8b8-e501-46ed-ac42-b7cab6ce66c6","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 4",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"9a38add0-9458-46f0-90f1-106cea8c0deb","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 2",},
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"e1256b79-df78-41a6-bc32-608dbaf73ca7","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"b4c0645d-3609-4bbe-9f5b-47cc068b2b5f","visible":false,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1",},
   ],
   "nineSlice": null,
   "parent": {
