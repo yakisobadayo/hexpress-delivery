@@ -1,7 +1,7 @@
 /// Draw debug UI
 draw_set_halign(fa_left);
 
-var base_y = 32;      // where the first line starts
+var base_y = 48;      // where the first line starts
 var line_h = 16;      // vertical spacing between lines
 
 if (game_state != GameState.PENDING) {
@@ -21,8 +21,10 @@ for (var i = 0; i < array_length(lines); ++i) {
 }
 
 // Stamina bar
-draw_healthbar(room_width-128, 32, room_width-16, 44, stamina, c_black, #00177d, #00a1ff, 0, true, false);
-draw_text_with_shadow(room_width-126, 31, "Energy", c_white, c_black, 0.33);
+if (game_state != GameState.PENDING) {
+	draw_healthbar(16, 32, 128, 46, stamina, c_black, #00177d, #00a1ff, 0, true, false);
+	draw_text_with_shadow(20, 32, "Energy", c_white, c_black, 0.33);
+}
 
 // Show controls
 if (keyboard_check(vk_space)) {
