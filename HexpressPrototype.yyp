@@ -16,6 +16,7 @@
     {"id":{"name":"spr_bird","path":"sprites/spr_bird/spr_bird.yy",},"order":2,},
     {"id":{"name":"obj_house","path":"objects/obj_house/obj_house.yy",},"order":2,},
     {"id":{"name":"spr_parcel_marker","path":"sprites/spr_parcel_marker/spr_parcel_marker.yy",},"order":3,},
+    {"id":{"name":"spr_parcel_hexpress","path":"sprites/spr_parcel_hexpress/spr_parcel_hexpress.yy",},"order":6,},
     {"id":{"name":"spr_cloud_ceiling","path":"sprites/spr_cloud_ceiling/spr_cloud_ceiling.yy",},"order":0,},
     {"id":{"name":"spr_player_blue","path":"sprites/spr_player_blue/spr_player_blue.yy",},"order":1,},
     {"id":{"name":"spr_collide","path":"sprites/spr_collide/spr_collide.yy",},"order":1,},

@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "obj_parcel",
   "spriteId": {
-    "name": "spr_parcel",
-    "path": "sprites/spr_parcel/spr_parcel.yy",
+    "name": "spr_parcel_hexpress",
+    "path": "sprites/spr_parcel_hexpress/spr_parcel_hexpress.yy",
   },
   "solid": false,
   "visible": true,
