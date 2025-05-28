@@ -54,7 +54,8 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
 			audio_play_sound(snd_cash, 10, false);
 			spawn_circle();
 			
-			if (total_multiplier >= 1.00) {
+			if (total_multiplier > 1.00) {
+				obj_manager.stamina = min(obj_manager.max_stamina, obj_manager.stamina + 5);
 				audio_play_sound(snd_ding, 10, false);
 				spawn_sparkle();
 			}
