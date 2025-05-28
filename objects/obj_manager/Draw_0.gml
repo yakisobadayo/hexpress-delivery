@@ -21,7 +21,7 @@ for (var i = 0; i < array_length(lines); ++i) {
 }
 
 // Stamina bar
-draw_healthbar(room_width-128, 32, room_width-16, 44, stamina, c_black, c_navy, c_aqua, 1, true, false);
+draw_healthbar(room_width-128, 32, room_width-16, 44, stamina, c_black, #00177d, #00a1ff, 1, true, false);
 draw_text_with_shadow(room_width-126, 31, "Energy", c_white, c_black, 0.33);
 
 // Show controls
