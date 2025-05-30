@@ -6,16 +6,47 @@ switch (current_parcel.hits) {
  case 0: parcel_index = 3; break;
 }
 
+/// Willow expression states
+var portrait;
+var bar_colour;
+if (stamina > 60) {
+    portrait = spr_willow_alert;
+	bar_colour = 0;
+}
+else if (stamina > 33) {
+    portrait = spr_willow_neutral;
+	bar_colour = 0;
+}
+else if (stamina > 10) {
+    portrait = spr_willow_tired;
+	bar_colour = 0;
+}
+else {
+    portrait = spr_willow_zonked;
+}
+
+// Bar colour
+var bar_color;
+if (stamina > 33) {
+	bar_color = 0;
+}
+else if (stamina > 10) {
+	bar_color = 1;
+}
+else {
+    bar_color = 2;
+}
+
 // WIP
 draw_set_halign(fa_left);
 var base_x = 16;
 var base_y = 32;
 
 draw_sprite(spr_ui_badge, 0, base_x, base_y);
-draw_sprite(spr_willow_neutral, 0, base_x+5, base_y+4);
+draw_sprite(portrait, 0, base_x+5, base_y+4);
 //draw_sprite(spr_energy_bar, 0, base_x+62, base_y+4);
 //draw_sprite_part(spr_energy_bar, 0, 0, 0, 100*(stamina/100), 15, base_x+62, base_y+4);
-draw_sprite_part(spr_energy_bar, 0, 0, 0, stamina, 15, base_x+62, base_y+4);
+draw_sprite_part(spr_energy_bar, bar_color, 0, 0, stamina, 15, base_x+62, base_y+4);
 draw_sprite(spr_parcel_hexpress, parcel_index, base_x+56+10, base_y+28-2);
 draw_sprite(spr_coin, 0, base_x+86, base_y+26);
 draw_text_with_shadow(base_x+86+10, base_y+23, string(collected_base_pay+collected_tips), c_white, c_black, 0.33);
