@@ -3,13 +3,6 @@ y_velocity = 0;
 grounded    = false;  // is it on the floor?
 landed      = false;  // has it already landed? (one-shot guard)
 
-// Default package sprite
-if (hits <= 0) {
-	image_index = 3;
-} else {
-	image_index = 0;
-}
-
 // Height parcel was spawned from
 drop_y = y;
 high_drop = drop_y < room_height/2;

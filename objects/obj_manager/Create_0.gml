@@ -26,14 +26,14 @@ base_tip = 15;			// Base for calculating tip money
 collected_base_pay = 0; // Collects base pay from successful delivery
 collected_tips     = 0; // Collects tips earned
 // collected_money = collected_base_pay + collected_tips; Tips and base pay combined
-combo_multiplier   = 1; // Increases each successful delivery
+
+streak = 0;
 
 // PARCELS
 function make_parcel() {
     return {
         max_hits : 4,
         hits     : 4,
-        combo    : 1
     };
 }
 current_parcel = make_parcel();   // The parcel you're delivering
@@ -70,7 +70,6 @@ function house_spawn() {
 
 // Trigger for dropping parcel (passes data to parcel)
 function drop_parcel(_x, _y) {
-	//if (delivered_parcels >= route_length) return; // Cancel when reached max
 	instance_create_layer(_x, _y, "Instances", obj_parcel, current_parcel);
 	//stamina = max(0, stamina - 2); // Delivery = -2 stamina
 }
@@ -80,10 +79,16 @@ function register_delivery(_multiplier) {
 	var current_money = collected_base_pay + collected_tips;
 	var tip_money     = round(base_tip * _multiplier);
 	
-	//delivered_parcels = min(delivered_parcels + 1, route_length);
 	delivered_parcels  += 1;
 	collected_base_pay += base_pay;
 	collected_tips     += tip_money;
+	
+	// Streak
+	if (_multiplier >= 1) {
+		streak += 1;
+	} else {
+		streak = 0;
+	}
 	
 	show_debug_message(string("Earned ${0} with a base of ${1} and ${2} in tips (from ${3})", base_pay+tip_money, base_pay, tip_money, current_money));
 }

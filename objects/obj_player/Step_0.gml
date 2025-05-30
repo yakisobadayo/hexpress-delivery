@@ -17,6 +17,7 @@ if (house != noone && house.delivered == false && obj_manager.game_state == Game
 	if (trigger_drop) {
 		obj_manager.drop_parcel(x, y);
 		house.delivered = true
+		obj_manager.next_delivery();
 	}
 }
 
