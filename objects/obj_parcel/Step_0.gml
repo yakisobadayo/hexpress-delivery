@@ -29,10 +29,8 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
 			
 			// Play sound (fragile if package is at 0)
 			if hits <= 0 {
-				image_index = 3;
 				audio_play_sound(snd_impact_fragile, 10, false, 1, 0, random_range(0.9, 1.1));
 			} else {
-				image_index = irandom_range(1, 2);
 				audio_play_sound(snd_impact,         10, false, 1, 0, random_range(0.9, 1.1));
 			}
 		}
@@ -54,10 +52,12 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
 			audio_play_sound(snd_cash, 10, false);
 			spawn_circle();
 			
-			if (total_multiplier > 1.00) {
-				obj_manager.stamina = min(obj_manager.max_stamina, obj_manager.stamina + 5);
+			if (total_multiplier >= 1.00) {
 				audio_play_sound(snd_ding, 10, false);
 				spawn_sparkle();
+				if (total_multiplier > 1.00) {
+					obj_manager.stamina = min(obj_manager.max_stamina, obj_manager.stamina + 5);
+				}
 			}
 		}
     }

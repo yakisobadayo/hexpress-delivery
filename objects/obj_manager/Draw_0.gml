@@ -10,8 +10,9 @@ if (game_state != GameState.PENDING) {
 	    //"Time until next section: " + string(section_timer_ticking),
 	    "Current conditions: "   + conditions_to_string(current_conditions),
 	    "Packages delivered: "   + string(delivered_parcels),
-		"Package health: "          + string(current_parcel.hits) + "/" + string(current_parcel.max_hits),
-	    "Collected cash: $"      + string(collected_base_pay + collected_tips)
+		"Package health: "       + string(current_parcel.hits) + "/" + string(current_parcel.max_hits),
+	    "Collected cash: $"      + string(collected_base_pay + collected_tips),
+		"Streak: "				 + string(streak)
 	];
 } else var lines = [];
 
