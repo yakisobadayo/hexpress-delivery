@@ -43,6 +43,7 @@
     {"id":{"name":"obj_car","path":"objects/obj_car/obj_car.yy",},"order":7,},
     {"id":{"name":"spr_car","path":"sprites/spr_car/spr_car.yy",},"order":7,},
     {"id":{"name":"obj_bird","path":"objects/obj_bird/obj_bird.yy",},"order":0,},
+    {"id":{"name":"spr_energy_bar","path":"sprites/spr_energy_bar/spr_energy_bar.yy",},"order":6,},
     {"id":{"name":"spr_new_wall","path":"sprites/spr_new_wall/spr_new_wall.yy",},"order":1,},
     {"id":{"name":"spr_obstaclediagonal","path":"sprites/spr_obstaclediagonal/spr_obstaclediagonal.yy",},"order":4,},
     {"id":{"name":"tile_prototype","path":"tilesets/tile_prototype/tile_prototype.yy",},"order":0,},
