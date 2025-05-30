@@ -22,7 +22,7 @@ current_section = 0;              // The current section of a route
 
 // MONEY
 base_pay = 10;          // How much for each delivery
-base_tip = 15;			// Base for calculating tip money
+base_tip = 10;			// Base for calculating tip money
 collected_base_pay = 0; // Collects base pay from successful delivery
 collected_tips     = 0; // Collects tips earned
 // collected_money = collected_base_pay + collected_tips; Tips and base pay combined
@@ -53,6 +53,13 @@ stamina = max_stamina;
 
 
 // FUNCTION INIT
+// Return tip multiplier based on current streak
+// Formula: 1 + (streak × 0.1) … capped at 2.0 ×
+function get_streak_multiplier() {
+    var mult = 1 + streak * 0.10;   // +10 % per successful delivery
+    return clamp(mult, 1, 2);       // never lower than 1×, never higher than 2×
+}
+
 // Registers a hit to the parcel
 function register_hit(_hits) {
     current_parcel.hits = max(0, current_parcel.hits - _hits);
@@ -76,8 +83,9 @@ function drop_parcel(_x, _y) {
 
 // Registers a parcel as delivered + adds money to collected
 function register_delivery(_multiplier) {
+	var streak_mult   = get_streak_multiplier();
 	var current_money = collected_base_pay + collected_tips;
-	var tip_money     = round(base_tip * _multiplier);
+	var tip_money     = round(base_tip * _multiplier * streak_mult);
 	
 	delivered_parcels  += 1;
 	collected_base_pay += base_pay;
@@ -90,7 +98,15 @@ function register_delivery(_multiplier) {
 		streak = 0;
 	}
 	
-	show_debug_message(string("Earned ${0} with a base of ${1} and ${2} in tips (from ${3})", base_pay+tip_money, base_pay, tip_money, current_money));
+	show_debug_message(string(
+        "Earned ${0} with base ${1} + tips ${2} (streak_mult {4}×)",
+        base_pay + tip_money,
+        base_pay,
+        tip_money,
+        _multiplier,
+        streak_mult,
+        streak
+    ));
 }
 
 // Advances to next house and package

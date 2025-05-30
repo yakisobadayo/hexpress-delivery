@@ -12,7 +12,7 @@ if (game_state != GameState.PENDING) {
 	    "Packages delivered: "   + string(delivered_parcels),
 		"Package health: "       + string(current_parcel.hits) + "/" + string(current_parcel.max_hits),
 	    "Collected cash: $"      + string(collected_base_pay + collected_tips),
-		"Streak: "				 + string(streak)
+		"Streak: "				 + string(get_streak_multiplier())
 	];
 } else var lines = [];
 
