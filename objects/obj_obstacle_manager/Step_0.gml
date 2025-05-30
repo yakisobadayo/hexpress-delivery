@@ -4,17 +4,17 @@ if (obstacle_timer <= 0)
 {
 	if type == "Horizontal"
 	{
-		instance_create_layer(room_width, irandom_range(32, room_height-32), "Instances", obj_obstaclehori);
+		instance_create_layer(room_width, irandom_range(32, room_height-32), "BackgroundObjects", obj_obstaclehori);
 	}
 	
 	if type == "Diagonal"
 	{
-		instance_create_layer(room_width, irandom_range(32, room_height-32), "Instances", obj_obstaclediagonal);
+		instance_create_layer(room_width, irandom_range(32, room_height-32), "BackgroundObjects", obj_obstaclediagonal);
 	}
 	
 	if type == "Vertical"
 	{
-		instance_create_layer(room_width, irandom_range(32, room_height-32), "Instances", obj_obstaclevert);
+		instance_create_layer(room_width, irandom_range(32, room_height-32), "BackgroundObjects", obj_obstaclevert);
 	}
 	
 	// Reset the timer (this value represents a "distance" rather than fixed time)
