@@ -27,13 +27,6 @@ function get_hit() {
 	
     // Stun
     stun(0.3, 1);
-
-    // Choose the sound based on the threshold  
-    if (obj_manager.current_parcel.hits <= 0) {
-        audio_play_sound(snd_impact_fragile, 10, false, 1, 0, random_range(0.9, 1.1));
-    } else {
-        audio_play_sound(snd_impact,         10, false, 1, 0, random_range(0.9, 1.1));
-    }
 }
 
 // Stamina gravity modification

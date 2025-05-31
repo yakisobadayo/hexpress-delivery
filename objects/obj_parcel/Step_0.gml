@@ -24,15 +24,9 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
 		
 		// Damage from high-altitude drop
 		if (high_drop) {
+			obj_manager.play_hit_sound(hits);
 			hits = max(0, hits - 1);
 			show_debug_message("Parcel fell from too high up (-1 hit)")
-			
-			// Play sound (fragile if package is at 0)
-			if hits <= 0 {
-				audio_play_sound(snd_impact_fragile, 10, false, 1, 0, random_range(0.9, 1.1));
-			} else {
-				audio_play_sound(snd_impact,         10, false, 1, 0, random_range(0.9, 1.1));
-			}
 		}
 		
 		// Registers if house exists

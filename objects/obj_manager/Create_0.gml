@@ -51,6 +51,10 @@ houses_passed = 0;                // Identical to current_section but only incre
 max_stamina = 100;
 stamina = max_stamina;
 
+// SPRITE SHAKE
+shake = 0;
+shake_amount = 1;
+
 
 // FUNCTION INIT
 // Return tip multiplier based on current streak
@@ -60,10 +64,26 @@ function get_streak_multiplier() {
     return clamp(mult, 1, 2);       // never lower than 1×, never higher than 2×
 }
 
+// Play hit sound
+function play_hit_sound(hit_count) {
+    if (hit_count == 1) {
+        audio_play_sound(snd_impact_fragile, 10, false, 1, 0, random_range(0.9, 1.1));
+    }
+    else /*if (hit_count > 0)*/ {
+        audio_play_sound(snd_impact, 10, false, 1, 0, random_range(0.9, 1.1));
+    } /*
+	else {
+		audio_play_sound(snd_impact, 10, false, 0.75, 0, random_range(0.9, 1.1));
+	} */
+}
+
 // Registers a hit to the parcel
 function register_hit(_hits) {
+	play_hit_sound(current_parcel.hits)
     current_parcel.hits = max(0, current_parcel.hits - _hits);
 	stamina = max(0, stamina - 5); // Hit = -5 stamina
+	shake = shake_amount;
+	alarm_set(0, 0.3 * room_speed);
 }
 
 // Spawns a house

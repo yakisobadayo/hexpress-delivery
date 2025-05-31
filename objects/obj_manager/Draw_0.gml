@@ -45,15 +45,25 @@ draw_set_halign(fa_left);
 var base_x = 16;
 var base_y = 32;
 
-draw_sprite(spr_ui_badge, 0, base_x, base_y);
-draw_sprite(portrait, 0, base_x+5, base_y+4);
+// Unused
 //draw_sprite(spr_energy_bar, 0, base_x+62, base_y+4);
 //draw_sprite_part(spr_energy_bar, 0, 0, 0, 100*(stamina/100), 15, base_x+62, base_y+4);
+//draw_sprite(spr_parcel_hexpress, parcel_index, base_x+56+10, base_y+28-2);
+
+// Base
+draw_sprite(spr_ui_badge, 0, base_x, base_y);
+// Portrait
+draw_sprite(portrait, 0, base_x+5, base_y+4);
+// Energy bar
 draw_sprite_part(spr_energy_bar, bar_color, 0, 0, stamina, 15, base_x+62, base_y+4);
-draw_sprite(spr_parcel_hexpress, parcel_index, base_x+56+10, base_y+28-2);
+// Coin
 draw_sprite(spr_coin, 0, base_x+86, base_y+26);
+// Money counter
 draw_text_with_shadow(base_x+86+10, base_y+23, string(collected_base_pay+collected_tips), c_white, c_black, 0.33);
+// Delivery counter
 draw_text_with_shadow(base_x+86, base_y+23+10, "Delivered: " + string(delivered_parcels), c_white, c_black, 0.33);
+// Parcel with shake
+draw_sprite(spr_parcel_hexpress, parcel_index, base_x+56+10+irandom_range(-shake, shake), base_y+28-2);
 
 
 
