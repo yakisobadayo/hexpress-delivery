@@ -105,6 +105,7 @@
     {"id":{"name":"spr_tileable_mountains","path":"sprites/spr_tileable_mountains/spr_tileable_mountains.yy",},"order":3,},
     {"id":{"name":"spr_ghost","path":"sprites/spr_ghost/spr_ghost.yy",},"order":1,},
     {"id":{"name":"spr_obstacle_brambles","path":"sprites/spr_obstacle_brambles/spr_obstacle_brambles.yy",},"order":11,},
+    {"id":{"name":"spr_willow_zonked_asleep","path":"sprites/spr_willow_zonked_asleep/spr_willow_zonked_asleep.yy",},"order":5,},
     {"id":{"name":"obj_coffee","path":"objects/obj_coffee/obj_coffee.yy",},"order":0,},
     {"id":{"name":"obj_obstaclevert","path":"objects/obj_obstaclevert/obj_obstaclevert.yy",},"order":3,},
     {"id":{"name":"room_run","path":"rooms/room_run/room_run.yy",},"order":0,},

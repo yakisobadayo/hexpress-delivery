@@ -21,8 +21,11 @@ else if (stamina > 33) {
 else if (stamina > 10) {
     portrait = spr_willow_tired;
 }
-else {
+else if (stamina > 0) {
     portrait = spr_willow_zonked;
+}
+else {
+	portrait = spr_willow_zonked_asleep;
 }
 
 // Bar colour
