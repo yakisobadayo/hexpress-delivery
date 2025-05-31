@@ -111,13 +111,6 @@ function register_delivery(_multiplier) {
 	collected_base_pay += base_pay;
 	collected_tips     += tip_money;
 	
-	// Streak
-	if (_multiplier >= 1) {
-		streak += 1;
-	} else {
-		streak = 0;
-	}
-	
 	show_debug_message(string(
         "Earned ${0} with base ${1} + tips ${2} (streak_mult {4}×)",
         base_pay + tip_money,
@@ -127,6 +120,13 @@ function register_delivery(_multiplier) {
         streak_mult,
         streak
     ));
+	
+	// Streak
+	if (_multiplier >= 1) {
+		streak += 1;
+	} else {
+		streak = 0;
+	}
 }
 
 // Advances to next house and package
