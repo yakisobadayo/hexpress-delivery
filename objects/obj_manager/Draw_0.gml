@@ -9,17 +9,17 @@ switch (current_parcel.hits) {
 /// Willow expression states
 var portrait;
 var bar_colour;
-if (stamina > 60) {
+if (obj_player.i_frame == true && stamina > 0) {
+	portrait = spr_willow_stunned;
+}
+else if (stamina > 66) {
     portrait = spr_willow_alert;
-	bar_colour = 0;
 }
 else if (stamina > 33) {
     portrait = spr_willow_neutral;
-	bar_colour = 0;
 }
 else if (stamina > 10) {
     portrait = spr_willow_tired;
-	bar_colour = 0;
 }
 else {
     portrait = spr_willow_zonked;
