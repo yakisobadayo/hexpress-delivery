@@ -69,6 +69,7 @@
     {"id":{"name":"spr_new_city","path":"sprites/spr_new_city/spr_new_city.yy",},"order":5,},
     {"id":{"name":"spr_sparkle_bw","path":"sprites/spr_sparkle_bw/spr_sparkle_bw.yy",},"order":6,},
     {"id":{"name":"obj_gotofade","path":"objects/obj_gotofade/obj_gotofade.yy",},"order":0,},
+    {"id":{"name":"spr_willow_zonked_asleep_alt","path":"sprites/spr_willow_zonked_asleep_alt/spr_willow_zonked_asleep_alt.yy",},"order":6,},
     {"id":{"name":"spr_mushroom","path":"sprites/spr_mushroom/spr_mushroom.yy",},"order":5,},
     {"id":{"name":"spr_tileprototype","path":"sprites/spr_tileprototype/spr_tileprototype.yy",},"order":0,},
     {"id":{"name":"obj_obstacle","path":"objects/obj_obstacle/obj_obstacle.yy",},"order":1,},
