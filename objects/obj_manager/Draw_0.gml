@@ -1,6 +1,7 @@
 /// When package hit registers
 var parcel_index = 0;
 switch (current_parcel.hits) {
+ case 3: parcel_index = 1; break;
  case 2: parcel_index = 1; break;
  case 1: parcel_index = 2; break;
  case 0: parcel_index = 3; break;
@@ -8,7 +9,6 @@ switch (current_parcel.hits) {
 
 /// Willow expression states
 var portrait;
-var bar_colour;
 if (obj_player.i_frame == true && stamina > 0) {
 	portrait = spr_willow_stunned;
 }
