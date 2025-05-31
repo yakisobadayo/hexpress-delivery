@@ -34,3 +34,36 @@ if (mouse_check_button_pressed(mb_left) && selected != -1) {
                 return; // Ensure the rest of the code does not execute
         }
 }
+
+
+// DEBUG MODE
+var key = noone;
+
+// detect any relevant keypress
+if keyboard_check_pressed(vk_up)    key = vk_up;
+else if keyboard_check_pressed(vk_down)  key = vk_down;
+else if keyboard_check_pressed(vk_left)  key = vk_left;
+else if keyboard_check_pressed(vk_right) key = vk_right;
+else if keyboard_check_pressed(ord("B")) key = ord("B");
+else if keyboard_check_pressed(ord("A")) key = ord("A");
+
+if key != noone {
+    if key == konami_pattern[konami_index] {
+        konami_index += 1;
+
+        // full code entered!
+        if konami_index == konami_length {
+            // TOGGLE DEBUG MODE
+            global.debug_mode = !global.debug_mode;
+
+            // reset sequence
+            konami_index = 0;
+			
+			// sound!
+			audio_play_sound(snd_ding, 10, false);
+        }
+    } else {
+        // if they pressed the very first key, start from 1, else reset
+        konami_index = (key == konami_pattern[0]) ? 1 : 0;
+    }
+}
