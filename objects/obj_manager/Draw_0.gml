@@ -65,6 +65,10 @@ draw_text_with_shadow(base_x+86, base_y+23+10, "Delivered: " + string(delivered_
 // Parcel with shake
 draw_sprite(spr_parcel_hexpress, parcel_index, base_x+56+10+irandom_range(-shake, shake), base_y+28-2);
 
+// Streak counter
+if (streak >= 2) {
+	draw_text_with_shadow(base_x+86, base_y+23+20, "Streak: " + string(streak), c_white, c_black, 0.33);
+}
 
 
 // Show controls
