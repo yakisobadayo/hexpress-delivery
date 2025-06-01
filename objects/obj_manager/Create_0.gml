@@ -21,8 +21,8 @@ section_timer_ticking = section_timer;
 current_section = 0;              // The current section of a route
 
 // MONEY
-base_pay = 10;          // How much for each delivery
-base_tip = 10;			// Base for calculating tip money
+base_pay = 5;          // How much for each delivery
+base_tip = 20;			// Base for calculating tip money
 collected_base_pay = 0; // Collects base pay from successful delivery
 collected_tips     = 0; // Collects tips earned
 // collected_money = collected_base_pay + collected_tips; Tips and base pay combined
