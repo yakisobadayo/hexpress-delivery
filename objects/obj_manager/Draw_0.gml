@@ -42,8 +42,8 @@ else {
 
 // WIP
 draw_set_halign(fa_left);
-var base_x = 16;
-var base_y = 32;
+var base_x = 11;
+var base_y = 24;
 
 // Unused
 //draw_sprite(spr_energy_bar, 0, base_x+62, base_y+4);
