@@ -1,1 +1,1 @@
-image_index = irandom(3);
+image_index = irandom(4);

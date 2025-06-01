@@ -58,15 +58,12 @@ switch (game_state)
 		}
 		
 		// Random floor/ceiling obstacles
-		var obstacle_chance_per_frame = 0.0005;  // ~1 spawn every 2000 frames on average
+		var obstacle_chance_per_frame = 0.002;  // ~1 spawn every 500 frames on average
 		if (current_section > 0 && obstacle_spawn_cooldown == 0) {
 			if (!instance_exists(obj_car) && !instance_exists(obj_witch)) {
 			    if (random(1) < obstacle_chance_per_frame) {
 			        with (obj_player) {
-			            // Compute the vertical midpoint of the player's bounding box
-			            var player_mid_y = (bbox_top + bbox_bottom) / 2;
-            
-			            if (player_mid_y < room_height / 2) {
+			            if (y < room_height / 2) {
 			                // Player is in the upper half -> spawn witch at ceiling
 			                instance_create_layer(room_width, 32, "Instances", obj_witch);
 			            } else {
