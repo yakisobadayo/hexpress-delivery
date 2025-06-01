@@ -62,6 +62,11 @@ if (isColliding) {
 		if place_meeting(x, y+y_velocity, obj_car) {
 			y_velocity = -6;
 		}
+		
+		// Launch down (witch)
+		if place_meeting(x, y+y_velocity, obj_witch) {
+			y_velocity = 1.5;
+		}
     }
     colliding = true;
 }

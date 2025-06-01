@@ -1,0 +1,1 @@
+instance_create_layer(room_width, 32+irandom(4), "Instances", obj_witch);

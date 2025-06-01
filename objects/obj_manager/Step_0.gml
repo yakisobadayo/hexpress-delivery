@@ -50,6 +50,21 @@ switch (game_state)
 		    instance_create_layer(room_width, y_spawn, "Instances", obj_coffee);
 			show_debug_message("Spawned a Potion of Caffeine");
 		}
+		
+		// Random floor/ceiling obstacles
+		var obstacle_chance_per_frame = 0.001;  // ~1 spawn every 1000 frames on average
+		if (!instance_exists(obj_car) && !instance_exists(obj_witch)) {
+		    if (random(1) < obstacle_chance_per_frame) {
+		        // 50/50 coin flip
+		        if (random(1) < 0.5) {
+		            // spawn a car on the floor
+		            instance_create_layer(room_width, room_height - 32, "Instances", obj_car);
+		        } else {
+		            // spawn a witch on the ceiling
+		            instance_create_layer(room_width, 32+irandom(4), "Instances", obj_witch);
+		        }
+		    }
+		}
 
         // 3) Quick exit
         if (keyboard_check_pressed(vk_escape))
