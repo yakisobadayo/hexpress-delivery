@@ -6,12 +6,14 @@ randomise();         // So it's not the same each time.
 enum GameState {
     PENDING,
     ACTIVE,
+	PAUSED,
     FINISHED
 }
 
 // ROUTE
 game_state = GameState.PENDING;
 global.gamespeed = 4;// How fast the world moves
+current_gamespeed = global.gamespeed;
 spacing_modifier = 3;// Modifies spacing between spawns
 
 section_timer = 3200;// How long a section of the route lasts

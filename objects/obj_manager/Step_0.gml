@@ -54,7 +54,18 @@ switch (game_state)
         // 3) Quick exit
         if (keyboard_check_pressed(vk_escape))
         {
-            room_goto(room_menu);
+            game_state = GameState.PAUSED;
+        }
+        break;
+		
+	// ────────────
+    case GameState.PAUSED:
+        current_gamespeed = 0;
+		
+		if (keyboard_check_pressed(vk_escape))
+        {
+			current_gamespeed = global.gamespeed;
+            game_state = GameState.ACTIVE;
         }
         break;
 
@@ -96,7 +107,7 @@ if (route_active && delivered_parcels >= route_length) {
 }
 /*/
 
-// Exit to menu
+/*/ Exit to menu
 if (keyboard_check_pressed(vk_escape)) {
 	//collected_tips = 0; // Temporary maybe?
     room_goto(room_menu);

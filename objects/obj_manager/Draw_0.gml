@@ -119,3 +119,13 @@ if (game_state != GameState.PENDING) {
 	draw_healthbar(16, 32, 128, 46, stamina, c_black, #00177d, #00a1ff, 0, true, false);
 	draw_text_with_shadow(20, 32, "Energy", c_white, c_black, 0.33);
 }
+
+
+// PAUSE MENU */
+if (game_state = GameState.PAUSED) {
+	draw_set_color(c_black);
+	draw_set_alpha(0.33);
+	draw_rectangle(0, 0, room_width, room_height, false);
+	draw_set_color(c_white);
+	draw_set_alpha(1);
+}
