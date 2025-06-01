@@ -11,7 +11,11 @@ function roll_section()
 
     // --- 2. OPTIONAL HAZARD (50 % chance) ---------------------------------
 	// returns 0 or 1 → 1 means “add a hazard” (and never in the first/second section)
-    if (irandom(1) && obj_manager.current_section > 1)
+    if global.debug_mode {
+		var _hazards = global.routeConditionsSecondary;
+        array_push(_current, _hazards[ irandom(array_length(_hazards) - 1) ]);
+	} else
+	if (irandom(1) && obj_manager.current_section > 1)
     {
         var _hazards = global.routeConditionsSecondary;
         array_push(_current, _hazards[ irandom(array_length(_hazards) - 1) ]);

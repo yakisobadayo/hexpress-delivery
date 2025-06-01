@@ -54,7 +54,8 @@ stamina = max_stamina;
 // RANDOM SPAWN COOLDOWN 
 obstacle_spawn_cooldown = 0;
 coffee_spawn_cooldown = 0;
-reset_cooldown = 300;
+obstacle_reset_cooldown = 900;
+coffee_reset_cooldown = 300;
 
 // SPRITE SHAKE
 shake = 0;

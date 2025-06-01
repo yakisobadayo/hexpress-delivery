@@ -54,25 +54,26 @@ switch (game_state)
 		    instance_create_layer(room_width, y_spawn, "Instances", obj_coffee);
 			show_debug_message("Spawned a Potion of Caffeine");
 			
-			coffee_spawn_cooldown = reset_cooldown;
+			coffee_spawn_cooldown = coffee_reset_cooldown;
 		}
 		
 		// Random floor/ceiling obstacles
-		var obstacle_chance_per_frame = 0.002;  // ~1 spawn every 500 frames on average
+		var obstacle_chance_per_frame = 0.001;  // ~1 spawn every 500 frames on average
 		if (current_section > 0 && obstacle_spawn_cooldown == 0) {
 			if (!instance_exists(obj_car) && !instance_exists(obj_witch)) {
 			    if (random(1) < obstacle_chance_per_frame) {
 			        with (obj_player) {
 			            if (y < room_height / 2) {
 			                // Player is in the upper half -> spawn witch at ceiling
-			                instance_create_layer(room_width, 32, "Instances", obj_witch);
+			                var car = instance_create_layer(room_width, 32+irandom(4), "Instances", obj_witch);
 			            } else {
 			                // Player is in the lower half -> spawn car on the floor
-			                instance_create_layer(room_width, room_height - 32, "Instances", obj_car);
+			                var car = instance_create_layer(room_width, room_height - 32, "Instances", obj_car);
 			            }
+						car.scroll_speed = irandom_range(1,3);
 			        }
 					
-					obstacle_spawn_cooldown = reset_cooldown;
+					obstacle_spawn_cooldown = obstacle_reset_cooldown;
 			    }
 			}
 		}
