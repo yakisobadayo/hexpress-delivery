@@ -44,10 +44,12 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
 			if (total_multiplier >= 1.00) {
 				audio_play_sound(snd_ding, 10, false);
 				spawn_sparkle();
-				if (total_multiplier > 1.00) {
-					obj_manager.stamina = min(obj_manager.max_stamina, obj_manager.stamina + 5);
-				}
 			}
+			
+			if (get_dist_multiplier() > 1.00) {
+					obj_manager.stamina = min(obj_manager.max_stamina, obj_manager.stamina + 15);
+					audio_play_sound(snd_restore, 10, false);
+				}
 		} else {
 			obj_manager.streak = 0;
 			audio_play_sound(snd_place, 10, false,0.8,,0.75);
