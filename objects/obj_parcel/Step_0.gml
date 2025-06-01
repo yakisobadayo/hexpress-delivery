@@ -49,6 +49,7 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
 				}
 			}
 		} else {
+			obj_manager.streak = 0;
 			audio_play_sound(snd_place, 10, false,0.8,,0.75);
 		}
     }

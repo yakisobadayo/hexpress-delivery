@@ -47,7 +47,7 @@ switch (game_state)
         }
 		
 		// Spawn a coffee randomly
-		var coffee_chance_per_frame = 0.001;  // ~1 spawn every 1000 frames on average
+		var coffee_chance_per_frame = 0.0005;  // ~1 spawn every 2000 frames on average
 
 		if (coffee_spawn_cooldown == 0 && stamina <= 66 && random(1) < coffee_chance_per_frame && !instance_exists(obj_coffee)) {
 		    var y_spawn = irandom_range(64, room_height - 64);

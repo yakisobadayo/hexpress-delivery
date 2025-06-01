@@ -1,3 +1,3 @@
-auto_scroll(1.5);
+auto_scroll(scroll_speed);
 
 destroy_offscreen();
