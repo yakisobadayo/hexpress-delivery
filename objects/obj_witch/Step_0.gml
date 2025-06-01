@@ -1,3 +1,3 @@
-auto_scroll(irandom_range(1,3));
+auto_scroll(1.5);
 
 destroy_offscreen();

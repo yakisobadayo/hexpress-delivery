@@ -65,7 +65,7 @@ if (isColliding) {
 		
 		// Launch down (witch)
 		if place_meeting(x, y+y_velocity, obj_witch) {
-			y_velocity = 1.5;
+			y_velocity = 1.75;
 		}
     }
     colliding = true;

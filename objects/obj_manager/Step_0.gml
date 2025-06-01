@@ -20,6 +20,10 @@ switch (game_state)
 		// Gradual depletion of stamina
 		stamina -= 0.0075;
 		
+		// Random spawn ticking
+		obstacle_spawn_cooldown = max(obstacle_spawn_cooldown-1, 0);
+		coffee_spawn_cooldown = max(coffee_spawn_cooldown-1, 0);
+		
 		// Deletes and rerolls conditions
         while (section_timer_ticking <= 0)
         {
@@ -43,27 +47,37 @@ switch (game_state)
         }
 		
 		// Spawn a coffee randomly
-		var coffee_chance_per_frame = 0.0005;  // ~1 spawn every 2000 frames on average
+		var coffee_chance_per_frame = 0.001;  // ~1 spawn every 1000 frames on average
 
-		if (stamina <= 66 && random(1) < coffee_chance_per_frame && !instance_exists(obj_coffee)) {
+		if (coffee_spawn_cooldown == 0 && stamina <= 66 && random(1) < coffee_chance_per_frame && !instance_exists(obj_coffee)) {
 		    var y_spawn = irandom_range(64, room_height - 64);
 		    instance_create_layer(room_width, y_spawn, "Instances", obj_coffee);
 			show_debug_message("Spawned a Potion of Caffeine");
+			
+			coffee_spawn_cooldown = reset_cooldown;
 		}
 		
 		// Random floor/ceiling obstacles
-		var obstacle_chance_per_frame = 0.001;  // ~1 spawn every 1000 frames on average
-		if (!instance_exists(obj_car) && !instance_exists(obj_witch)) {
-		    if (random(1) < obstacle_chance_per_frame) {
-		        // 50/50 coin flip
-		        if (random(1) < 0.5) {
-		            // spawn a car on the floor
-		            instance_create_layer(room_width, room_height - 32, "Instances", obj_car);
-		        } else {
-		            // spawn a witch on the ceiling
-		            instance_create_layer(room_width, 32+irandom(4), "Instances", obj_witch);
-		        }
-		    }
+		var obstacle_chance_per_frame = 0.0005;  // ~1 spawn every 2000 frames on average
+		if (current_section > 0 && obstacle_spawn_cooldown == 0) {
+			if (!instance_exists(obj_car) && !instance_exists(obj_witch)) {
+			    if (random(1) < obstacle_chance_per_frame) {
+			        with (obj_player) {
+			            // Compute the vertical midpoint of the player's bounding box
+			            var player_mid_y = (bbox_top + bbox_bottom) / 2;
+            
+			            if (player_mid_y < room_height / 2) {
+			                // Player is in the upper half -> spawn witch at ceiling
+			                instance_create_layer(room_width, 32, "Instances", obj_witch);
+			            } else {
+			                // Player is in the lower half -> spawn car on the floor
+			                instance_create_layer(room_width, room_height - 32, "Instances", obj_car);
+			            }
+			        }
+					
+					obstacle_spawn_cooldown = reset_cooldown;
+			    }
+			}
 		}
 
         // 3) Quick exit

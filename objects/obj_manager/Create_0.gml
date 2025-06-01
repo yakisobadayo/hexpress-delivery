@@ -51,6 +51,11 @@ houses_passed = 0;                // Identical to current_section but only incre
 max_stamina = 100;
 stamina = max_stamina;
 
+// RANDOM SPAWN COOLDOWN 
+obstacle_spawn_cooldown = 0;
+coffee_spawn_cooldown = 0;
+reset_cooldown = 180;
+
 // SPRITE SHAKE
 shake = 0;
 shake_amount = 1;
