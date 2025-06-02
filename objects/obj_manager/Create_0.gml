@@ -21,8 +21,8 @@ section_timer_ticking = section_timer;
 current_section = 0;              // The current section of a route
 
 // MONEY
-base_pay = 10;          // How much for each delivery
-base_tip = 15;			// Base for calculating tip money
+base_pay = 5;          // How much for each delivery
+base_tip = 20;			// Base for calculating tip money
 collected_base_pay = 0; // Collects base pay from successful delivery
 collected_tips     = 0; // Collects tips earned
 // collected_money = collected_base_pay + collected_tips; Tips and base pay combined
@@ -51,12 +51,45 @@ houses_passed = 0;                // Identical to current_section but only incre
 max_stamina = 100;
 stamina = max_stamina;
 
+// RANDOM SPAWN COOLDOWN 
+obstacle_spawn_cooldown = 0;
+coffee_spawn_cooldown = 0;
+obstacle_reset_cooldown = 900;
+coffee_reset_cooldown = 300;
+
+// SPRITE SHAKE
+shake = 0;
+shake_amount = 1;
+
 
 // FUNCTION INIT
+// Return tip multiplier based on current streak
+// Formula: 1 + (streak × 0.1) … capped at 2.0 ×
+function get_streak_multiplier() {
+    var mult = 1 + streak * 0.10;   // +10 % per successful delivery
+    return clamp(mult, 1, 2);       // never lower than 1×, never higher than 2×
+}
+
+// Play hit sound
+function play_hit_sound(hit_count) {
+    if (hit_count == 1) {
+        audio_play_sound(snd_impact_fragile, 10, false, 1, 0, random_range(0.9, 1.1));
+    }
+    else /*if (hit_count > 0)*/ {
+        audio_play_sound(snd_impact, 10, false, 1, 0, random_range(0.9, 1.1));
+    } /*
+	else {
+		audio_play_sound(snd_impact, 10, false, 0.75, 0, random_range(0.9, 1.1));
+	} */
+}
+
 // Registers a hit to the parcel
 function register_hit(_hits) {
+	play_hit_sound(current_parcel.hits)
     current_parcel.hits = max(0, current_parcel.hits - _hits);
 	stamina = max(0, stamina - 5); // Hit = -5 stamina
+	shake = shake_amount;
+	alarm_set(0, 0.3 * room_speed);
 }
 
 // Spawns a house
@@ -76,12 +109,23 @@ function drop_parcel(_x, _y) {
 
 // Registers a parcel as delivered + adds money to collected
 function register_delivery(_multiplier) {
+	var streak_mult   = get_streak_multiplier();
 	var current_money = collected_base_pay + collected_tips;
-	var tip_money     = round(base_tip * _multiplier);
+	var tip_money     = round(base_tip * _multiplier * streak_mult);
 	
 	delivered_parcels  += 1;
 	collected_base_pay += base_pay;
 	collected_tips     += tip_money;
+	
+	show_debug_message(string(
+        "Earned ${0} with base ${1} + tips ${2} (streak_mult {4}×)",
+        base_pay + tip_money,
+        base_pay,
+        tip_money,
+        _multiplier,
+        streak_mult,
+        streak
+    ));
 	
 	// Streak
 	if (_multiplier >= 1) {
@@ -89,8 +133,6 @@ function register_delivery(_multiplier) {
 	} else {
 		streak = 0;
 	}
-	
-	show_debug_message(string("Earned ${0} with a base of ${1} and ${2} in tips (from ${3})", base_pay+tip_money, base_pay, tip_money, current_money));
 }
 
 // Advances to next house and package

@@ -62,11 +62,22 @@ if (isColliding) {
 		if place_meeting(x, y+y_velocity, obj_car) {
 			y_velocity = -6;
 		}
+		
+		// Launch down (witch)
+		if place_meeting(x, y+y_velocity, obj_witch) {
+			y_velocity = 1.75;
+		}
     }
     colliding = true;
 }
 else {
     colliding = false;
+}
+
+// Mushroom boing
+if (place_meeting(x, y+1, obj_obstaclehori) && !colliding) {
+	y_velocity = -5;
+	audio_play_sound(snd_boing, 10, false, 0.5);
 }
 
 // Update the player's vertical position

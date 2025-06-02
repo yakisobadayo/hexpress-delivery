@@ -24,41 +24,35 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
 		
 		// Damage from high-altitude drop
 		if (high_drop) {
+			obj_manager.play_hit_sound(hits);
 			hits = max(0, hits - 1);
 			show_debug_message("Parcel fell from too high up (-1 hit)")
-			
-			// Play sound (fragile if package is at 0)
-			if hits <= 0 {
-				audio_play_sound(snd_impact_fragile, 10, false, 1, 0, random_range(0.9, 1.1));
-			} else {
-				audio_play_sound(snd_impact,         10, false, 1, 0, random_range(0.9, 1.1));
-			}
 		}
 		
 		// Registers if house exists
-		if (house != noone) {
+		if (house != noone && get_dist_multiplier() > 0.00) {
 			var total_multiplier = get_hit_multiplier() * get_dist_multiplier();
 			
 			// Massive debug message
 			show_debug_message(string("Delivery made, earned ${2} in tips with total_mult: {5}, hit_mult: {0} ({3}/4 hits) and dist_mult: {1} ({4})", get_hit_multiplier(), get_dist_multiplier(), total_multiplier * obj_manager.base_tip, hits, get_dist_multiplier("type"), total_multiplier));
-			
 			obj_manager.register_delivery(total_multiplier);
-			if (get_dist_multiplier() != 0.00)
-			{
-				house.success = true
-				show_debug_message("Successful delivery!");
-			}
-			
+			house.success = true
+			show_debug_message("Successful delivery!");
 			audio_play_sound(snd_cash, 10, false);
 			spawn_circle();
 			
 			if (total_multiplier >= 1.00) {
 				audio_play_sound(snd_ding, 10, false);
 				spawn_sparkle();
-				if (total_multiplier > 1.00) {
-					obj_manager.stamina = min(obj_manager.max_stamina, obj_manager.stamina + 5);
-				}
 			}
+			
+			if (get_dist_multiplier() > 1.00) {
+					obj_manager.stamina = min(obj_manager.max_stamina, obj_manager.stamina + 15);
+					audio_play_sound(snd_restore, 10, false);
+				}
+		} else {
+			obj_manager.streak = 0;
+			audio_play_sound(snd_place, 10, false,0.8,,0.75);
 		}
     }
 }

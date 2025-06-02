@@ -1,4 +1,7 @@
 switch (hits) {
+	case 3:
+        image_index = 1;
+        break;
     case 2:
         image_index = 1;
         break;

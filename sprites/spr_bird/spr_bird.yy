@@ -28,7 +28,7 @@
   "gridX": 8,
   "gridY": 8,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"97a068a4-68dc-4d5e-bd82-9b3fadec3d61",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"801dc122-7c36-4173-ae4a-8c9cf503dfa3",},
   ],
   "sequence": {
     "resourceType": "GMSequence",
@@ -45,7 +45,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"245652c2-6523-42d3-b95a-6cebac50a476","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"97a068a4-68dc-4d5e-bd82-9b3fadec3d61","path":"sprites/spr_bird/spr_bird.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"de38909d-277d-439c-8fd2-cbd05633ce20","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"801dc122-7c36-4173-ae4a-8c9cf503dfa3","path":"sprites/spr_bird/spr_bird.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
@@ -64,7 +64,7 @@
     "eventStubScript": null,
   },
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"10f649e3-3c1b-4e45-893e-ef6b7653611b","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"a3fb9e5f-6f0a-4dd9-8e91-b93dc4aa7317","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
