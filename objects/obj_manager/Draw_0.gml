@@ -1,3 +1,14 @@
+// ANIM CURVE STUFF
+
+if (game_state = GameState.ACTIVE) {
+	badge_ease = lerp(badge_ease, 11, 0.05);
+}
+
+// WIP
+draw_set_halign(fa_left);
+var base_x = badge_ease;
+var base_y = 24;
+
 /// When package hit registers
 var parcel_index = 0;
 switch (current_parcel.hits) {
@@ -40,11 +51,6 @@ else {
     bar_color = 2;
 }
 
-// WIP
-draw_set_halign(fa_left);
-var base_x = 11;
-var base_y = 24;
-
 // Unused
 //draw_sprite(spr_energy_bar, 0, base_x+62, base_y+4);
 //draw_sprite_part(spr_energy_bar, 0, 0, 0, 100*(stamina/100), 15, base_x+62, base_y+4);
@@ -59,7 +65,7 @@ draw_sprite_part(spr_energy_bar, bar_color, 0, 0, stamina, 15, base_x+62, base_y
 // Coin
 draw_sprite(spr_coin, 0, base_x+86, base_y+26);
 // Money counter
-draw_text_with_shadow(base_x+86+10, base_y+23, string(collected_base_pay+collected_tips), c_white, c_black, 0.33);
+draw_text_with_shadow(base_x+86+10, base_y+23, string(displayed_money), c_white, c_black, 0.33);
 // Delivery counter
 draw_text_with_shadow(base_x+86, base_y+23+10, "Delivered: " + string(delivered_parcels), c_white, c_black, 0.33);
 // Parcel with shake
@@ -76,15 +82,21 @@ if (keyboard_check(vk_space)) {
 	global.space_pressed = true;
 }
 
+var button_height = 64;
+var button_width = 172;
 if (!global.space_pressed) {
+	draw_sprite_stretched(spr_ui_button, 0, room_width/2-(button_width/2), room_height/2-(button_height/2),button_width,button_height);
 	draw_set_halign(fa_center);
-	draw_text_with_shadow(room_width/2, room_height/2, "Press SPACE to fly!", c_white, c_black, 0.33);
+	draw_text_with_shadow(room_width/2, room_height/2-16, "Press SPACE or LClick to fly!", #555555, c_black, 0.10);
+	draw_text_with_shadow(room_width/2, room_height/2, "DOWN or RClick to drop packages!", #555555, c_black, 0.10);
+	draw_text_with_shadow(room_width/2, room_height/2+12, "(space to start)", #555555, c_black, 0.10);
 }
 
 if (game_state = GameState.FINISHED) {
+	draw_sprite_stretched(spr_ui_button, 0, room_width/2-(button_width/2), room_height/2-(button_height/2),button_width,button_height);
 	draw_set_halign(fa_center);
-	draw_text_with_shadow(room_width/2, room_height/2, "Money earned: $" + string(collected_base_pay + collected_tips), c_white, c_black, 0.33);
-	draw_text_with_shadow(room_width/2, room_height/2 + 16, "Press ESC to go to menu!", c_white, c_black, 0.33);
+	draw_text_with_shadow(room_width/2, room_height/2-16, "Money earned: $" + string(collected_base_pay + collected_tips), #555555, c_black, 0.10);
+	draw_text_with_shadow(room_width/2, room_height/2, "Press ESC to go to menu!", #555555, c_black, 0.10);
 }
 
 

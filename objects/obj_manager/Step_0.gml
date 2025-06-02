@@ -9,7 +9,7 @@ switch (game_state)
 			show_debug_message("Route started!")
             spawn_managers(current_conditions);
             game_state = GameState.ACTIVE;
-			//audio_play_sound(mus_route_3_loop, 25, true);
+			//audio_play_sound(mus_route_3_loop, 25, true, 0.9);
         }
         break;
 
@@ -78,12 +78,6 @@ switch (game_state)
 			    }
 			}
 		}
-
-        // 3) Quick exit
-        if (keyboard_check_pressed(vk_escape))
-        {
-            room_goto(room_menu);
-        }
         break;
 
     // ────────────
@@ -95,6 +89,19 @@ switch (game_state)
         }
         break;
 }
+
+/// MONEY INCREMENT
+/// Smooth-increment the visual total
+if (displayed_money < target_money) {
+
+    var step = min(money_step, target_money - displayed_money);
+    displayed_money += step;
+
+} else if (audio_is_playing(snd_increment)) {
+    // reached the target – kill the tune
+    audio_stop_sound(snd_increment);
+}
+
 
 /*/ Change sections (with for loop)
 while (section_timer_ticking <= 0) {
@@ -127,5 +134,6 @@ if (route_active && delivered_parcels >= route_length) {
 // Exit to menu
 if (keyboard_check_pressed(vk_escape)) {
 	//collected_tips = 0; // Temporary maybe?
+	audio_stop_sound(mus_route_3_loop);
     room_goto(room_menu);
 }

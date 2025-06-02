@@ -1,5 +1,5 @@
 randomise();         // So it's not the same each time.
-
+global.space_pressed = false;
 
 // VARIABLE INIT
 // GAMESTATES
@@ -21,12 +21,20 @@ section_timer_ticking = section_timer;
 current_section = 0;              // The current section of a route
 
 // MONEY
+// Base
 base_pay = 5;          // How much for each delivery
 base_tip = 20;			// Base for calculating tip money
+// Current collected
 collected_base_pay = 0; // Collects base pay from successful delivery
 collected_tips     = 0; // Collects tips earned
 // collected_money = collected_base_pay + collected_tips; Tips and base pay combined
+// Displayed money - money that’s visually counted-up
+displayed_money    = 0;
+// Tween settings
+money_step         = 1;          // px per frame
+target_money       = 0;
 
+// STREAK
 streak = 0;
 
 // PARCELS
@@ -133,6 +141,18 @@ function register_delivery(_multiplier) {
 	} else {
 		streak = 0;
 	}
+	
+	// Money increment
+	// 1. stash the new real-world total
+	var new_total = collected_base_pay + collected_tips;
+
+	// 2. set a target for the tween
+	target_money = new_total;
+
+	// 3. kick off the “ka-ching” loop-sound once
+	if (!audio_is_playing(snd_increment)) {
+	    audio_play_sound(snd_increment, 5, true, 0.5);
+	}
 }
 
 // Advances to next house and package
@@ -147,3 +167,7 @@ function next_delivery() {
 // ROUTE GENERATION
 current_conditions = roll_section(); // Roll the conditions for starting section
 //spawn_managers(current_conditions);  // Spawn the starting condition managers
+
+
+// ANIM CURVE
+badge_ease = 11-185;
