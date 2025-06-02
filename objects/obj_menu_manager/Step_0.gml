@@ -1,6 +1,8 @@
 /// @description Handle hover and click logic
 //  This code is an absolute mess, sorry in advance
 
+// This code is also spaghetti code I pasted from ChatGPT that I stole from my last year project, I was too lazy to make another menu system so I retrofitted this one. Sorry for whoever's eyes grace this
+
 animation_time += 0.06;
 
 // Menu options
@@ -11,10 +13,10 @@ var option_height = 32; // Height of each option
 // Check hover
 var new_selected = -1;
 for (var i = 0; i < array_length(current_options); i++) {
-    var y_pos = (room_height / 2) + i * option_height;
+    var y_pos = ((room_height / 2) + i * option_height) - 40;
 
     // Check if mouse is over this option
-    if (mouse_x >= room_width / 3 && mouse_x <= room_width / 3 + string_width(current_options[i]) && mouse_y >= y_pos && mouse_y <= y_pos + option_height) {
+    if (mouse_x >= room_width / 3 * 2 && mouse_x <= room_width / 3 * 2 + string_width(current_options[i]) && mouse_y >= y_pos && mouse_y <= y_pos + option_height) {
         new_selected = i + 1; // Set selected option to hovered option
         break;
     }

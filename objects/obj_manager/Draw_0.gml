@@ -87,8 +87,8 @@ var button_width = 172;
 if (!global.space_pressed) {
 	draw_sprite_stretched(spr_ui_button, 0, room_width/2-(button_width/2), room_height/2-(button_height/2),button_width,button_height);
 	draw_set_halign(fa_center);
-	draw_text_with_shadow(room_width/2, room_height/2-16-4, "Press LClick or SPACE to fly!", #555555, c_black, 0.10);
-	draw_text_with_shadow(room_width/2, room_height/2-4, "RClick or DOWN to drop packages!", #555555, c_black, 0.10);
+	draw_text_with_shadow(room_width/2, room_height/2-16-6, "Press LClick or SPACE to fly!", #555555, c_black, 0.10);
+	draw_text_with_shadow(room_width/2, room_height/2-6, "RClick or DOWN to drop packages!", #555555, c_black, 0.10);
 	//draw_text_with_shadow(room_width/2, room_height/2+12, "(space to start)", #555555, c_black, 0.10);
 	
 	var clickable_text = "OK";
@@ -98,21 +98,21 @@ if (!global.space_pressed) {
 	var click_base_y = room_height/2+12;
 	
 	if (mouse_x >= click_base_x && click_base_x+click_width && mouse_y >= click_base_y && mouse_y <= click_base_y+click_height) {
-		draw_text_with_shadow(room_width/2, room_height/2+12, clickable_text, #999999, c_black, 0.10);
+		draw_text_with_shadow(room_width/2, room_height/2+10, clickable_text, #999999, c_black, 0.10);
 		if (mouse_check_button_pressed(mb_left)) {
 		    global.space_pressed = true;
 		}
 	} else {
-		draw_text_with_shadow(room_width/2, room_height/2+12, clickable_text, #555555, c_black, 0.10);
+		draw_text_with_shadow(room_width/2, room_height/2+10, clickable_text, #555555, c_black, 0.10);
 	}
 }
 
 if (game_state = GameState.FINISHED) {
 	draw_sprite_stretched(spr_ui_button, 0, room_width/2-(button_width/2), room_height/2-(button_height/2),button_width,button_height);
 	draw_set_halign(fa_center);
-	draw_text_with_shadow(room_width/2, room_height/2-16, "Money earned: $" + string(collected_base_pay + collected_tips), #555555, c_black, 0.10);
-	draw_text_with_shadow(room_width/2, room_height/2, "Highest streak: " + string(highest_streak), #555555, c_black, 0.10);
-	draw_text_with_shadow(room_width/2, room_height/2+16, "Press ESC to go to menu!", #555555, c_black, 0.10);
+	draw_text_with_shadow(room_width/2, room_height/2-16-6, "Money earned: $" + string(collected_base_pay + collected_tips), #555555, c_black, 0.10);
+	draw_text_with_shadow(room_width/2, room_height/2-6, "Highest streak: " + string(highest_streak), #555555, c_black, 0.10);
+	draw_text_with_shadow(room_width/2, room_height/2+16-6, "Press ESC to go to menu!", #555555, c_black, 0.10);
 }
 
 

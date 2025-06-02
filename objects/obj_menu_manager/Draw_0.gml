@@ -19,8 +19,8 @@ draw_set_color(c_white);
 
 // Draw options and selection circles
 for (var i = 0; i < array_length(current_options); i++) {
-    var y_pos = (room_height / 2) + i * option_height;
-    var x_pos = room_width / 3;
+    var y_pos = ((room_height / 2) + i * option_height) - 40;
+    var x_pos = room_width / 3 * 2;
 
     // Calculate adjustment for y position based on angle
     var angle_adjustment = 3; // This is the rotation angle
