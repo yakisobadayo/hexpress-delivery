@@ -26,7 +26,7 @@ if (missile_timer > 0)
 if (missile_timer <= 0)
 {
 	// Reset animation on notify bubble:
-    image_index = 0;                         // start from the first subimage
+    image_index = 5;                         // start from the first subimage
 	
 	//var random_height = irandom_range(32+32, room_height-32);
 	instance_create_layer(room_width, aim, "Instances", obj_bird);
