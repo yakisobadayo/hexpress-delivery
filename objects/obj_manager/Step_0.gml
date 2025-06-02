@@ -12,7 +12,7 @@ switch (game_state)
 			show_debug_message("Route started!")
             spawn_managers(current_conditions);
             game_state = GameState.ACTIVE;
-			//audio_play_sound(mus_route_3_loop, 25, true, 0.9);
+			audio_play_sound(music_volume, 25, true, 0.9);
         }
         break;
 
@@ -49,6 +49,7 @@ switch (game_state)
 			show_debug_message(string("Route ended! Earned: ${0}, total money: ${1}", total_payout, global.money));
 			
 			alarm_set(1, end_timer); // Cooldown before results sbow
+			music_fadeout = true;
             game_state = GameState.FINISHED;
         }
 		
@@ -105,6 +106,18 @@ if (displayed_money < target_money) {
 } else if (audio_is_playing(snd_increment)) {
     // reached the target – kill the tune
     audio_stop_sound(snd_increment);
+}
+
+// Music fadeout
+if (music_fadeout) {
+    if (music_volume > 0) {
+        music_volume -= 0.01; // Adjust the decrement value for desired fade-out speed
+        audio_sound_gain(mus_route_3_loop, music_volume, 0);
+    } else {
+        music_volume = 0;
+        music_fadeout = false;
+        audio_stop_sound(mus_route_3_loop); // Stop the music once volume reaches zero
+    }
 }
 
 

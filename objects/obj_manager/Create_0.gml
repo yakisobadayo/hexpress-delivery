@@ -181,3 +181,7 @@ end_ease = room_height+128;
 // Timer before end
 end_timer = room_speed * 1;
 show_results = false;
+
+// Music
+music_volume = 0.9;
+music_fadeout = false;
