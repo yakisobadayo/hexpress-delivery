@@ -54,12 +54,6 @@ if (place_meeting(x, y+y_velocity, obj_boundary)) {
 // Check if on ground
 grounded = place_meeting(x, y + 1, obj_boundary);
 
-// Mushroom boing
-if (place_meeting(x, y+1, obj_obstaclehori) && !colliding) {
-	y_velocity = -5;
-	audio_play_sound(snd_boing, 10, false, 0.5);
-}
-
 // CRASH!
 if (isColliding) {
     if (!colliding && !i_frame) {
@@ -78,6 +72,12 @@ if (isColliding) {
 }
 else {
     colliding = false;
+}
+
+// Mushroom boing
+if (place_meeting(x, y+1, obj_obstaclehori) && !colliding) {
+	y_velocity = -5;
+	audio_play_sound(snd_boing, 10, false, 0.5);
 }
 
 // Update the player's vertical position
