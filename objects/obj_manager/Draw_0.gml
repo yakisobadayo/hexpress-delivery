@@ -111,7 +111,8 @@ if (game_state = GameState.FINISHED) {
 	draw_sprite_stretched(spr_ui_button, 0, room_width/2-(button_width/2), room_height/2-(button_height/2),button_width,button_height);
 	draw_set_halign(fa_center);
 	draw_text_with_shadow(room_width/2, room_height/2-16, "Money earned: $" + string(collected_base_pay + collected_tips), #555555, c_black, 0.10);
-	draw_text_with_shadow(room_width/2, room_height/2, "Press ESC to go to menu!", #555555, c_black, 0.10);
+	draw_text_with_shadow(room_width/2, room_height/2, "Highest streak: " + string(highest_streak), #555555, c_black, 0.10);
+	draw_text_with_shadow(room_width/2, room_height/2+16, "Press ESC to go to menu!", #555555, c_black, 0.10);
 }
 
 

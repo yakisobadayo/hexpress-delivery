@@ -2,7 +2,10 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "obj_bird_manager",
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_notifybubble_anim",
+    "path": "sprites/spr_notifybubble_anim/spr_notifybubble_anim.yy",
+  },
   "solid": false,
   "visible": true,
   "managed": true,

@@ -3,6 +3,10 @@ switch (game_state)
 {
     // ────────────
     case GameState.PENDING:
+		if (keyboard_check(vk_space)) {
+		    global.space_pressed = true;
+		}
+		
         // Waiting to start
         if (global.space_pressed) {
 			show_debug_message("Route started!")

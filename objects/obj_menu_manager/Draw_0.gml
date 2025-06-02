@@ -44,5 +44,5 @@ for (var i = 0; i < array_length(current_options); i++) {
 //draw_text_with_shadow(16, 24, "Money: $" + string(global.money), c_white, c_black, 0.33);
 
 if (global.debug_mode) {
-	draw_text_with_shadow(16, 24+16, "Debug mode!", c_white, c_black, 0.33);
+	draw_text_with_shadow(16, 24, "Debug mode!", c_white, c_black, 0.33);
 }

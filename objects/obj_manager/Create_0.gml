@@ -36,6 +36,7 @@ target_money       = 0;
 
 // STREAK
 streak = 0;
+highest_streak = 0;
 
 // PARCELS
 function make_parcel() {
@@ -140,6 +141,10 @@ function register_delivery(_multiplier) {
 		streak += 1;
 	} else {
 		streak = 0;
+	}
+	
+	if (streak > highest_streak) {
+		highest_streak = streak;
 	}
 	
 	// Money increment
