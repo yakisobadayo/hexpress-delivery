@@ -9,6 +9,7 @@ switch (game_state)
 			show_debug_message("Route started!")
             spawn_managers(current_conditions);
             game_state = GameState.ACTIVE;
+			//audio_play_sound(mus_route_3_loop, 25, true);
         }
         break;
 
