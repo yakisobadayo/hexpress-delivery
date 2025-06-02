@@ -47,6 +47,8 @@ switch (game_state)
 			layer_destroy_instances("Managers");
             global.money += total_payout;
 			show_debug_message(string("Route ended! Earned: ${0}, total money: ${1}", total_payout, global.money));
+			
+			alarm_set(1, end_timer); // Cooldown before results sbow
             game_state = GameState.FINISHED;
         }
 		

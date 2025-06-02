@@ -176,3 +176,8 @@ current_conditions = roll_section(); // Roll the conditions for starting section
 
 // ANIM CURVE
 badge_ease = 11-185;
+end_ease = room_height+128;
+
+// Timer before end
+end_timer = room_speed * 1;
+show_results = false;
