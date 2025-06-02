@@ -2,10 +2,10 @@
 if (instance_exists(obj_house))
 {
 	missile_timer = global.gamespeed;
-	image_index = 5;
 	image_speed = 0;
 } else {
 	missile_timer -= global.gamespeed;
+	image_speed = 1;
 }
 
 // Spawn projectiles when timer runs out or on key press
@@ -19,14 +19,13 @@ if (missile_timer > 0)
 	{
 		aim += 1;
 	}
-	image_speed = 1;
 	if (image_index >= 4) image_index = 4;
 }
 
 if (missile_timer <= 0)
 {
 	// Reset animation on notify bubble:
-    image_index = 5;                         // start from the first subimage
+    image_index = 0;                         // start from the first subimage
 	
 	//var random_height = irandom_range(32+32, room_height-32);
 	instance_create_layer(room_width, aim, "Instances", obj_bird);
@@ -35,4 +34,10 @@ if (missile_timer <= 0)
 	missile_timer = 150 * spacing_modifier;
 	aim = obj_player.y;
 	//audio_play_sound(snd_caw, 10, false);
+}
+
+
+if (instance_exists(obj_house))
+{
+	image_index = 5;
 }

@@ -87,8 +87,8 @@ var button_width = 172;
 if (!global.space_pressed) {
 	draw_sprite_stretched(spr_ui_button, 0, room_width/2-(button_width/2), room_height/2-(button_height/2),button_width,button_height);
 	draw_set_halign(fa_center);
-	draw_text_with_shadow(room_width/2, room_height/2-16-4, "Press SPACE or LClick to fly!", #555555, c_black, 0.10);
-	draw_text_with_shadow(room_width/2, room_height/2-4, "DOWN or RClick to drop packages!", #555555, c_black, 0.10);
+	draw_text_with_shadow(room_width/2, room_height/2-16-4, "Press LClick or SPACE to fly!", #555555, c_black, 0.10);
+	draw_text_with_shadow(room_width/2, room_height/2-4, "RClick or DOWN to drop packages!", #555555, c_black, 0.10);
 	//draw_text_with_shadow(room_width/2, room_height/2+12, "(space to start)", #555555, c_black, 0.10);
 	
 	var clickable_text = "OK";
