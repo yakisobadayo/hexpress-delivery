@@ -1,4 +1,5 @@
 /// @description Draw fade
+display_set_gui_maximise(2,2);
 
 // Calculate the alpha based on the remaining time
 var alpha = 1 - (fade_timer_ticking / (room_speed * fade_timer));

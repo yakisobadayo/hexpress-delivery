@@ -28,6 +28,8 @@ if (mouse_check_button_pressed(mb_left) && selected != -1) {
         switch (selected) {
             case 1:
                 room_goto(room_run); // Action for option 1
+				//var goto_run = instance_create_layer(0,0,"Instances",obj_gotofade);
+				//goto_run.target_room = room_run;
                 return; // Ensure the rest of the code does not execute
             case 2:
 				game_end();

@@ -4,8 +4,7 @@ switch (game_state)
     // ────────────
     case GameState.PENDING:
         // Waiting to start
-        if (keyboard_check_pressed(vk_space))
-        {
+        if (global.space_pressed) {
 			show_debug_message("Route started!")
             spawn_managers(current_conditions);
             game_state = GameState.ACTIVE;
