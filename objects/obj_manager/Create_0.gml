@@ -184,4 +184,4 @@ show_results = false;
 
 // Music
 music_volume = 0.9;
-music_fadeout = false;
+audio_sound_gain(mus_route_3_loop_real, music_volume, 0);
