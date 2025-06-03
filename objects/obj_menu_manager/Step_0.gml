@@ -18,6 +18,9 @@ for (var i = 0; i < array_length(current_options); i++) {
     // Check if mouse is over this option
     if (mouse_x >= room_width / 3 * 2 && mouse_x <= room_width / 3 * 2 + string_width(current_options[i]) && mouse_y >= y_pos && mouse_y <= y_pos + option_height) {
         new_selected = i + 1; // Set selected option to hovered option
+		/*if (selected != new_selected) { // Only play sound if the hovered option changes
+            audio_play_sound(snd_button_hover, 10, false);
+        }*/
         break;
     }
 }

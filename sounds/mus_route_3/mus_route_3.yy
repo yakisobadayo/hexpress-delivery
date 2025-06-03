@@ -11,8 +11,8 @@
   "type": 1,
   "bitDepth": 1,
   "audioGroupId": {
-    "name": "audiogroup_default",
-    "path": "audiogroups/audiogroup_default",
+    "name": "audiogroup_music",
+    "path": "audiogroups/audiogroup_music",
   },
   "soundFile": "mus_route_3.wav",
   "duration": 49.0,

@@ -49,7 +49,6 @@ switch (game_state)
 			show_debug_message(string("Route ended! Earned: ${0}, total money: ${1}", total_payout, global.money));
 			
 			alarm_set(1, end_timer); // Cooldown before results sbow
-			music_fadeout = true;
             game_state = GameState.FINISHED;
         }
 		
