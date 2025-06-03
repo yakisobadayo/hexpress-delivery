@@ -89,6 +89,8 @@
     {"id":{"name":"spr_tileprototype","path":"sprites/spr_tileprototype/spr_tileprototype.yy",},"order":0,},
     {"id":{"name":"obj_obstacle","path":"objects/obj_obstacle/obj_obstacle.yy",},"order":1,},
     {"id":{"name":"spr_willow_zonked","path":"sprites/spr_willow_zonked/spr_willow_zonked.yy",},"order":3,},
+    {"id":{"name":"obj_toggle_music","path":"objects/obj_toggle_music/obj_toggle_music.yy",},"order":1,},
+    {"id":{"name":"obj_toggle_sfx","path":"objects/obj_toggle_sfx/obj_toggle_sfx.yy",},"order":2,},
     {"id":{"name":"obj_menu_manager","path":"objects/obj_menu_manager/obj_menu_manager.yy",},"order":0,},
     {"id":{"name":"spr_new_sky","path":"sprites/spr_new_sky/spr_new_sky.yy",},"order":0,},
     {"id":{"name":"spr_obstacle_platform","path":"sprites/spr_obstacle_platform/spr_obstacle_platform.yy",},"order":4,},
