@@ -12,7 +12,7 @@ switch (game_state)
 			show_debug_message("Route started!")
             spawn_managers(current_conditions);
             game_state = GameState.ACTIVE;
-			audio_play_sound(music_volume, 25, true, 0.9);
+			audio_play_sound(mus_route_3_loop_real, music_volume, 25, true, 0.9);
         }
         break;
 
@@ -112,11 +112,11 @@ if (displayed_money < target_money) {
 if (music_fadeout) {
     if (music_volume > 0) {
         music_volume -= 0.01; // Adjust the decrement value for desired fade-out speed
-        audio_sound_gain(mus_route_3_loop, music_volume, 0);
+        audio_sound_gain(mus_route_3_loop_real, music_volume, 0);
     } else {
         music_volume = 0;
         music_fadeout = false;
-        audio_stop_sound(mus_route_3_loop); // Stop the music once volume reaches zero
+        audio_stop_sound(mus_route_3_loop_real); // Stop the music once volume reaches zero
     }
 }
 
@@ -152,7 +152,7 @@ if (route_active && delivered_parcels >= route_length) {
 // Exit to menu
 if (keyboard_check_pressed(vk_escape)) {
 	//collected_tips = 0; // Temporary maybe?
-	audio_stop_sound(mus_route_3_loop);
+	audio_stop_sound(mus_route_3_loop_real);
     room_goto(room_menu);
 }
 

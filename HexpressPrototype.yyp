@@ -105,6 +105,7 @@
     {"id":{"name":"spr_ui_button","path":"sprites/spr_ui_button/spr_ui_button.yy",},"order":4,},
     {"id":{"name":"obj_cloud_ceiling","path":"objects/obj_cloud_ceiling/obj_cloud_ceiling.yy",},"order":1,},
     {"id":{"name":"snd_impact","path":"sounds/snd_impact/snd_impact.yy",},"order":12,},
+    {"id":{"name":"mus_route_3_loop_real","path":"sounds/mus_route_3_loop_real/mus_route_3_loop_real.yy",},"order":34,},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":0,},
     {"id":{"name":"obj_manager","path":"objects/obj_manager/obj_manager.yy",},"order":0,},
     {"id":{"name":"spr_groundbricks","path":"sprites/spr_groundbricks/spr_groundbricks.yy",},"order":3,},
