@@ -71,3 +71,8 @@ if key != noone {
         konami_index = (key == konami_pattern[0]) ? 1 : 0;
     }
 }
+
+// Fullscreen mode
+if (keyboard_check_pressed(vk_f11)) {
+    window_set_fullscreen(!window_get_fullscreen());
+}

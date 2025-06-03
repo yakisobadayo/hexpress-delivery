@@ -155,3 +155,8 @@ if (keyboard_check_pressed(vk_escape)) {
 	audio_stop_sound(mus_route_3_loop);
     room_goto(room_menu);
 }
+
+// Fullscreen mode
+if (keyboard_check_pressed(vk_f11)) {
+    window_set_fullscreen(!window_get_fullscreen());
+}
