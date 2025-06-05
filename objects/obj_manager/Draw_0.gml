@@ -55,6 +55,9 @@ else {
     bar_color = 2;
 }
 
+// Lerped stamina bar
+display_stamina = lerp(display_stamina, stamina, 0.1);
+
 // Unused
 //draw_sprite(spr_energy_bar, 0, base_x+62, base_y+4);
 //draw_sprite_part(spr_energy_bar, 0, 0, 0, 100*(stamina/100), 15, base_x+62, base_y+4);
@@ -65,7 +68,7 @@ draw_sprite(spr_ui_badge, 0, base_x, base_y);
 // Portrait
 draw_sprite(portrait, 0, base_x+5, base_y+4);
 // Energy bar
-draw_sprite_part(spr_energy_bar, bar_color, 0, 0, stamina, 15, base_x+62, base_y+4);
+draw_sprite_part(spr_energy_bar, bar_color, 0, 0, display_stamina, 15, base_x+62, base_y+4);
 // Coin
 draw_sprite(spr_coin, 0, base_x+86, base_y+26);
 // Money counter
@@ -101,7 +104,7 @@ if (!global.space_pressed) {
 	var click_base_x = room_width/2-(click_width/2);
 	var click_base_y = room_height/2+12;
 	
-	if (mouse_x >= click_base_x && click_base_x+click_width && mouse_y >= click_base_y && mouse_y <= click_base_y+click_height) {
+	if (mouse_x >= click_base_x && mouse_x <= click_base_x+click_width && mouse_y >= click_base_y && mouse_y <= click_base_y+click_height) {
 		draw_text_with_shadow(room_width/2, room_height/2+10, clickable_text, #999999, c_black, 0.10);
 		if (mouse_check_button_pressed(mb_left)) {
 		    global.space_pressed = true;

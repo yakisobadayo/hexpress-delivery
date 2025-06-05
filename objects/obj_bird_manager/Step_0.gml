@@ -11,14 +11,11 @@ if (instance_exists(obj_house))
 // Spawn projectiles when timer runs out or on key press
 if (missile_timer > 0)
 {
-	if (aim > obj_player.y)
-	{
-		aim -= 1;
-	}
-	else
-	{
-		aim += 1;
-	}
+    if (aim > obj_player.y) {
+            aim -= 1;
+    } else if (aim < obj_player.y) {
+            aim += 1;
+    }
 	if (image_index >= 4) image_index = 4;
 }
 

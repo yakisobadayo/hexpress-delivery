@@ -59,6 +59,7 @@ houses_passed = 0;                // Identical to current_section but only incre
 // STAMINA
 max_stamina = 100;
 stamina = max_stamina;
+display_stamina = stamina;
 
 // RANDOM SPAWN COOLDOWN 
 obstacle_spawn_cooldown = 0;
