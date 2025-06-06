@@ -69,6 +69,11 @@ draw_sprite(spr_ui_badge, 0, base_x, base_y);
 draw_sprite(portrait, 0, base_x+5, base_y+4);
 // Energy bar
 draw_sprite_part(spr_energy_bar, bar_color, 0, 0, display_stamina, 15, base_x+62, base_y+4);
+/*/ Fancy energy bar (back)
+draw_sprite_part(spr_energy_bar_back, bar_color, 0, 0, display_stamina, 15, base_x+62, base_y+4);
+// Fancy energy bar
+draw_sprite_part(spr_energy_bar, bar_color, 0, 0, max(display_stamina-1, 0), 15, base_x+62, base_y+4);
+*/
 // Coin
 draw_sprite(spr_coin, 0, base_x+86, base_y+26);
 // Money counter

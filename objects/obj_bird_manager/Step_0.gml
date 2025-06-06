@@ -16,6 +16,8 @@ if (missile_timer > 0)
     } else if (aim < obj_player.y) {
             aim += 1;
     }
+	
+	//aim = lerp(aim, obj_player.y, 0.025);
 	if (image_index >= 4) image_index = 4;
 }
 
