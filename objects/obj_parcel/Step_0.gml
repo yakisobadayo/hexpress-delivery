@@ -37,7 +37,9 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
 			show_debug_message(string("Delivery made, earned ${2} in tips with total_mult: {5}, hit_mult: {0} ({3}/4 hits) and dist_mult: {1} ({4})", get_hit_multiplier(), get_dist_multiplier(), total_multiplier * obj_manager.base_tip, hits, get_dist_multiplier("type"), total_multiplier));
 			obj_manager.register_delivery(total_multiplier);
 			house.success = true
+			obj_manager.register_rating(multiplier_to_stars(total_multiplier));
 			show_debug_message("Successful delivery!");
+			show_debug_message("Earned rating of " + string(multiplier_to_stars(total_multiplier)));
 			audio_play_sound(snd_cash, 10, false);
 			spawn_circle();
 			
@@ -47,10 +49,11 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
 			}
 			
 			if (get_dist_multiplier() > 1.00) {
-					obj_manager.stamina = min(obj_manager.max_stamina, obj_manager.stamina + 15);
-					audio_play_sound(snd_restore, 10, false);
-				}
+				obj_manager.stamina = min(obj_manager.max_stamina, obj_manager.stamina + 15);
+				audio_play_sound(snd_restore, 10, false);
+			}
 		} else {
+			if (house != noone) obj_manager.register_rating(0);
 			obj_manager.streak = 0;
 			audio_play_sound(snd_place, 10, false,0.8,,0.75);
 		}

@@ -38,6 +38,11 @@ target_money       = 0;
 streak = 0;
 highest_streak = 0;
 
+// RATING
+rating_history = [];
+current_reactive_rating = 4.0;	  // The rating starts at a neutral 3 stars
+reactivity_factor = 0.4;		  // How much a new score affects the average. 0.1=slow, 0.9=very fast. 0.3-0.5 is a good start.
+
 // PARCELS
 function make_parcel() {
     return {
@@ -78,6 +83,17 @@ shake_amount = 1;
 function get_streak_multiplier() {
     var mult = 1 + streak * 0.10;   // +10 % per successful delivery
     return clamp(mult, 1, 2);       // never lower than 1×, never higher than 2×
+}
+
+// Lerp (linear interpolate) the current rating towards the new one
+function register_rating(_rating) {
+	array_push(rating_history, _rating);
+    if (_rating > current_reactive_rating) {
+        current_reactive_rating = lerp(current_reactive_rating, _rating, reactivity_factor);
+    }
+    else if (_rating < 4.0) {
+        current_reactive_rating = lerp(current_reactive_rating, _rating, reactivity_factor);
+    }
 }
 
 // Play hit sound

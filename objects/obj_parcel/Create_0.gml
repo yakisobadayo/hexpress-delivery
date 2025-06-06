@@ -16,9 +16,9 @@ house = instance_nearest(x, y, obj_house);
 function get_hit_multiplier() {
     switch (hits) {
         case 4: return 1.00;
-        case 3: return 0.80;
-        case 2: return 0.55;
-        case 1: return 0.30;
+        case 3: return 0.75;
+        case 2: return 0.50;
+        case 1: return 0.25;
         default: return 0.00;
     }
 }
@@ -59,6 +59,18 @@ function get_dist_multiplier(_mode)
     }
     // Outside house bounds
     return mult;
+}
+
+
+/// Returns 0-5 stars
+function multiplier_to_stars(mult)
+{
+    if (mult >= 1.30) return 5;   // perfect porch + no damage
+    if (mult >= 1.00) return 4;   // “A+” delivery
+    if (mult >= 0.50) return 3;   // okay
+    if (mult >= 0.25) return 2;   // meh
+    if (mult >  0.00) return 1;   // barely
+    return 0;                     // total whiff
 }
 
 

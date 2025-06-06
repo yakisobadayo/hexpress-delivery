@@ -4,7 +4,7 @@
   "name": "HexpressPrototype",
   "resources": [
     {"id":{"name":"spr_tileable_city","path":"sprites/spr_tileable_city/spr_tileable_city.yy",},"order":0,},
-    {"id":{"name":"font_04b03","path":"fonts/font_04b03/font_04b03.yy",},"order":3,},
+    {"id":{"name":"fnt_04b03","path":"fonts/fnt_04b03/fnt_04b03.yy",},"order":3,},
     {"id":{"name":"spr_energy_bar_back","path":"sprites/spr_energy_bar_back/spr_energy_bar_back.yy",},"order":7,},
     {"id":{"name":"obj_mushroom","path":"objects/obj_mushroom/obj_mushroom.yy",},"order":6,},
     {"id":{"name":"snd_place","path":"sounds/snd_place/snd_place.yy",},"order":20,},
@@ -37,6 +37,7 @@
     {"id":{"name":"scr_scrolling_functions","path":"scripts/scr_scrolling_functions/scr_scrolling_functions.yy",},"order":2,},
     {"id":{"name":"snd_increment_4","path":"sounds/snd_increment_4/snd_increment_4.yy",},"order":33,},
     {"id":{"name":"spr_new_houses","path":"sprites/spr_new_houses/spr_new_houses.yy",},"order":3,},
+    {"id":{"name":"spr_ui_badge_star","path":"sprites/spr_ui_badge_star/spr_ui_badge_star.yy",},"order":8,},
     {"id":{"name":"scr_condition_init","path":"scripts/scr_condition_init/scr_condition_init.yy",},"order":1,},
     {"id":{"name":"spr_moon","path":"sprites/spr_moon/spr_moon.yy",},"order":6,},
     {"id":{"name":"spr_player_spritetest","path":"sprites/spr_player_spritetest/spr_player_spritetest.yy",},"order":3,},

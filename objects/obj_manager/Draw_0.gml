@@ -76,6 +76,20 @@ draw_sprite_part(spr_energy_bar, bar_color, 0, 0, max(display_stamina-1, 0), 15,
 */
 // Coin
 draw_sprite(spr_coin, 0, base_x+86, base_y+26);
+// Star rating
+draw_sprite(spr_ui_badge_star, 0, base_x+3, base_y+47);
+// Rating counter
+draw_set_font(fnt_04b03);
+if (array_length(rating_history) == 0) {
+    // Render “–.–” (dash, dot, dash) as the “no rating yet” placeholder
+    draw_text_with_shadow(base_x+9+1, base_y+46, "-", c_black, c_black, 0);
+	draw_text_with_shadow(base_x+9+7, base_y+46, "-", c_black, c_black, 0);
+} else {
+    // Render the real one‐decimal rating
+	draw_text_with_shadow(base_x+9, base_y+46, string_format(current_reactive_rating, 1, 1), c_black, c_black, 0.00);
+}
+// Set font for all other stuff
+draw_set_font(fnt_at01);
 // Money counter
 draw_text_with_shadow(base_x+86+10, base_y+23, string(displayed_money), c_white, c_black, 0.33);
 // Delivery counter
@@ -145,7 +159,8 @@ if (global.debug_mode) {
 		    "Packages delivered: "   + string(delivered_parcels),
 			"Package health: "       + string(current_parcel.hits) + "/" + string(current_parcel.max_hits),
 		    "Collected cash: $"      + string(collected_base_pay + collected_tips),
-			"Streak: "				 + string(get_streak_multiplier())
+			"Streak: "				 + string(get_streak_multiplier()),
+			"Rating: "				 + string(current_reactive_rating)
 		];
 	} else var lines = [];
 

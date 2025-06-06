@@ -1,7 +1,7 @@
 {
   "resourceType": "GMFont",
   "resourceVersion": "1.0",
-  "name": "font_04b03",
+  "name": "fnt_04b03",
   "hinting": 0,
   "glyphOperations": 0,
   "interpreter": 0,
