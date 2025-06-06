@@ -24,6 +24,13 @@ switch (game_state)
 		// Gradual depletion of stamina
 		stamina -= 0.0075;
 		
+		// Coffee for first time stamina dips below 33
+		if (stamina <= 33 && !first_coffee) {
+			if (!first_coffee) first_coffee = true;
+		    alarm_set(2, 5 * room_speed);
+			show_debug_message("Spawning first coffee...");
+		}
+		
 		// Random spawn ticking
 		obstacle_spawn_cooldown = max(obstacle_spawn_cooldown-1, 0);
 		coffee_spawn_cooldown = max(coffee_spawn_cooldown-1, 0);
@@ -57,9 +64,7 @@ switch (game_state)
 		var coffee_chance_per_frame = 0.0005;  // ~1 spawn every 2000 frames on average
 
 		if (coffee_spawn_cooldown == 0 && stamina <= 66 && random(1) < coffee_chance_per_frame && !instance_exists(obj_coffee)) {
-		    var y_spawn = irandom_range(64, room_height - 64);
-		    instance_create_layer(room_width, y_spawn, "Instances", obj_coffee);
-			show_debug_message("Spawned a Potion of Caffeine");
+		    spawn_coffee()
 			
 			coffee_spawn_cooldown = coffee_reset_cooldown;
 		}

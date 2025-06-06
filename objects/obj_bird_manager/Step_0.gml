@@ -8,15 +8,17 @@ if (instance_exists(obj_house))
 	image_speed = 1;
 }
 
+// AIMING
+var aim_max_dist = 75;
+var diff  = obj_player.y - aim
+var dist  = abs(diff);
+var t = smoothstep(0, aim_max_dist, dist);
+var step = 0.5 + 1.5 * t;
+
 // Spawn projectiles when timer runs out or on key press
 if (missile_timer > 0)
 {
-    if (aim > obj_player.y) {
-            aim -= 1;
-    } else if (aim < obj_player.y) {
-            aim += 1;
-    }
-	
+    aim += sign(diff) * step;
 	//aim = lerp(aim, obj_player.y, 0.025);
 	if (image_index >= 4) image_index = 4;
 }

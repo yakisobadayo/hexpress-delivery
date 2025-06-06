@@ -1,4 +1,4 @@
-if (delivered == false) {
+if (success == false) {
 	obj_manager.streak = 0;
 	obj_manager.register_rating(0);
 	//obj_manager.next_delivery();

@@ -9,7 +9,7 @@
     {"id":{"name":"obj_mushroom","path":"objects/obj_mushroom/obj_mushroom.yy",},"order":6,},
     {"id":{"name":"snd_place","path":"sounds/snd_place/snd_place.yy",},"order":20,},
     {"id":{"name":"fnt_monogram","path":"fonts/fnt_monogram/fnt_monogram.yy",},"order":1,},
-    {"id":{"name":"scr_draw_text","path":"scripts/scr_draw_text/scr_draw_text.yy",},"order":3,},
+    {"id":{"name":"scr_helpful_functions","path":"scripts/scr_helpful_functions/scr_helpful_functions.yy",},"order":3,},
     {"id":{"name":"scr_money_functions","path":"scripts/scr_money_functions/scr_money_functions.yy",},"order":5,},
     {"id":{"name":"spr_obstacle_sword","path":"sprites/spr_obstacle_sword/spr_obstacle_sword.yy",},"order":12,},
     {"id":{"name":"obj_rising_manager","path":"objects/obj_rising_manager/obj_rising_manager.yy",},"order":3,},

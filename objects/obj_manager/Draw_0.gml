@@ -82,11 +82,11 @@ draw_sprite(spr_ui_badge_star, 0, base_x+3, base_y+47);
 draw_set_font(fnt_04b03);
 if (array_length(rating_history) == 0) {
     // Render “–.–” (dash, dot, dash) as the “no rating yet” placeholder
-    draw_text_with_shadow(base_x+9+1, base_y+46, "-", c_black, c_black, 0);
-	draw_text_with_shadow(base_x+9+7, base_y+46, "-", c_black, c_black, 0);
+    draw_text_with_shadow(base_x+9+1, base_y+46, "-", #A8A8A8, c_black, 0);
+	draw_text_with_shadow(base_x+9+7, base_y+46, "-", #A8A8A8, c_black, 0);
 } else {
     // Render the real one‐decimal rating
-	draw_text_with_shadow(base_x+9, base_y+46, string_format(current_reactive_rating, 1, 1), c_black, c_black, 0.00);
+	draw_text_with_shadow(base_x+9, base_y+46, string_format(current_rating, 1, 1), c_black, c_black, 0.00);
 }
 // Set font for all other stuff
 draw_set_font(fnt_at01);
@@ -97,10 +97,10 @@ draw_text_with_shadow(base_x+86, base_y+23+10, "Delivered: " + string(delivered_
 // Parcel with shake
 draw_sprite(spr_parcel_hexpress, parcel_index, base_x+56+10+irandom_range(-shake, shake), base_y+28-2);
 
-// Streak counter
+/*/ Streak counter
 if (streak >= 2) {
 	draw_text_with_shadow(base_x+86, base_y+23+20, "Streak: " + string(streak), c_white, c_black, 0.33);
-}
+} */
 
 
 /*/ Show controls
@@ -159,8 +159,8 @@ if (global.debug_mode) {
 		    "Packages delivered: "   + string(delivered_parcels),
 			"Package health: "       + string(current_parcel.hits) + "/" + string(current_parcel.max_hits),
 		    "Collected cash: $"      + string(collected_base_pay + collected_tips),
-			"Streak: "				 + string(get_streak_multiplier()),
-			"Rating: "				 + string(current_reactive_rating)
+			"Streak mult: "			 + string(get_streak_multiplier()),
+			"Rating mult: "			 + string(get_rating_multiplier())
 		];
 	} else var lines = [];
 

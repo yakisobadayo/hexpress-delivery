@@ -40,7 +40,7 @@ highest_streak = 0;
 
 // RATING
 rating_history = [];
-current_reactive_rating = 4.0;	  // The rating starts at a neutral 3 stars
+current_rating = 4.0;	  // The rating starts at a neutral 3 stars
 reactivity_factor = 0.4;		  // How much a new score affects the average. 0.1=slow, 0.9=very fast. 0.3-0.5 is a good start.
 
 // PARCELS
@@ -72,6 +72,8 @@ coffee_spawn_cooldown = 0;
 obstacle_reset_cooldown = 900;
 coffee_reset_cooldown = 300;
 
+first_coffee = false;
+
 // SPRITE SHAKE
 shake = 0;
 shake_amount = 1;
@@ -85,14 +87,26 @@ function get_streak_multiplier() {
     return clamp(mult, 1, 2);       // never lower than 1×, never higher than 2×
 }
 
+// Return tip multiplier based on current rating
+// if rating ≥ 4 ★ :   1 + (rating - 4)
+// else             :   rating / 4
+function get_rating_multiplier() {
+	var mult = round(current_rating * 10) / 10; // Round to 1dp
+	
+    return (mult >= 4)
+           ? (1 + (mult - 4))
+           : (mult / 4);
+}
+
+
 // Lerp (linear interpolate) the current rating towards the new one
 function register_rating(_rating) {
 	array_push(rating_history, _rating);
-    if (_rating > current_reactive_rating) {
-        current_reactive_rating = lerp(current_reactive_rating, _rating, reactivity_factor);
+    if (_rating > current_rating) {
+        current_rating = lerp(current_rating, _rating, reactivity_factor);
     }
     else if (_rating < 4.0) {
-        current_reactive_rating = lerp(current_reactive_rating, _rating, reactivity_factor);
+        current_rating = lerp(current_rating, _rating, reactivity_factor);
     }
 }
 
@@ -127,6 +141,14 @@ function house_spawn() {
     current_section += 1;         // advance to the next slot
 }
 
+function spawn_coffee() {
+	var y_spawn = irandom_range(64, room_height - 64);
+	instance_create_layer(room_width, y_spawn, "Instances", obj_coffee);
+	show_debug_message("Spawned a Potion of Caffeine");
+	
+	if (!first_coffee) first_coffee = true;
+}
+
 // Trigger for dropping parcel (passes data to parcel)
 function drop_parcel(_x, _y) {
 	instance_create_layer(_x, _y, "Instances", obj_parcel, current_parcel);
@@ -135,22 +157,22 @@ function drop_parcel(_x, _y) {
 
 // Registers a parcel as delivered + adds money to collected
 function register_delivery(_multiplier) {
-	var streak_mult   = get_streak_multiplier();
+	var rating_mult   = get_rating_multiplier();
 	var current_money = collected_base_pay + collected_tips;
-	var tip_money     = round(base_tip * _multiplier * streak_mult);
+	var tip_money     = round(base_tip * _multiplier * rating_mult);
 	
 	delivered_parcels  += 1;
 	collected_base_pay += base_pay;
 	collected_tips     += tip_money;
 	
 	show_debug_message(string(
-        "Earned ${0} with base ${1} + tips ${2} (streak_mult {4}×)",
+        "Earned ${0} with base ${1} + tips ${2} (rating {5}, rating_mult {4}×)",
         base_pay + tip_money,
         base_pay,
         tip_money,
         _multiplier,
-        streak_mult,
-        streak
+        rating_mult,
+        current_rating
     ));
 	
 	// Streak

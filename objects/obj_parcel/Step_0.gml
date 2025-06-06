@@ -35,9 +35,9 @@ if place_meeting(x, y + y_velocity, obj_boundary) {
 			
 			// Massive debug message
 			show_debug_message(string("Delivery made, earned ${2} in tips with total_mult: {5}, hit_mult: {0} ({3}/4 hits) and dist_mult: {1} ({4})", get_hit_multiplier(), get_dist_multiplier(), total_multiplier * obj_manager.base_tip, hits, get_dist_multiplier("type"), total_multiplier));
+			obj_manager.register_rating(multiplier_to_stars(total_multiplier));
 			obj_manager.register_delivery(total_multiplier);
 			house.success = true
-			obj_manager.register_rating(multiplier_to_stars(total_multiplier));
 			show_debug_message("Successful delivery!");
 			show_debug_message("Earned rating of " + string(multiplier_to_stars(total_multiplier)));
 			audio_play_sound(snd_cash, 10, false);

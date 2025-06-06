@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_draw_text",
+  "name": "scr_helpful_functions",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
