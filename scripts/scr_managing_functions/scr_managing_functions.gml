@@ -9,16 +9,50 @@ function roll_section()
 
     array_push(_current, _terrain[ irandom(array_length(_terrain) - 1) ]);
 
-    // --- 2. OPTIONAL HAZARD (50 % chance) ---------------------------------
-	// returns 0 or 1 → 1 means “add a hazard” (and never in the first/second section)
-    if global.debug_mode {
-		var _hazards = global.routeConditionsSecondary;
-        array_push(_current, _hazards[ irandom(array_length(_hazards) - 1) ]);
-	} else
-	if (irandom(1) && obj_manager.current_section > 1)
-    {
-        var _hazards = global.routeConditionsSecondary;
-        array_push(_current, _hazards[ irandom(array_length(_hazards) - 1) ]);
+    // --- 2. OPTIONAL HAZARDS ----------------------------------------------
+    // After the first two sections the chance of spawning a secondary
+    // condition ("hazard") ramps from 50% up to 100% by section 50.  Once the
+    // player reaches section 50, an additional hazard can spawn.  The chance of
+    // spawning this third condition starts small (10% at section 50) and grows
+    // linearly to 50% by section 100.
+    var _hazards = global.routeConditionsSecondary;
+
+    // Primary hazard chance
+    var _hazard_chance = 0;
+    var _sec = obj_manager.current_section;
+
+    if (_sec > 1) {
+        // Lerp from 0.5 at section 2 to 1.0 at section 50
+        var _t = clamp((_sec - 2) / (50 - 2), 0, 1);
+        _hazard_chance = 0.5 + 0.5 * _t;
+    }
+
+    if (global.debug_mode) _hazard_chance = 1;
+
+    var _added_first = false;
+    if (random(1) < _hazard_chance) {
+        var _h1 = _hazards[ irandom(array_length(_hazards) - 1) ];
+        array_push(_current, _h1);
+        _added_first = true;
+
+        // Chance for an additional hazard after section 50
+        var _third_chance = 0;
+        if (_sec >= 50) {
+            var _t2 = clamp((_sec - 50) / (100 - 50), 0, 1);
+            _third_chance = 0.1 + 0.4 * _t2; // 10% at 50 → 50% at 100
+            if (global.debug_mode) _third_chance = 1;
+            if (random(1) < _third_chance) {
+                var _h2 = _hazards[ irandom(array_length(_hazards) - 1) ];
+                if (array_length(_hazards) > 1) {
+                    var _tries = 10;
+                    while (_h2 == _h1 && _tries > 0) {
+                        _h2 = _hazards[ irandom(array_length(_hazards) - 1) ];
+                        _tries -= 1;
+                    }
+                }
+                array_push(_current, _h2);
+            }
+        }
     }
 
     // --- Debug print ------------------------------------------------------
