@@ -4,9 +4,12 @@ y_velocity = 0;
 booster = false;
 stunned = false;
 i_frame = false;
-grounded = false;
 colliding = false;
 in_house_bounds = false;
+
+grounded = false;
+was_grounded  = false;       // remembers last-frame state
+land_min_speed = 2;          // tweak so tiny hops don’t “thud”
 
 
 
