@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSound",
   "resourceVersion": "1.0",
-  "name": "snd_land",
+  "name": "snd_yawn_2",
   "conversionMode": 0,
   "compression": 0,
   "volume": 1.0,
@@ -14,8 +14,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snd_land.wav",
-  "duration": 0.543265,
+  "soundFile": "snd_yawn_2.wav",
+  "duration": 1.692313,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

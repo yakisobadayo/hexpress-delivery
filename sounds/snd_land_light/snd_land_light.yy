@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSound",
   "resourceVersion": "1.0",
-  "name": "snd_land",
+  "name": "snd_land_light",
   "conversionMode": 0,
   "compression": 0,
   "volume": 1.0,
@@ -14,7 +14,7 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snd_land.wav",
+  "soundFile": "snd_land_light.wav",
   "duration": 0.543265,
   "parent": {
     "name": "Sounds",

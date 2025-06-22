@@ -58,15 +58,16 @@ if (place_meeting(x, y+y_velocity, obj_boundary)) {
 // Check if on ground
 grounded = place_meeting(x, y + 1, obj_boundary);
 
-// ─── Landing SFX ────────────────────────────────────────────
+/*/ ─── Landing SFX ────────────────────────────────────────────
 if ( grounded && !was_grounded )  // just touched down THIS frame
 {
     // optional: only thud for “real” falls
     if ( abs(fall_speed_prev) >= land_min_speed )
     {
-        audio_play_sound(snd_land, 10, false, 1, 0, random_range(0.80, 1.00));
+        audio_play_sound(snd_land_light, 10, false, 1, 0, 0.7);
     }
 }
+*/
 
 // CRASH!
 if (isColliding) {
@@ -128,7 +129,7 @@ else
     sparkle_timer = 0;
 }
 
-// Thruster sound
+/*/ Thruster sound
 if (booster)
 {
     if !audio_is_playing(snd_booster)
