@@ -5,10 +5,6 @@ var trigger_drop = keyboard_check_pressed(vk_down) || mouse_check_button_pressed
 // Register if house exists
 house = instance_nearest(x, y, obj_house);
 
-// Grounded stuff
-was_grounded   = grounded;   // snapshot BEFORE we recalc it
-fall_speed_prev = y_velocity;// grab last frame’s vertical speed
-
 if obj_manager.game_state == GameState.ACTIVE {
 	// Check if space is held down for boosting
 	booster = trigger_boost && !stunned;
@@ -57,17 +53,6 @@ if (place_meeting(x, y+y_velocity, obj_boundary)) {
 
 // Check if on ground
 grounded = place_meeting(x, y + 1, obj_boundary);
-
-/*/ ─── Landing SFX ────────────────────────────────────────────
-if ( grounded && !was_grounded )  // just touched down THIS frame
-{
-    // optional: only thud for “real” falls
-    if ( abs(fall_speed_prev) >= land_min_speed )
-    {
-        audio_play_sound(snd_land_light, 10, false, 1, 0, 0.7);
-    }
-}
-*/
 
 // CRASH!
 if (isColliding) {
@@ -127,17 +112,4 @@ else
 {
     // reset so first frame of next boost spawns instantly
     sparkle_timer = 0;
-}
-
-/*/ Thruster sound
-if (booster)
-{
-    if !audio_is_playing(snd_booster)
-    {
-        audio_play_sound(snd_booster, 5, true, , , 0.8);
-    }
-}
-else
-{
-    audio_stop_sound(snd_booster);
 }
