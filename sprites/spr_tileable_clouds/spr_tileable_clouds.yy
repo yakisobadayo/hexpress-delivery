@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_tileable_clouds",
   "bboxMode":0,
   "bbox_bottom":327,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"5bb67a9a-c79f-425b-a919-53fa29d50db7","name":"5bb67a9a-c79f-425b-a919-53fa29d50db7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5bb67a9a-c79f-425b-a919-53fa29d50db7","name":"5bb67a9a-c79f-425b-a919-53fa29d50db7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

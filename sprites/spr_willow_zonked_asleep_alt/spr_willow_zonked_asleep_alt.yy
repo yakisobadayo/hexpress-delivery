@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_willow_zonked_asleep_alt",
   "bboxMode":0,
   "bbox_bottom":42,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"e2c7ad5d-a4d1-485f-b338-f3176c4341ee","name":"e2c7ad5d-a4d1-485f-b338-f3176c4341ee","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e2c7ad5d-a4d1-485f-b338-f3176c4341ee","name":"e2c7ad5d-a4d1-485f-b338-f3176c4341ee","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

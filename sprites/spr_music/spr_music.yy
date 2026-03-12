@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_music",
   "bboxMode":0,
   "bbox_bottom":27,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"7eeb45c2-c2be-4658-ac02-4d839f1f5f3c","name":"7eeb45c2-c2be-4658-ac02-4d839f1f5f3c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"7e53b947-2209-4dde-b0a8-804228bad507","name":"7e53b947-2209-4dde-b0a8-804228bad507","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"7eeb45c2-c2be-4658-ac02-4d839f1f5f3c","name":"7eeb45c2-c2be-4658-ac02-4d839f1f5f3c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"7e53b947-2209-4dde-b0a8-804228bad507","name":"7e53b947-2209-4dde-b0a8-804228bad507","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

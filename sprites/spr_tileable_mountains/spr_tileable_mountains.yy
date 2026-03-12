@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_tileable_mountains",
   "bboxMode":0,
   "bbox_bottom":327,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"122c884a-d9c5-4436-b269-f7464b8fd324","name":"122c884a-d9c5-4436-b269-f7464b8fd324","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"122c884a-d9c5-4436-b269-f7464b8fd324","name":"122c884a-d9c5-4436-b269-f7464b8fd324","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

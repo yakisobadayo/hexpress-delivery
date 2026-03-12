@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_willow_tired",
   "bboxMode":0,
   "bbox_bottom":42,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"9b30a5f2-57a2-4bf4-b370-3f4c7dab5703","name":"9b30a5f2-57a2-4bf4-b370-3f4c7dab5703","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"9b30a5f2-57a2-4bf4-b370-3f4c7dab5703","name":"9b30a5f2-57a2-4bf4-b370-3f4c7dab5703","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

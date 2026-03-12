@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_tileable_ground",
   "bboxMode":0,
   "bbox_bottom":327,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"064911dd-36e7-4e84-b969-cd0aa281adf1","name":"064911dd-36e7-4e84-b969-cd0aa281adf1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"064911dd-36e7-4e84-b969-cd0aa281adf1","name":"064911dd-36e7-4e84-b969-cd0aa281adf1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

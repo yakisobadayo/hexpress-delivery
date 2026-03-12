@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_obstacle_sword",
   "bboxMode":0,
   "bbox_bottom":127,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"0299bff4-d939-493d-ab95-453117bca9b0","name":"0299bff4-d939-493d-ab95-453117bca9b0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"07fd0e5d-1ecf-4ef1-82b3-b855ca31b6bc","name":"07fd0e5d-1ecf-4ef1-82b3-b855ca31b6bc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"0299bff4-d939-493d-ab95-453117bca9b0","name":"0299bff4-d939-493d-ab95-453117bca9b0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"07fd0e5d-1ecf-4ef1-82b3-b855ca31b6bc","name":"07fd0e5d-1ecf-4ef1-82b3-b855ca31b6bc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

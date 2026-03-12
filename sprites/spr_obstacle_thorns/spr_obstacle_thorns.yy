@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_obstacle_thorns",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"f5e8c6ef-64e0-4c25-ad89-4c9837fb48c8","name":"f5e8c6ef-64e0-4c25-ad89-4c9837fb48c8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f5e8c6ef-64e0-4c25-ad89-4c9837fb48c8","name":"f5e8c6ef-64e0-4c25-ad89-4c9837fb48c8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":8,
   "gridY":16,

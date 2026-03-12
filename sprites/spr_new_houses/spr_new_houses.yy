@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_new_houses",
   "bboxMode":0,
   "bbox_bottom":339,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"56df86bf-b918-4660-9def-37713e88623e","name":"56df86bf-b918-4660-9def-37713e88623e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"56df86bf-b918-4660-9def-37713e88623e","name":"56df86bf-b918-4660-9def-37713e88623e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

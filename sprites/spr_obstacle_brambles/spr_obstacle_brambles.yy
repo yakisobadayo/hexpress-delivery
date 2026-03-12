@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_obstacle_brambles",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"9bc14e13-4bb0-49a5-b0e6-bf50dc56eb37","name":"9bc14e13-4bb0-49a5-b0e6-bf50dc56eb37","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"9bc14e13-4bb0-49a5-b0e6-bf50dc56eb37","name":"9bc14e13-4bb0-49a5-b0e6-bf50dc56eb37","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":8,
   "gridY":16,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_obstaclediagonal",
   "bboxMode":0,
   "bbox_bottom":127,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"5ee08ec2-97d2-4a00-bdc9-b71aed908d92","name":"5ee08ec2-97d2-4a00-bdc9-b71aed908d92","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5ee08ec2-97d2-4a00-bdc9-b71aed908d92","name":"5ee08ec2-97d2-4a00-bdc9-b71aed908d92","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
