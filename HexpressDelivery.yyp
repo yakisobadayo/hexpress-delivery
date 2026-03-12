@@ -51,7 +51,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.13.1.193",
+    "IDEVersion":"2024.14.3.217",
   },
   "name":"HexpressDelivery",
   "resources":[
@@ -112,6 +112,7 @@
     {"id":{"name":"snd_kaching","path":"sounds/snd_kaching/snd_kaching.yy",},},
     {"id":{"name":"snd_place","path":"sounds/snd_place/snd_place.yy",},},
     {"id":{"name":"snd_restore","path":"sounds/snd_restore/snd_restore.yy",},},
+    {"id":{"name":"snd_yawn","path":"sounds/snd_yawn/snd_yawn.yy",},},
     {"id":{"name":"spr_bird","path":"sprites/spr_bird/spr_bird.yy",},},
     {"id":{"name":"spr_car","path":"sprites/spr_car/spr_car.yy",},},
     {"id":{"name":"spr_cloud_ceiling","path":"sprites/spr_cloud_ceiling/spr_cloud_ceiling.yy",},},
