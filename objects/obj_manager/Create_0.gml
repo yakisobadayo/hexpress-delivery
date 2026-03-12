@@ -78,9 +78,6 @@ first_coffee = false;
 shake = 0;
 shake_amount = 1;
 
-// SOUND THINGS
-yawn_played   = false;
-
 
 // FUNCTION INIT
 // Return tip multiplier based on current streak

@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_money_functions",
-  "isDnD": false,
-  "isCompatibility": false,
-  "parent": {
-    "name": "Scripts",
-    "path": "folders/Scripts.yy",
+  "$GMScript":"v1",
+  "%Name":"scr_money_functions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_money_functions",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

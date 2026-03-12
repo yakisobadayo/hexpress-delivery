@@ -113,18 +113,6 @@ if (displayed_money < target_money) {
     audio_stop_sound(snd_increment);
 }
 
-// SOUND STUFF
-if (stamina < 10) {
-    // We’re below the threshold: did we already yawn?
-    if (!yawn_played && !obj_player.i_frame) {
-        audio_play_sound(snd_yawn, 10, false, 1.2, , 0.8);
-        yawn_played = true;    // lock it so we only yawn once
-    }
-} else {
-    // We’re back above 33, reset the gate so a future dip can yawn again
-    yawn_played = false;
-}
-
 
 /*/ Change sections (with for loop)
 while (section_timer_ticking <= 0) {
