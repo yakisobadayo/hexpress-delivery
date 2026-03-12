@@ -80,6 +80,13 @@ if (place_meeting(x, y+1, obj_obstaclehori) && !colliding) {
 	audio_play_sound(snd_boing, 10, false, 0.5);
 }
 
+// Yawn
+var current_stamina = obj_manager.stamina;
+if (last_stamina >= 33 && current_stamina < 33) {
+    audio_play_sound(snd_yawn, 10, false);
+}
+last_stamina = current_stamina;
+
 // Update the player's vertical position
 y += y_velocity;
 

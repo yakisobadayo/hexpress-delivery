@@ -8,6 +8,8 @@ grounded = false;
 colliding = false;
 in_house_bounds = false;
 
+last_stamina = 1.0;
+
 
 
 // FUNCTIONS
