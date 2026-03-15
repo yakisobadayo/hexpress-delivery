@@ -42,3 +42,11 @@ if (instance_exists(obj_house))
 {
 	image_index = 5;
 }
+
+// Rare poop drop
+poop_timer -= global.gamespeed;
+if (poop_timer <= 0) {
+    var _px = clamp(obj_player.x + irandom_range(-32, 32), 32, room_width - 32);
+    instance_create_layer(_px, -16, "Instances", obj_bird_poop);
+    poop_timer = irandom_range(800, 1400);
+}
