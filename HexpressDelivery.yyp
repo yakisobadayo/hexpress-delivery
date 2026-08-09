@@ -126,6 +126,7 @@
     {"id":{"name":"spr_groundbricks","path":"sprites/spr_groundbricks/spr_groundbricks.yy",},},
     {"id":{"name":"spr_house_porch_hitbox","path":"sprites/spr_house_porch_hitbox/spr_house_porch_hitbox.yy",},},
     {"id":{"name":"spr_house","path":"sprites/spr_house/spr_house.yy",},},
+    {"id":{"name":"spr_iron_fence","path":"sprites/spr_iron_fence/spr_iron_fence.yy",},},
     {"id":{"name":"spr_logo","path":"sprites/spr_logo/spr_logo.yy",},},
     {"id":{"name":"spr_menu_sky","path":"sprites/spr_menu_sky/spr_menu_sky.yy",},},
     {"id":{"name":"spr_moon","path":"sprites/spr_moon/spr_moon.yy",},},

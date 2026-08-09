@@ -58,6 +58,7 @@
     {"name":"spr_ground","order":2,"path":"sprites/spr_ground/spr_ground.yy",},
     {"name":"spr_groundbricks","order":3,"path":"sprites/spr_groundbricks/spr_groundbricks.yy",},
     {"name":"spr_house","order":2,"path":"sprites/spr_house/spr_house.yy",},
+    {"name":"spr_iron_fence","order":7,"path":"sprites/spr_iron_fence/spr_iron_fence.yy",},
     {"name":"spr_menu_sky","order":9,"path":"sprites/spr_menu_sky/spr_menu_sky.yy",},
     {"name":"spr_moon","order":6,"path":"sprites/spr_moon/spr_moon.yy",},
     {"name":"spr_mushroom_platform","order":8,"path":"sprites/spr_mushroom_platform/spr_mushroom_platform.yy",},
