@@ -19,6 +19,8 @@
   "height":360,
   "HTile":false,
   "layers":[
+    {"$GMImageLayer":"","%Name":"9857babe-e124-4402-9946-284b00cd98ff","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"9857babe-e124-4402-9946-284b00cd98ff","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"52587134-1c99-4578-b30c-3bb457dc9672","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"52587134-1c99-4578-b30c-3bb457dc9672","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"7af6fc80-4422-4f1c-9947-fa9499ea2438","blendMode":0,"displayName":"default","isLocked":false,"name":"7af6fc80-4422-4f1c-9947-fa9499ea2438","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_new_houses",
