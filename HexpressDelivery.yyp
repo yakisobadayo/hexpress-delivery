@@ -153,6 +153,7 @@
     {"id":{"name":"spr_obstacle","path":"sprites/spr_obstacle/spr_obstacle.yy",},},
     {"id":{"name":"spr_obstaclediagonal","path":"sprites/spr_obstaclediagonal/spr_obstaclediagonal.yy",},},
     {"id":{"name":"spr_obstaclevert","path":"sprites/spr_obstaclevert/spr_obstaclevert.yy",},},
+    {"id":{"name":"spr_parcel_hexpress_new","path":"sprites/spr_parcel_hexpress_new/spr_parcel_hexpress_new.yy",},},
     {"id":{"name":"spr_parcel_hexpress","path":"sprites/spr_parcel_hexpress/spr_parcel_hexpress.yy",},},
     {"id":{"name":"spr_parcel_icon","path":"sprites/spr_parcel_icon/spr_parcel_icon.yy",},},
     {"id":{"name":"spr_parcel_marker","path":"sprites/spr_parcel_marker/spr_parcel_marker.yy",},},

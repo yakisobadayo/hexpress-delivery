@@ -82,6 +82,7 @@
     {"name":"spr_obstacle_thorns","order":13,"path":"sprites/spr_obstacle_thorns/spr_obstacle_thorns.yy",},
     {"name":"spr_obstaclediagonal","order":4,"path":"sprites/spr_obstaclediagonal/spr_obstaclediagonal.yy",},
     {"name":"spr_obstaclevert","order":1,"path":"sprites/spr_obstaclevert/spr_obstaclevert.yy",},
+    {"name":"spr_parcel_hexpress_new","order":7,"path":"sprites/spr_parcel_hexpress_new/spr_parcel_hexpress_new.yy",},
     {"name":"spr_parcel_hexpress","order":6,"path":"sprites/spr_parcel_hexpress/spr_parcel_hexpress.yy",},
     {"name":"spr_parcel_icon","order":1,"path":"sprites/spr_parcel_icon/spr_parcel_icon.yy",},
     {"name":"spr_parcel_marker","order":2,"path":"sprites/spr_parcel_marker/spr_parcel_marker.yy",},

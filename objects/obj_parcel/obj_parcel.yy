@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_parcel_hexpress",
-    "path":"sprites/spr_parcel_hexpress/spr_parcel_hexpress.yy",
+    "name":"spr_parcel_hexpress_new",
+    "path":"sprites/spr_parcel_hexpress_new/spr_parcel_hexpress_new.yy",
   },
   "spriteMaskId":null,
   "visible":true,

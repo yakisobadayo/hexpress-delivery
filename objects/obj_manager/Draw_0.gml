@@ -95,7 +95,7 @@ draw_text_with_shadow(base_x+86+10, base_y+23, string(displayed_money), c_white,
 // Delivery counter
 draw_text_with_shadow(base_x+86, base_y+23+10, "Delivered: " + string(delivered_parcels), c_white, c_black, 0.33);
 // Parcel with shake
-draw_sprite(spr_parcel_hexpress, parcel_index, base_x+56+10+irandom_range(-shake, shake), base_y+28-2);
+draw_sprite(spr_parcel_hexpress_new, parcel_index, base_x+56+10+irandom_range(-shake, shake), base_y+28-2);
 
 /*/ Streak counter
 if (streak >= 2) {
