@@ -87,6 +87,7 @@
     {"id":{"name":"obj_rising_manager","path":"objects/obj_rising_manager/obj_rising_manager.yy",},},
     {"id":{"name":"obj_toggle_music","path":"objects/obj_toggle_music/obj_toggle_music.yy",},},
     {"id":{"name":"obj_toggle_sfx","path":"objects/obj_toggle_sfx/obj_toggle_sfx.yy",},},
+    {"id":{"name":"obj_wind_manager","path":"objects/obj_wind_manager/obj_wind_manager.yy",},},
     {"id":{"name":"obj_witch","path":"objects/obj_witch/obj_witch.yy",},},
     {"id":{"name":"room_menu","path":"rooms/room_menu/room_menu.yy",},},
     {"id":{"name":"room_run","path":"rooms/room_run/room_run.yy",},},

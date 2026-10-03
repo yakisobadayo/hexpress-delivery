@@ -36,6 +36,11 @@ global.conditionDef_Witches = {
     manager: obj_car_manager,
 };
 
+global.conditionDef_Gusts = {
+	type: "Gusts",
+    manager: obj_wind_manager,
+};
+
 // Now, create the list your manager will actually use, containing these structs:
 global.routeConditionsPrimary = [
     global.conditionDef_Horizontal,
@@ -47,7 +52,8 @@ global.routeConditionsSecondary = [
     global.conditionDef_Birds,
     global.conditionDef_Rising,
 	global.conditionDef_Cars,
-	global.conditionDef_Witches
+	global.conditionDef_Witches,
+	global.conditionDef_Gusts
 ];
 
 // You no longer need the old global.obstacle_types array
