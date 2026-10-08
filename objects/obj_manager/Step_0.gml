@@ -18,6 +18,9 @@ switch (game_state)
 
     // ────────────
     case GameState.ACTIVE:
+        // Ease towards the current section's speed
+        global.gamespeed = lerp(global.gamespeed, target_gamespeed, speed_ease);
+
         // Section ticking
         section_timer_ticking -= global.gamespeed;
 		
@@ -45,6 +48,9 @@ switch (game_state)
             spawn_managers(current_conditions);
 
             section_timer_ticking += section_timer;
+
+            // Each new section speeds the world up
+            target_gamespeed = min(target_gamespeed + speed_per_section, max_gamespeed);
         }
 
         // 2) Check for route completion
@@ -99,6 +105,13 @@ switch (game_state)
             //room_goto(room_results);
         }
         break;
+}
+
+/// PARALLAX
+/// Keep background layers in step with the world (Ground matches gamespeed exactly)
+var _scale = speed_scale();
+for (var i = 0; i < array_length(parallax_layers); i++) {
+	layer_hspeed(parallax_layers[i].id, parallax_layers[i].base_hspeed * _scale);
 }
 
 /// MONEY INCREMENT

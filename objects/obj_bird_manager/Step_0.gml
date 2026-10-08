@@ -13,7 +13,7 @@ var aim_max_dist = 75;
 var diff  = obj_player.y - aim
 var dist  = abs(diff);
 var t = smoothstep(0, aim_max_dist, dist);
-var step = 0.5 + 1.5 * t;
+var step = (0.5 + 1.5 * t) * vertical_scale();
 
 // Spawn projectiles when timer runs out or on key press
 if (missile_timer > 0)
@@ -32,7 +32,7 @@ if (missile_timer <= 0)
 	instance_create_layer(room_width, aim, "Instances", obj_bird);
 	instance_create_layer(room_width+16, aim-16, "Instances", obj_bird);
 	instance_create_layer(room_width+16+16, aim-16-16, "Instances", obj_bird);
-	missile_timer = 150 * spacing_modifier;
+	missile_timer += 150 * spacing_modifier;
 	aim = obj_player.y;
 	//audio_play_sound(snd_caw, 10, false);
 }

@@ -1,4 +1,4 @@
 auto_scroll();
-y -= risespeed;
+y -= risespeed * speed_scale();
 
 destroy_offscreen();

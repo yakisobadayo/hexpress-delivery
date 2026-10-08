@@ -13,5 +13,5 @@ if (car_timer <= 0)
 		var car = instance_create_layer(room_width, 32+irandom(4), "Instances", obj_witch);
 	}
 	car.scroll_speed = irandom_range(1,3);
-	car_timer = irandom_range(150,450) * spacing_modifier;
+	car_timer += irandom_range(150,450) * spacing_modifier;
 }

@@ -4,7 +4,8 @@ auto_scroll();
 house = instance_nearest(x, y, obj_house);
 
 // Calculate velocity
-y_velocity += grav;
+var _vs = vertical_scale();
+y_velocity += grav * _vs * _vs;
 
 // Particle system to current position
 part_system_position(ps_id, (bbox_left+bbox_right)*0.5, bbox_top);

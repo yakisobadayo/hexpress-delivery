@@ -18,5 +18,5 @@ if (obstacle_timer <= 0)
 	}
 	
 	// Reset the timer (this value represents a "distance" rather than fixed time)
-	obstacle_timer = 100 * spacing_modifier;
+	obstacle_timer += 100 * spacing_modifier;
 }

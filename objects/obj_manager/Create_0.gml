@@ -11,8 +11,25 @@ enum GameState {
 
 // ROUTE
 game_state = GameState.PENDING;
-global.gamespeed = 4;// How fast the world moves
+global.gamespeed = BASE_GAMESPEED;// How fast the world moves
 spacing_modifier = 3;// Modifies spacing between spawns
+
+// SPEED-UP
+target_gamespeed  = BASE_GAMESPEED; // The speed global.gamespeed eases towards
+speed_per_section = 0.25;           // How much faster each new section gets
+max_gamespeed     = 8;              // Speed cap
+speed_ease        = 0.01;           // How quickly gamespeed catches up to target (0-1)
+
+// PARALLAX
+// Room editor hspeeds are the speeds at BASE_GAMESPEED; rescaled every step
+parallax_layers = [];
+var _parallax_names = ["Ground", "CloudCeiling", "Wall", "Trees", "Houses", "City", "Clouds", "Background"];
+for (var i = 0; i < array_length(_parallax_names); i++) {
+	var _layer = layer_get_id(_parallax_names[i]);
+	if (_layer != -1) {
+		array_push(parallax_layers, { id: _layer, base_hspeed: layer_get_hspeed(_layer) });
+	}
+}
 
 section_timer = 3200;// How long a section of the route lasts
 section_timer_ticking = section_timer;

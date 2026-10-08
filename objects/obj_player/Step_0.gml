@@ -5,6 +5,10 @@ var trigger_drop = keyboard_check_pressed(vk_down) || mouse_check_button_pressed
 // Register if house exists
 house = instance_nearest(x, y, obj_house);
 
+// Fast-forward physics with the world: velocities × vs, accelerations × vs²
+var _vs = vertical_scale();
+var _grav = grav * _vs * _vs;
+
 if obj_manager.game_state == GameState.ACTIVE {
 	// Check if space is held down for boosting
 	booster = trigger_boost && !stunned;
@@ -24,10 +28,10 @@ if (house != noone && house.delivered == false && obj_manager.game_state == Game
 // Adjust vertical velocity based on booster state
 if (booster) {
     // upward thrust gets weaker as stamina drains
-    y_velocity -= grav * stamina_mod();
+    y_velocity -= _grav * stamina_mod();
 } else {
     // gravity feels stronger as stamina drains
-    y_velocity += grav * (2 - stamina_mod());   // 1.0→1.5
+    y_velocity += _grav * (2 - stamina_mod());   // 1.0→1.5
 }
 
 // Check collision state
@@ -60,12 +64,12 @@ if (isColliding) {
 		get_hit();
 		// Bounce (car)
 		if place_meeting(x, y+y_velocity, obj_car) {
-			y_velocity = -6;
+			y_velocity = -6 * _vs;
 		}
 		
 		// Launch down (witch)
 		if place_meeting(x, y+y_velocity, obj_witch) {
-			y_velocity = 1.75;
+			y_velocity = 1.75 * _vs;
 		}
     }
     colliding = true;
@@ -76,7 +80,7 @@ else {
 
 // Mushroom boing
 if (place_meeting(x, y+1, obj_obstaclehori) && !colliding) {
-	y_velocity = -5;
+	y_velocity = -5 * _vs;
 	audio_play_sound(snd_boing, 10, false, 0.5);
 }
 
@@ -100,6 +104,9 @@ var _y = y+9;
 
 part_emitter_region(broom_ps, pemit_broom, _x, _x, _y, _y, ps_shape_rectangle, ps_distr_linear);
 
+// Sparkles drift left with the world
+part_type_speed(ptype_broom, global.gamespeed, global.gamespeed, 0, 0);
+
 // Turn on/off stream based on booster
 if (booster)
 {
@@ -111,7 +118,7 @@ if (booster)
         part_emitter_burst(broom_ps, pemit_broom, ptype_broom, 1);
 
         // reset for next burst
-        sparkle_timer = sparkle_interval;
+        sparkle_timer = sparkle_interval / speed_scale();
         //   – or –  sparkle_timer = irandom_range(3,7)  // slight randomness
     }
 }

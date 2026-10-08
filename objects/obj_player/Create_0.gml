@@ -14,12 +14,13 @@ last_stamina = 1.0;
 
 // FUNCTIONS
 // Stun & knockback (lose control)
-function stun(_stun_time, _i_time) { // Time is in seconds
+function stun(_stun_time, _i_time) { // Time is in seconds (at BASE_GAMESPEED, shortened as the world speeds up)
+	var _vs = vertical_scale();
 	if (y_velocity < 0) y_velocity = 0;
 	stunned = true;
-    alarm_set(0, _stun_time * room_speed); // stun
+    alarm_set(0, max(1, round(_stun_time * room_speed / _vs))); // stun
 	i_frame = true;
-	alarm_set(1, _i_time * room_speed);    // i-frame
+	alarm_set(1, max(1, round(_i_time * room_speed / _vs)));    // i-frame
 }
 
 // Trigger when hitting obstacle
@@ -56,7 +57,7 @@ ptype_broom = part_type_create();
 part_type_sprite(ptype_broom, spr_sparkle_bw_anim, true, true, false);
 part_type_size(ptype_broom, 1, 1, 0, 0);
 part_type_scale(ptype_broom, 1, 1);
-part_type_speed(ptype_broom, 4, 4, 0, 0);
+part_type_speed(ptype_broom, BASE_GAMESPEED, BASE_GAMESPEED, 0, 0); // Updated in Step to match gamespeed
 part_type_direction(ptype_broom, 175, 185, 0, 0);
 part_type_gravity(ptype_broom, 0, 270);
 part_type_orientation(ptype_broom, 0, 0, 0, 0, false);
