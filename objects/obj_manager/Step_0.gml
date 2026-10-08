@@ -18,8 +18,8 @@ switch (game_state)
 
     // ────────────
     case GameState.ACTIVE:
-        // Ease towards the current section's speed
-        global.gamespeed = lerp(global.gamespeed, target_gamespeed, speed_ease);
+        // Constant speed-up
+        global.gamespeed = min(global.gamespeed + speed_up_per_minute / (60 * game_get_speed(gamespeed_fps)), max_gamespeed);
 
         // Section ticking
         section_timer_ticking -= global.gamespeed;
@@ -48,9 +48,6 @@ switch (game_state)
             spawn_managers(current_conditions);
 
             section_timer_ticking += section_timer;
-
-            // Each new section speeds the world up
-            target_gamespeed = min(target_gamespeed + speed_per_section, max_gamespeed);
         }
 
         // 2) Check for route completion

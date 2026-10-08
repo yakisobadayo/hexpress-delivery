@@ -6,7 +6,7 @@
 
 // How much the player's (and other vertical) physics fast-forward with the world
 // 0 = vertical physics never change, 1 = full fast-forward, 0.5 = somewhere in between
-#macro VERTICAL_SPEED_EXPONENT 1
+#macro VERTICAL_SPEED_EXPONENT 0.5
 
 /// @func speed_scale()
 /// @desc  How many times faster the world is moving than at BASE_GAMESPEED

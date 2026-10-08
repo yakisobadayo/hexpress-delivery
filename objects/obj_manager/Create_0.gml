@@ -15,10 +15,8 @@ global.gamespeed = BASE_GAMESPEED;// How fast the world moves
 spacing_modifier = 3;// Modifies spacing between spawns
 
 // SPEED-UP
-target_gamespeed  = BASE_GAMESPEED; // The speed global.gamespeed eases towards
-speed_per_section = 0.25;           // How much faster each new section gets
-max_gamespeed     = 8;              // Speed cap
-speed_ease        = 0.01;           // How quickly gamespeed catches up to target (0-1)
+speed_up_per_minute = 0.5; // How much gamespeed increases per minute of play
+max_gamespeed       = 8;   // Speed cap
 
 // PARALLAX
 // Room editor hspeeds are the speeds at BASE_GAMESPEED; rescaled every step
