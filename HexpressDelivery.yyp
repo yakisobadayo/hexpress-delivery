@@ -81,6 +81,7 @@
     {"id":{"name":"obj_obstaclehori","path":"objects/obj_obstaclehori/obj_obstaclehori.yy",},},
     {"id":{"name":"obj_obstaclevert","path":"objects/obj_obstaclevert/obj_obstaclevert.yy",},},
     {"id":{"name":"obj_parcel","path":"objects/obj_parcel/obj_parcel.yy",},},
+    {"id":{"name":"obj_pause","path":"objects/obj_pause/obj_pause.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_projectile","path":"objects/obj_projectile/obj_projectile.yy",},},
     {"id":{"name":"obj_riser","path":"objects/obj_riser/obj_riser.yy",},},

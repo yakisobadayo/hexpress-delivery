@@ -1,4 +1,7 @@
 randomise();         // So it's not the same each time.
+
+// Pausing (drawn on top of everything, survives the pause's deactivation)
+instance_create_depth(0, 0, -1000, obj_pause);
 global.space_pressed = false;
 
 // VARIABLE INIT
