@@ -7,3 +7,5 @@ https://yakisobadayo.itch.io/hexpress-delivery
 
 ## Web remake
 `web/hexpress-delivery.html` is a dependency-free JavaScript/canvas remake of the game, with procedurally drawn art and synthesised audio. Open it in any modern browser.
+
+`web/hexpress-delivery-3d.html` is a three.js version styled as a low-poly toy-town diorama, with real-time shadows, bloom and a tilt-shift effect. It loads three.js from a CDN, so it needs WebGL and a network connection.
