@@ -11,13 +11,13 @@ var current_options = main_options;
 var option_height = 32; // Height of each option
 
 // Check hover
-var new_selected = -1;
+var hovered = -1;
 for (var i = 0; i < array_length(current_options); i++) {
     var y_pos = ((room_height / 2) + i * option_height) - 40;
 
     // Check if mouse is over this option
     if (mouse_x >= room_width / 3 * 2 && mouse_x <= room_width / 3 * 2 + string_width(current_options[i]) && mouse_y >= y_pos && mouse_y <= y_pos + option_height) {
-        new_selected = i + 1; // Set selected option to hovered option
+        hovered = i + 1; // Set selected option to hovered option
 		/*if (selected != new_selected) { // Only play sound if the hovered option changes
             audio_play_sound(snd_button_hover, 10, false);
         }*/
@@ -25,12 +25,31 @@ for (var i = 0; i < array_length(current_options); i++) {
     }
 }
 
-selected = new_selected;
+// Mouse only changes the selection when it moves, so it doesn't fight the controller
+if (InputMouseMoved()) {
+	selected = hovered;
+}
 
-// Handle click event
-if (mouse_check_button_pressed(mb_left) && selected != -1) {
+// Controller / keyboard navigation (wraps around)
+var option_count = array_length(current_options);
+if (InputPressed(INPUT_VERB.UP)) {
+	selected = (selected <= 1) ? option_count : selected - 1;
+}
+if (InputPressed(INPUT_VERB.DOWN)) {
+	selected = (selected == -1 || selected >= option_count) ? 1 : selected + 1;
+}
+
+// Handle click / confirm event
+var activated = -1;
+if (mouse_check_button_pressed(mb_left) && hovered != -1) {
+	activated = hovered;
+} else if (InputPressed(INPUT_VERB.ACCEPT) && selected != -1) {
+	activated = selected;
+}
+
+if (activated != -1) {
         // Actions for main options
-        switch (selected) {
+        switch (activated) {
             case 1:
                 room_goto(room_run); // Action for option 1
 				//var goto_run = instance_create_layer(0,0,"Instances",obj_gotofade);

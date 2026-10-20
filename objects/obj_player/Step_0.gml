@@ -1,6 +1,6 @@
 // obj_player: Step Event
-var trigger_boost = keyboard_check(vk_space) || mouse_check_button(mb_left);
-var trigger_drop = keyboard_check_pressed(vk_down) || mouse_check_button_pressed(mb_right);
+var trigger_boost = InputCheck(INPUT_VERB.BOOST);
+var trigger_drop = InputPressed(INPUT_VERB.DROP);
 
 // Register if house exists
 house = instance_nearest(x, y, obj_house);

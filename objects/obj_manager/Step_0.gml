@@ -3,7 +3,7 @@ switch (game_state)
 {
     // ────────────
     case GameState.PENDING:
-		if (keyboard_check(vk_space)) {
+		if (InputPressed(INPUT_VERB.START)) {
 		    global.space_pressed = true;
 		}
 		
@@ -94,7 +94,7 @@ switch (game_state)
     // ────────────
     case GameState.FINISHED:
         // Show “Run Complete” screen, then Space → results
-        if (keyboard_check_pressed(vk_space))
+        if (InputPressed(INPUT_VERB.START))
         {
             //room_goto(room_results);
         }
@@ -143,7 +143,7 @@ if (route_active && delivered_parcels >= route_length) {
 /*/
 
 // Exit to menu
-if (keyboard_check_pressed(vk_escape)) {
+if (InputPressed(INPUT_VERB.BACK)) {
 	//collected_tips = 0; // Temporary maybe?
 	audio_stop_sound(mus_route_3_loop_real);
     room_goto(room_menu);
