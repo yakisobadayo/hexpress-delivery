@@ -5,11 +5,12 @@ file_type: resources
 resources:
 
   // Text with a 1px drop shadow, matching draw_text_with_shadow()
+  // NOTE: text_style can't be passed through template slots (YUI reads it as a
+  // literal name), so these widgets use the theme's body style and set colours directly
   shadow_text:
     type: template
     slots:
       label: ""
-      text_style: body
       text_color: #ffffff
       shadow_alpha: 0.33
     template:
@@ -20,21 +21,18 @@ resources:
       elements:
         - type: text
           text: $label
-          text_style: $text_style
           color: #000000
           opacity: $shadow_alpha
           xoffset: 1
           yoffset: 1
         - type: text
           text: $label
-          text_style: $text_style
           color: $text_color
 
   // Clickable text. Its data_source must be a struct made by ui_button() in scr_ui.
   text_button:
     type: template
     slots:
-      text_style: body
       color: #ffffff
       hover_color: #ffffff
       shadow_alpha: 0.33
@@ -58,8 +56,7 @@ resources:
             opacity: @@ (@hover or @focused) then 1 else 0
           - type: shadow_text
             label: @label
-            text_style: $text_style
-            text_color: @@ (@hover or @focused) then $hover_color else $color
+              text_color: @@ (@hover or @focused) then $hover_color else $color
             shadow_alpha: $shadow_alpha
 
   // Text button styled for the grey popup frame
@@ -67,7 +64,6 @@ resources:
     type: template
     template:
       type: text_button
-      text_style: popup
       color: $theme.resources.popup_text_color
       hover_color: $theme.resources.popup_text_hover
       shadow_alpha: 0.10
@@ -80,7 +76,6 @@ resources:
     template:
       type: shadow_text
       label: $label
-      text_style: popup
       text_color: $theme.resources.popup_text_color
       shadow_alpha: 0.10
 

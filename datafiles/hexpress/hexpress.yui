@@ -39,7 +39,3 @@ theme:
     body:
       font: ~fnt_at01
       color: &text_color
-
-    popup:
-      font: ~fnt_at01
-      color: &popup_text_color
