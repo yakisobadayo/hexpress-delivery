@@ -2,6 +2,10 @@
 // dump a lot of info in the log to help with debugging
 #macro CABINET_VERBOSE_LOGGING false
 
+// HEXPRESS PATCH: list of files to load when the folder scan finds nothing
+// (e.g. platforms where file_find_* can't see included files). Lives in datafiles/.
+#macro CABINET_MANIFEST_FILE "yui_manifest.txt"
+
 /// @description scans a folder on disk for files and tracks information about the files found
 /// @param {string} folder_path
 /// @param {string} extension
@@ -22,22 +26,62 @@ function Cabinet(folder_path, extension = ".*", options = undefined) constructor
 	static rescan = function() {
 		// flat view of the folder tree (indexed by full filepath)
 		flat_map = {};
-				
-		file_list = gumshoe(
-			folder_path,
-			extension,
-			/* returnStruct */ false,
-			_force_lowercase,
-			/* structValueGenerator */ undefined,
-			/* forceForwardSlash */ true);
-			
-		tree = gumshoe(
-			folder_path,
-			extension,
-			/* returnStruct */ true,
-			_force_lowercase,
-			__generateCabinetItem,
-			/* forceForwardSlash */ true);
+
+		// HEXPRESS PATCH: gumshoe throws on web exports, so fall back to the manifest
+		try {
+			file_list = gumshoe(
+				folder_path,
+				extension,
+				/* returnStruct */ false,
+				_force_lowercase,
+				/* structValueGenerator */ undefined,
+				/* forceForwardSlash */ true);
+
+			tree = gumshoe(
+				folder_path,
+				extension,
+				/* returnStruct */ true,
+				_force_lowercase,
+				__generateCabinetItem,
+				/* forceForwardSlash */ true);
+		}
+		catch (_error) {
+			show_debug_message($"Cabinet: folder scan failed ({_error})");
+			file_list = [];
+			tree = {};
+		}
+
+		if array_length(file_list) == 0 {
+			__loadManifest();
+		}
+	}
+
+	// HEXPRESS PATCH: registers the files listed in CABINET_MANIFEST_FILE (one path per line)
+	static __loadManifest = function() {
+		var _manifest_path = folder_path + CABINET_MANIFEST_FILE;
+		if !file_exists(_manifest_path) {
+			show_debug_message($"Cabinet: no files found and no manifest at {_manifest_path}");
+			return;
+		}
+
+		show_debug_message($"Cabinet: loading file list from {_manifest_path}");
+
+		var _file = file_text_open_read(_manifest_path);
+		var _index = 0;
+		while !file_text_eof(_file) {
+			var _line = string_trim(file_text_readln(_file));
+			if _line == "" || (extension != ".*" && filename_ext(_line) != extension) continue;
+
+			if _force_lowercase _line = string_lower(_line);
+
+			var _slash = string_last_pos("/", _line);
+			var _directory = folder_path + string_copy(_line, 1, _slash);
+			var _name = string_delete(_line, 1, _slash);
+
+			array_push(file_list, _directory + _name);
+			__generateCabinetItem(_directory, _name, extension, _index++);
+		}
+		file_text_close(_file);
 	}
 	
 	// clears the cached values for this Cabinet (and all associated CabinetFiles)

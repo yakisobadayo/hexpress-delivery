@@ -4,8 +4,8 @@
 // |   Please edit this file!   |
 // ==============================
 
-// the name of the default theme file, e.g. "default" will load default.yui from the Themes folder
-#macro DEFAULT_THEME_NAME "default"
+// the name of the default theme file, e.g. "hexpress" will load datafiles/hexpress/hexpress.yui
+#macro DEFAULT_THEME_NAME "hexpress"
 
 // whether gamepad/keyboard navigation is active by default
 // (can still be toggled at runtime by setting YuiCursorManager.is_navigation_active)

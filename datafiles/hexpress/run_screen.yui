@@ -1,0 +1,43 @@
+id: run_screen
+file_type: screen
+
+// Popups shown over a route. Data comes from obj_manager's ui struct.
+
+import:
+  - widgets.yui
+
+root:
+  type: panel
+  layout: canvas
+  elements:
+
+    // Controls tutorial, shown until the player starts flying
+    - type: popup_frame
+      visible: @show_tutorial
+      items:
+        - type: popup_text
+          label: Press LClick or SPACE to fly!
+        - type: popup_text
+          label: RClick or DOWN to drop packages!
+        - type: popup_button
+          data_source: @tutorial_ok
+
+    // End of route results
+    - type: popup_frame
+      visible: @show_results
+      animate:
+        on_visible:
+          yoffset: &popup_slide_in
+      items:
+        - type: popup_text
+          label: @money_text
+        - type: popup_text
+          label: @streak_text
+        - type: panel
+          layout: horizontal
+          spacing: 24
+          elements:
+            - type: popup_button
+              data_source: @retry_button
+            - type: popup_button
+              data_source: @menu_button

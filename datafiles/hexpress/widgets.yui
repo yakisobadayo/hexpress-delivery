@@ -1,0 +1,113 @@
+file_type: resources
+
+// Reusable Hexpress widgets. Import this file from a screen to use them.
+
+resources:
+
+  // Text with a 1px drop shadow, matching draw_text_with_shadow()
+  shadow_text:
+    type: template
+    slots:
+      label: ""
+      text_style: body
+      text_color: #ffffff
+      shadow_alpha: 0.33
+    template:
+      type: panel
+      layout: vertical
+      // the shadow and the text overlap: spacing cancels out the line height (fnt_at01 = 14px)
+      spacing: -14
+      elements:
+        - type: text
+          text: $label
+          text_style: $text_style
+          color: #000000
+          opacity: $shadow_alpha
+          xoffset: 1
+          yoffset: 1
+        - type: text
+          text: $label
+          text_style: $text_style
+          color: $text_color
+
+  // Clickable text. Its data_source must be a struct made by ui_button() in scr_ui.
+  text_button:
+    type: template
+    slots:
+      text_style: body
+      color: #ffffff
+      hover_color: #ffffff
+      shadow_alpha: 0.33
+      show_selector: false
+    template:
+      type: button
+      on_click: @action()
+      events:
+        on_hover_changed: @@ e => @hover = e.hover
+        on_got_focus: @focused = true
+        on_lost_focus: @focused = false
+      content:
+        type: panel
+        layout: horizontal
+        spacing: 14
+        elements:
+          - type: image
+            sprite: ~spr_selector
+            visible: $show_selector
+            yoffset: 3
+            opacity: @@ (@hover or @focused) then 1 else 0
+          - type: shadow_text
+            label: @label
+            text_style: $text_style
+            text_color: @@ (@hover or @focused) then $hover_color else $color
+            shadow_alpha: $shadow_alpha
+
+  // Text button styled for the grey popup frame
+  popup_button:
+    type: template
+    template:
+      type: text_button
+      text_style: popup
+      color: $theme.resources.popup_text_color
+      hover_color: $theme.resources.popup_text_hover
+      shadow_alpha: 0.10
+
+  // Popup text line
+  popup_text:
+    type: template
+    slots:
+      label: ""
+    template:
+      type: shadow_text
+      label: $label
+      text_style: popup
+      text_color: $theme.resources.popup_text_color
+      shadow_alpha: 0.10
+
+  // 9-sliced popup box centred on screen
+  popup_frame:
+    type: template
+    slots:
+      items: []
+    template:
+      type: border
+      background: $theme.resources.popup_bg
+      border_thickness: 0
+      size: { w: 180 }
+      padding: [8, 6]
+      canvas:
+        center: true
+      content:
+        type: panel
+        size: { w: stretch }
+        alignment: { h: center }
+        spacing: 2
+        elements: $items
+
+  // Slides a popup up from below the screen
+  popup_slide_in:
+    type: curve
+    curve: ~yui_ease_in_curve
+    duration: 600
+    from: 240
+    to: 0

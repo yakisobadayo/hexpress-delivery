@@ -145,9 +145,11 @@ if (route_active && delivered_parcels >= route_length) {
 // Exit to menu
 if (keyboard_check_pressed(vk_escape)) {
 	//collected_tips = 0; // Temporary maybe?
-	audio_stop_sound(mus_route_3_loop_real);
-    room_goto(room_menu);
+	exit_to_menu();
 }
+
+/// UI
+ui.show_tutorial = !global.space_pressed;
 
 // Fullscreen mode
 if (keyboard_check_pressed(vk_f11)) {

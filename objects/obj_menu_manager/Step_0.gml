@@ -1,46 +1,8 @@
-/// @description Handle hover and click logic
-//  This code is an absolute mess, sorry in advance
+/// @description Sync menu UI, debug code and fullscreen
 
-// This code is also spaghetti code I pasted from ChatGPT that I stole from my last year project, I was too lazy to make another menu system so I retrofitted this one. Sorry for whoever's eyes grace this
-
-animation_time += 0.06;
-
-// Menu options
-var main_options = [play_text, exit_text];
-var current_options = main_options;
-var option_height = 32; // Height of each option
-
-// Check hover
-var new_selected = -1;
-for (var i = 0; i < array_length(current_options); i++) {
-    var y_pos = ((room_height / 2) + i * option_height) - 40;
-
-    // Check if mouse is over this option
-    if (mouse_x >= room_width / 3 * 2 && mouse_x <= room_width / 3 * 2 + string_width(current_options[i]) && mouse_y >= y_pos && mouse_y <= y_pos + option_height) {
-        new_selected = i + 1; // Set selected option to hovered option
-		/*if (selected != new_selected) { // Only play sound if the hovered option changes
-            audio_play_sound(snd_button_hover, 10, false);
-        }*/
-        break;
-    }
-}
-
-selected = new_selected;
-
-// Handle click event
-if (mouse_check_button_pressed(mb_left) && selected != -1) {
-        // Actions for main options
-        switch (selected) {
-            case 1:
-                room_goto(room_run); // Action for option 1
-				//var goto_run = instance_create_layer(0,0,"Instances",obj_gotofade);
-				//goto_run.target_room = room_run;
-                return; // Ensure the rest of the code does not execute
-            case 2:
-				game_end();
-                return; // Ensure the rest of the code does not execute
-        }
-}
+// Menu UI (buttons are handled by datafiles/hexpress/menu_screen.yui)
+menu_ui.music_muted = global.mute_music;
+menu_ui.sfx_muted = global.mute_sfx;
 
 
 // DEBUG MODE
@@ -65,7 +27,7 @@ if key != noone {
 
             // reset sequence
             konami_index = 0;
-			
+
 			// sound!
 			audio_play_sound(snd_ding, 10, false);
         }

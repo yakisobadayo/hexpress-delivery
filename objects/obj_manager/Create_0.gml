@@ -215,11 +215,31 @@ current_conditions = roll_section(); // Roll the conditions for starting section
 
 // ANIM CURVE
 badge_ease = 11-185;
-end_ease = room_height+128;
 
 // Timer before end
 end_timer = room_speed * 1;
-show_results = false;
+
+// UI (datafiles/hexpress/run_screen.yui)
+function exit_to_menu() {
+	audio_stop_sound(mus_route_3_loop_real);
+	room_goto(room_menu);
+}
+
+function retry_route() {
+	audio_stop_sound(mus_route_3_loop_real);
+	room_restart();
+}
+
+ui = {
+	show_tutorial : true,  // synced with global.space_pressed in Step
+	show_results  : false, // set in Alarm 1
+	money_text    : "",
+	streak_text   : "",
+	tutorial_ok   : ui_button("OK", function() { global.space_pressed = true; }),
+	retry_button  : ui_button("Retry", retry_route),
+	menu_button   : ui_button("Menu", exit_to_menu),
+};
+ui_open("hexpress/run_screen.yui", ui);
 
 // Music
 music_volume = 0.9;

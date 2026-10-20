@@ -1,0 +1,6 @@
+Every .yui file in datafiles/. YUI only reads this if it can't scan the folder itself
+(a fallback for web exports), so add new .yui files here too.
+hexpress/hexpress.yui
+hexpress/widgets.yui
+hexpress/menu_screen.yui
+hexpress/run_screen.yui

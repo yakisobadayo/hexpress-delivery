@@ -1,0 +1,45 @@
+file_type: theme
+
+// Hexpress UI theme. Selected by DEFAULT_THEME_NAME in __YuiConfiguration__.
+
+constants:
+  text_color: #ffffff
+  popup_text_color: #555555
+  popup_text_hover: #999999
+  focus_color: #ffd34d
+
+resources:
+
+  // 9-sliced panel used by the tutorial/results popups
+  popup_bg: ~spr_ui_button
+
+theme:
+
+  elements:
+
+    panel:
+      spacing: 0
+
+    // plain buttons by default: our widgets supply their own backgrounds
+    button:
+      background: #00000000
+      border_thickness: 0
+      border_focus_color: &focus_color
+      highlight_alpha: 0
+      pressed_alpha: 0
+      padding: 0
+
+    popup:
+      background: &popup_bg
+      border_thickness: 0
+      padding: 4
+
+  text_styles:
+
+    body:
+      font: ~fnt_at01
+      color: &text_color
+
+    popup:
+      font: ~fnt_at01
+      color: &popup_text_color

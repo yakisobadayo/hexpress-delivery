@@ -1,0 +1,2 @@
+# YUI writes debug logs here when live reload is on
+datafiles/logs/

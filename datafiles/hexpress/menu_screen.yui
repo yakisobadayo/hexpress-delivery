@@ -1,0 +1,39 @@
+id: menu_screen
+file_type: screen
+
+// Main menu. Data comes from obj_menu_manager's menu_ui struct.
+
+import:
+  - widgets.yui
+
+root:
+  type: panel
+  layout: canvas
+  elements:
+
+    // Play / Exit
+    - type: panel
+      canvas: { left: 393, top: 140 }
+      spacing: 18
+      elements: @items
+      template:
+        type: text_button
+        show_selector: true
+
+    // Audio toggles (frame 1 = muted)
+    - type: panel
+      layout: horizontal
+      canvas: { top: 16, right: 16 }
+      elements:
+        - type: button
+          on_click: @toggle_music()
+          content:
+            type: image
+            sprite: ~spr_music
+            frame: @@ @music_muted then 1 else 0
+        - type: button
+          on_click: @toggle_sfx()
+          content:
+            type: image
+            sprite: ~spr_mute
+            frame: @@ @sfx_muted then 1 else 0

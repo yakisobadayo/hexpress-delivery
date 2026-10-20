@@ -100,7 +100,13 @@
     {"$GMFolder":"","%Name":"YUI Compiled Functions","folderPath":"folders/YUI Compiled Functions.yy","name":"YUI Compiled Functions","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
-  "IncludedFiles":[],
+  "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"yui_manifest.txt","CopyToMask":-1,"filePath":"datafiles","name":"yui_manifest.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"hexpress.yui","CopyToMask":-1,"filePath":"datafiles/hexpress","name":"hexpress.yui","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"menu_screen.yui","CopyToMask":-1,"filePath":"datafiles/hexpress","name":"menu_screen.yui","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"run_screen.yui","CopyToMask":-1,"filePath":"datafiles/hexpress","name":"run_screen.yui","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"widgets.yui","CopyToMask":-1,"filePath":"datafiles/hexpress","name":"widgets.yui","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+  ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
@@ -234,6 +240,7 @@
     {"id":{"name":"scr_managing_functions","path":"scripts/scr_managing_functions/scr_managing_functions.yy",},},
     {"id":{"name":"scr_money_functions","path":"scripts/scr_money_functions/scr_money_functions.yy",},},
     {"id":{"name":"scr_scrolling_functions","path":"scripts/scr_scrolling_functions/scr_scrolling_functions.yy",},},
+    {"id":{"name":"scr_ui","path":"scripts/scr_ui/scr_ui.yy",},},
     {"id":{"name":"snap_from_yui","path":"scripts/snap_from_yui/snap_from_yui.yy",},},
     {"id":{"name":"SnapBufferReadBOM","path":"scripts/SnapBufferReadBOM/SnapBufferReadBOM.yy",},},
     {"id":{"name":"SnapBufferWriteBOM","path":"scripts/SnapBufferWriteBOM/SnapBufferWriteBOM.yy",},},
