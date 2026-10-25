@@ -1,3 +1,6 @@
+// Keep tiled background layers in step with the route speed
+scenery_sync_tiled_layers();
+
 //ROUTE LOGIC
 switch (game_state)
 {

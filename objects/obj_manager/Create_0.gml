@@ -20,6 +20,9 @@ section_timer_ticking = section_timer;
 //route_length = irandom_range(5,8);// How many sections in a route
 current_section = 0;              // The current section of a route
 
+// SCENERY
+scenery_init();                   // Spawns the background prop streams (Houses, Trees, Wall)
+
 // MONEY
 // Base
 base_pay = 5;          // How much for each delivery
