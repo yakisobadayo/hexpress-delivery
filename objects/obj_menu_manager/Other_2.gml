@@ -10,3 +10,6 @@ global.mute_sfx = false;
 
 // Load audio group
 audio_group_load(audiogroup_music);
+
+// Load saved wallet, upgrades and stats
+load_game();

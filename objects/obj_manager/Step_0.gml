@@ -24,8 +24,12 @@ switch (game_state)
 		// Gradual depletion of stamina
 		stamina -= 0.0075;
 		
-		// Coffee for first time stamina dips below 33
-		if (stamina <= 33 && !first_coffee) {
+		// Speed ramps up the longer the shift goes on
+		var _target_speed = min(base_gamespeed + current_section * speed_ramp, max_gamespeed);
+		global.gamespeed = lerp(global.gamespeed, _target_speed, 0.01);
+		
+		// Coffee for first time stamina dips below 33%
+		if (stamina <= max_stamina * 0.33 && !first_coffee) {
 			if (!first_coffee) first_coffee = true;
 		    alarm_set(2, 5 * room_speed);
 			show_debug_message("Spawning first coffee...");
@@ -40,6 +44,11 @@ switch (game_state)
         {
             layer_destroy_instances("Managers");
             house_spawn();
+			
+			// Let the player know things are getting quicker
+			if (current_section > 1 && current_section % 5 == 0 && base_gamespeed + current_section * speed_ramp <= max_gamespeed) {
+				add_popup(room_width / 2, room_height / 2 - 48, "The night speeds up!", #C9A8FF, 120);
+			}
 
             current_conditions = roll_section();
             spawn_managers(current_conditions);
@@ -50,10 +59,8 @@ switch (game_state)
         // 2) Check for route completion
         if (stamina <= 0)
         {
-			var total_payout = collected_base_pay + collected_tips;
 			layer_destroy_instances("Managers");
-            global.money += total_payout;
-			show_debug_message(string("Route ended! Earned: ${0}, total money: ${1}", total_payout, global.money));
+			finish_shift();
 			
 			alarm_set(1, end_timer); // Cooldown before results sbow
 			audio_sound_gain(mus_route_3_loop_real, 0.45, 3000)
@@ -63,7 +70,7 @@ switch (game_state)
 		// Spawn a coffee randomly
 		var coffee_chance_per_frame = 0.0005;  // ~1 spawn every 2000 frames on average
 
-		if (coffee_spawn_cooldown == 0 && stamina <= 66 && random(1) < coffee_chance_per_frame && !instance_exists(obj_coffee)) {
+		if (coffee_spawn_cooldown == 0 && stamina <= max_stamina * 0.66 && random(1) < coffee_chance_per_frame && !instance_exists(obj_coffee)) {
 		    spawn_coffee()
 			
 			coffee_spawn_cooldown = coffee_reset_cooldown;
@@ -93,12 +100,29 @@ switch (game_state)
 
     // ────────────
     case GameState.FINISHED:
-        // Show “Run Complete” screen, then Space → results
-        if (keyboard_check_pressed(vk_space))
+        // Results screen is up: SPACE / click starts another shift
+        if (show_results && (keyboard_check_pressed(vk_space) || mouse_check_button_pressed(mb_left)))
         {
-            //room_goto(room_results);
+            audio_stop_sound(mus_route_3_loop_real);
+            audio_stop_sound(snd_increment);
+            room_restart();
+            exit;
         }
         break;
+}
+
+/// PARALLAX
+/// Keep the scrolling backgrounds in step with the current game speed
+for (var i = 0; i < array_length(bg_layers); i++) {
+	layer_hspeed(bg_layers[i].lyr, bg_layers[i].base * global.gamespeed / base_gamespeed);
+}
+
+/// POPUPS
+for (var i = array_length(popups) - 1; i >= 0; i--) {
+	var _p = popups[i];
+	_p.life -= 1;
+	_p.py   -= 0.4;
+	if (_p.life <= 0) array_delete(popups, i, 1);
 }
 
 /// MONEY INCREMENT
@@ -146,6 +170,7 @@ if (route_active && delivered_parcels >= route_length) {
 if (keyboard_check_pressed(vk_escape)) {
 	//collected_tips = 0; // Temporary maybe?
 	audio_stop_sound(mus_route_3_loop_real);
+	audio_stop_sound(snd_increment);
     room_goto(room_menu);
 }
 

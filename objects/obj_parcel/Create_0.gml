@@ -1,4 +1,6 @@
 grav = 0.26;
+// Bubble Wrap charges carried over from the parcel struct (0 if none)
+if (!variable_instance_exists(id, "shield")) shield = 0;
 y_velocity = 0;
 grounded    = false;  // is it on the floor?
 landed      = false;  // has it already landed? (one-shot guard)

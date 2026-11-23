@@ -22,18 +22,21 @@ switch (current_parcel.hits) {
  case 0: parcel_index = 3; break;
 }
 
+// Stamina as a percentage (max stamina can be upgraded)
+var stamina_pct = stamina / max_stamina * 100;
+
 /// Willow expression states
 var portrait;
 if (obj_player.i_frame == true && stamina > 0) {
 	portrait = spr_willow_stunned;
 }
-else if (stamina > 66) {
+else if (stamina_pct > 66) {
     portrait = spr_willow_alert;
 }
-else if (stamina > 33) {
+else if (stamina_pct > 33) {
     portrait = spr_willow_neutral;
 }
-else if (stamina > 10) {
+else if (stamina_pct > 10) {
     portrait = spr_willow_tired;
 }
 else if (stamina > 0) {
@@ -45,10 +48,10 @@ else {
 
 // Bar colour
 var bar_color;
-if (stamina > 33) {
+if (stamina_pct > 33) {
 	bar_color = 0;
 }
-else if (stamina > 10) {
+else if (stamina_pct > 10) {
 	bar_color = 1;
 }
 else {
@@ -57,6 +60,7 @@ else {
 
 // Lerped stamina bar
 display_stamina = lerp(display_stamina, stamina, 0.1);
+var bar_width = display_stamina / max_stamina * 100; // Bar sprite is 100px wide
 
 // Unused
 //draw_sprite(spr_energy_bar, 0, base_x+62, base_y+4);
@@ -68,7 +72,7 @@ draw_sprite(spr_ui_badge, 0, base_x, base_y);
 // Portrait
 draw_sprite(portrait, 0, base_x+5, base_y+4);
 // Energy bar
-draw_sprite_part(spr_energy_bar, bar_color, 0, 0, display_stamina, 15, base_x+62, base_y+4);
+draw_sprite_part(spr_energy_bar, bar_color, 0, 0, bar_width, 15, base_x+62, base_y+4);
 /*/ Fancy energy bar (back)
 draw_sprite_part(spr_energy_bar_back, bar_color, 0, 0, display_stamina, 15, base_x+62, base_y+4);
 // Fancy energy bar
@@ -97,10 +101,33 @@ draw_text_with_shadow(base_x+86, base_y+23+10, "Delivered: " + string(delivered_
 // Parcel with shake
 draw_sprite(spr_parcel_hexpress, parcel_index, base_x+56+10+irandom_range(-shake, shake), base_y+28-2);
 
-/*/ Streak counter
+// Bubble Wrap: a shimmery ring around the parcel icon for each hit it can still absorb
+if (current_parcel.shield > 0) {
+	var _pulse = 0.5 + 0.25 * sin(current_time * 0.006);
+	draw_set_color(#9FE7FF);
+	draw_set_alpha(_pulse);
+	for (var i = 0; i < current_parcel.shield; i++) {
+		draw_circle(base_x+56+10, base_y+28-2, 13 + i * 3, true);
+	}
+	draw_set_alpha(1);
+	draw_set_color(c_white);
+}
+
+// Streak counter (streaks boost tips, up to 2x)
 if (streak >= 2) {
-	draw_text_with_shadow(base_x+86, base_y+23+20, "Streak: " + string(streak), c_white, c_black, 0.33);
-} */
+	var _streak_col = (get_streak_multiplier() >= 2) ? #FFE45C : #FFB0E0;
+	draw_text_with_shadow(base_x+86, base_y+23+20, "Streak " + string(streak) + "  x" + string_format(get_streak_multiplier(), 1, 1) + " tips", _streak_col, c_black, 0.33);
+}
+
+// Floating popups
+draw_set_halign(fa_center);
+for (var i = 0; i < array_length(popups); i++) {
+	var _p = popups[i];
+	draw_set_alpha(min(1, _p.life / 20));
+	draw_text_with_shadow(_p.px, _p.py, _p.text, _p.col, c_black, 0.5);
+}
+draw_set_alpha(1);
+draw_set_halign(fa_left);
 
 
 /*/ Show controls
@@ -133,12 +160,53 @@ if (!global.space_pressed) {
 	}
 }
 
-if (game_state = GameState.FINISHED) {
-	draw_sprite_stretched(spr_ui_button, 0, room_width/2-(button_width/2), end_ease-(button_height/2),button_width,button_height);
+if (game_state = GameState.FINISHED && is_struct(results)) {
+	// SHIFT REPORT
+	var panel_w = 260;
+	var panel_h = 168;
+	var px = room_width/2 - panel_w/2;
+	var py = end_ease - panel_h/2;
+	draw_sprite_stretched(spr_ui_popup, 0, px, py, panel_w, panel_h);
+	
 	draw_set_halign(fa_center);
-	draw_text_with_shadow(room_width/2, end_ease-16-6, "Money earned: $" + string(collected_base_pay + collected_tips), #555555, c_black, 0.10);
-	draw_text_with_shadow(room_width/2, end_ease-6, "Highest streak: " + string(highest_streak), #555555, c_black, 0.10);
-	draw_text_with_shadow(room_width/2, end_ease+16-6, "Press ESC to go to menu!", #555555, c_black, 0.10);
+	draw_text_with_shadow(room_width/2, py + 3, "Shift Report", c_white, c_black, 0.5);
+	
+	var row_y  = py + 26;
+	var row_h  = 17;
+	var lx     = px + 14;
+	var rx     = px + panel_w - 14;
+	var _best  = #FFE45C;
+	var _flash = (current_time div 300) mod 2 == 0;
+	
+	var rows = [
+		["Money earned",  "$" + string(results.money),         results.new_money],
+		["Deliveries",    string(results.deliveries),          results.new_delivery],
+		["Best streak",   string(results.streak),              results.new_streak],
+		["Avg. rating",   results.has_rating ? string_format(results.rating, 1, 1) + " stars" : "-", false],
+		["Houses passed", string(results.houses),              false],
+	];
+	
+	for (var i = 0; i < array_length(rows); i++) {
+		var _yy = row_y + i * row_h;
+		draw_set_halign(fa_left);
+		draw_text_with_shadow(lx, _yy, rows[i][0], c_white, c_black, 0.33);
+		draw_set_halign(fa_right);
+		var _is_best = rows[i][2];
+		draw_text_with_shadow(rx, _yy, rows[i][1], _is_best ? _best : c_white, c_black, 0.33);
+		if (_is_best && _flash) {
+			draw_text_with_shadow(rx - string_width(rows[i][1]) - 8, _yy, "NEW BEST!", _best, c_black, 0.33);
+		}
+	}
+	
+	// Wallet total
+	var _wy = row_y + array_length(rows) * row_h + 4;
+	draw_set_halign(fa_center);
+	draw_text_with_shadow(room_width/2, _wy, "Wallet: $" + string(global.money), #9FE7FF, c_black, 0.33);
+	
+	if (show_results) {
+		draw_text_with_shadow(room_width/2, py + panel_h - 20, "SPACE: next shift   ESC: menu", #FFE45C, c_black, 0.33);
+	}
+	draw_set_halign(fa_left);
 }
 
 

@@ -12,6 +12,9 @@ enum GameState {
 // ROUTE
 game_state = GameState.PENDING;
 global.gamespeed = 4;// How fast the world moves
+base_gamespeed  = 4;    // Starting speed of the shift
+max_gamespeed   = 6.5;  // Speed cap
+speed_ramp      = 0.12; // Speed added for every house section survived
 spacing_modifier = 3;// Modifies spacing between spawns
 
 section_timer = 3200;// How long a section of the route lasts
@@ -43,11 +46,20 @@ rating_history = [];
 current_rating = 4.0;	  // The rating starts at a neutral 3 stars
 reactivity_factor = 0.4;		  // How much a new score affects the average. 0.1=slow, 0.9=very fast. 0.3-0.5 is a good start.
 
+// UPGRADES (bought in Willow's Workshop on the menu)
+upg_thermos = upgrade_level("thermos"); // +15 max stamina per level
+upg_brew    = upgrade_level("brew");    // +10 coffee restore per level
+upg_wrap    = upgrade_level("wrap");    // +1 absorbed hit per parcel per level
+upg_charm   = upgrade_level("charm");   // +10% tips per level
+
+coffee_restore = 15 + upg_brew * 10;
+
 // PARCELS
 function make_parcel() {
     return {
         max_hits : 4,
         hits     : 4,
+        shield   : upg_wrap, // Bubble Wrap absorbs this many hits
     };
 }
 current_parcel = make_parcel();   // The parcel you're delivering
@@ -62,7 +74,7 @@ function make_house() {
 houses_passed = 0;                // Identical to current_section but only increments when a house is destroyed
 
 // STAMINA
-max_stamina = 100;
+max_stamina = 100 + upg_thermos * 15;
 stamina = max_stamina;
 display_stamina = stamina;
 
@@ -125,8 +137,15 @@ function play_hit_sound(hit_count) {
 
 // Registers a hit to the parcel
 function register_hit(_hits) {
-	play_hit_sound(current_parcel.hits)
-    current_parcel.hits = max(0, current_parcel.hits - _hits);
+	if (current_parcel.shield > 0) {
+		// Bubble Wrap soaks up the hit instead of the parcel
+		current_parcel.shield -= 1;
+		audio_play_sound(snd_boing, 10, false, 0.6, 0, 1.4);
+		add_popup(obj_player.x, obj_player.y - 24, "*pop!* Wrap saved it", #9FE7FF);
+	} else {
+		play_hit_sound(current_parcel.hits)
+	    current_parcel.hits = max(0, current_parcel.hits - _hits);
+	}
 	stamina = max(0, stamina - 5); // Hit = -5 stamina
 	shake = shake_amount;
 	alarm_set(0, 0.3 * room_speed);
@@ -159,7 +178,9 @@ function drop_parcel(_x, _y) {
 function register_delivery(_multiplier) {
 	var rating_mult   = get_rating_multiplier();
 	var current_money = collected_base_pay + collected_tips;
-	var tip_money     = round(base_tip * _multiplier * rating_mult);
+	var streak_mult   = get_streak_multiplier();
+	var charm_mult    = 1 + upg_charm * 0.10;
+	var tip_money     = round(base_tip * _multiplier * rating_mult * streak_mult * charm_mult);
 	
 	delivered_parcels  += 1;
 	collected_base_pay += base_pay;
@@ -197,6 +218,8 @@ function register_delivery(_multiplier) {
 	if (!audio_is_playing(snd_increment)) {
 	    audio_play_sound(snd_increment, 5, true, 0.5);
 	}
+	
+	return base_pay + tip_money;
 }
 
 // Advances to next house and package
@@ -205,7 +228,76 @@ function next_delivery() {
 	current_parcel = make_parcel();
 }
 
-// Get tip payout
+// FLOATING POPUPS
+// Little bits of text that drift upward and fade (e.g. "+$32", "PERFECT!")
+popups = [];
+function add_popup(_x, _y, _text, _col = c_white, _life = 70) {
+	array_push(popups, {
+		px : _x,
+		py : _y,
+		text : _text,
+		col : _col,
+		life : _life,
+		max_life : _life,
+	});
+}
+
+// Returns a short word + colour describing a 0-5 star delivery
+function stars_to_praise(_stars) {
+	switch (_stars) {
+		case 5:  return { text : "PERFECT!",  col : #FFE45C };
+		case 4:  return { text : "Great!",    col : #8CFF8C };
+		case 3:  return { text : "Nice",      col : c_white };
+		case 2:  return { text : "Meh...",    col : #C8C8C8 };
+		case 1:  return { text : "Barely...", col : #FFA060 };
+		default: return { text : "Missed!",   col : #FF6060 };
+	}
+}
+
+// SCROLLING BACKGROUND LAYERS
+// Remember each background layer's base speed so parallax can scale with game speed
+bg_layers = [];
+var _all_layers = layer_get_all();
+for (var i = 0; i < array_length(_all_layers); i++) {
+	var _l = _all_layers[i];
+	if (layer_background_get_id(_l) != -1) {
+		array_push(bg_layers, { lyr : _l, base : layer_get_hspeed(_l) });
+	}
+}
+
+// Ends the shift: bank money, update lifetime stats and save
+results = undefined;
+function finish_shift() {
+	var total_payout = collected_base_pay + collected_tips;
+	
+	// Average of every rating given out this shift
+	var _avg = 0;
+	var _n = array_length(rating_history);
+	for (var i = 0; i < _n; i++) _avg += rating_history[i];
+	_avg = (_n > 0) ? (_avg / _n) : 0;
+	
+	results = {
+		money        : total_payout,
+		deliveries   : delivered_parcels,
+		streak       : highest_streak,
+		rating       : _avg,
+		has_rating   : _n > 0,
+		houses       : current_section,
+		new_money    : total_payout > global.stats.best_money,
+		new_streak   : highest_streak > global.stats.best_streak,
+		new_delivery : delivered_parcels > global.stats.best_deliveries,
+	};
+	
+	global.money += total_payout;
+	global.stats.total_runs     += 1;
+	global.stats.lifetime_money += total_payout;
+	global.stats.best_money      = max(global.stats.best_money, total_payout);
+	global.stats.best_streak     = max(global.stats.best_streak, highest_streak);
+	global.stats.best_deliveries = max(global.stats.best_deliveries, delivered_parcels);
+	save_game();
+	
+	show_debug_message(string("Route ended! Earned: ${0}, total money: ${1}", total_payout, global.money));
+}
 
 
 // ROUTE GENERATION

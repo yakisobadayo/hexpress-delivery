@@ -81,7 +81,7 @@ if (place_meeting(x, y+1, obj_obstaclehori) && !colliding) {
 }
 
 // Yawn
-var current_stamina = obj_manager.stamina;
+var current_stamina = obj_manager.stamina / obj_manager.max_stamina * 100;
 if (last_stamina >= 33 && current_stamina < 33) {
     audio_play_sound(snd_yawn, 10, false);
 }
