@@ -47,6 +47,7 @@
     {"name":"snd_kaching","order":13,"path":"sounds/snd_kaching/snd_kaching.yy",},
     {"name":"snd_place","order":20,"path":"sounds/snd_place/snd_place.yy",},
     {"name":"snd_restore","order":6,"path":"sounds/snd_restore/snd_restore.yy",},
+    {"name":"snd_yawn","order":37,"path":"sounds/snd_yawn/snd_yawn.yy",},
     {"name":"spr_bird","order":2,"path":"sprites/spr_bird/spr_bird.yy",},
     {"name":"spr_car","order":7,"path":"sprites/spr_car/spr_car.yy",},
     {"name":"spr_coffee","order":4,"path":"sprites/spr_coffee/spr_coffee.yy",},
